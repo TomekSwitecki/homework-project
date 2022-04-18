@@ -1,0 +1,41 @@
+.navbar
+{
+    padding: 20px;
+    /* background-color: #28383D; */
+    background-color: #ffffff;
+}
+
+
+.logo {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 40px;
+    text-transform: lowercase;
+
+    color: #000000;
+}
+
+.orange_dot {
+    color: #FF6B00;
+}
+
+.horizontal_line
+{
+    margin: 0;
+border-top: 1px solid #eeeeee;
+}
+
+.date
+{
+font-family: 'Outfit';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 25px;
+
+color: #000000;
+
+margin-left: 100px;
+}

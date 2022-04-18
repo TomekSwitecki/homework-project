@@ -1,0 +1,118 @@
+h1 {
+  margin: 0px;
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 40px;
+  text-align: center;
+}
+body {
+  background-color: #f8f8f8;
+  font-family: "Outfit", sans-serif;
+  margin: 0;
+}
+
+input {
+  /* width: 100%;
+  height: 50px;
+  background: #ffffff;
+  border: 1px solid #b9b9b9;
+  box-sizing: border-box;
+  border-radius: 8px; */
+}
+
+button {
+  border-radius: 10px;
+  padding: 12px 30px;
+  border: none;
+  color: white;
+  background: #6c63ff;
+  /* box-shadow: 0px 4px 0px #423ac2; */
+  border-radius: 5px 0px 0px 5px;
+}
+
+hr {
+  width: 100%;
+}
+button {
+  cursor: pointer;
+}
+
+
+
+
+
+.btn-orange:hover {
+  background: rgb(231, 99, 22);
+  box-shadow: 0px 8px 0px rgb(201, 79, 8);
+}
+
+.btn-orange {
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  background: #ff8100;
+  box-shadow: 0px 8px 0px #d75309;
+  border-radius: 9px;
+}
+
+.btn-cancel {
+  color: black;
+  background: #ffffff;
+  border: 1px solid #ababab;
+  box-sizing: border-box;
+  box-shadow: 0px 8px 0px #ababab;
+  border-radius: 9px;
+}
+
+
+.Container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-self: center;
+}
+.SubjectListContainer {
+  background-color: #ffffff;
+  /* width: 20%; */
+  width: 229px;
+  padding: 20px 0px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  height: 881px;
+}
+
+
+.TaskContainer {
+  flex-direction: column;
+  display: flex;
+  gap: 15px;
+  background-color: rgb(255, 255, 255);
+  /* width: 40%; */
+  width: 500px;
+  padding: 50px;
+  margin-top: 70px;
+}
+
+
+
+
+
+
+.StudentListContainer
+{
+  width: 640px;
+    flex-direction: column;
+    display: flex;
+    gap: 15px;
+    background-color: rgb(255, 255, 255);
+    padding: 50px;
+    margin-top: 70px;
+    margin-right: 50px;
+}

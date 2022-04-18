@@ -1,0 +1,14 @@
+.logo {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 40px;
+    text-transform: lowercase;
+
+    color: #000000;
+}
+
+.orange_dot {
+    color: #FF6B00;
+}

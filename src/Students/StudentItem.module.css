@@ -1,0 +1,13 @@
+.student_item:nth-child(2n)
+{
+    display: flex;
+    justify-content: space-between;
+    background-color: #F7F7F7;
+    padding: 2px 15px;
+}
+.student_item {
+    display: flex;
+    justify-content: space-between;
+    background-color: #ffffff;
+    padding: 2px 15px;
+}

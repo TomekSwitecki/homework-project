@@ -9,10 +9,10 @@ const Hub=()=>
       <div>
         <Routes>
           <Route
-            path="/homework-project/registration"
+            path="/registration"
             element={<Registration />}
           />
-          <Route path="/homework-project/home" element={<App />} />
+          <Route path="/home" element={<App />} />
         </Routes>
       </div>
     );

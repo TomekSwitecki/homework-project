@@ -1,5 +1,10 @@
 import "./styles.css";
 import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+
+import Registration from "./Registration/Registration";
+
+
 
 import Navbar from "./Navbar/Navbar";
 import Logo from "./Logo/Logo";
@@ -11,8 +16,8 @@ import SubjectCreatePopUp from "./Subject/SubjectCreatePopUp";
 import TaskItem from "./Task/TaskItem";
 import TaskAdd from "./Task/TaskAdd";
 
-
 import StudentItem from "./Students/StudentItem";
+
 
 function App() {
   const [SubjectPopUpVisible, setSubjectPopUpVisibility] = useState(false);
@@ -88,7 +93,6 @@ function App() {
     },
   ];
 
-
   const [subjectData, setSubjectData] = useState(INITIAL_SUBJECT_DATA);
   const [taskData, setTaskData] = useState(INITIAL_TASK_DATA);
   const [studentData, setStudentData] = useState(INITIAL_TASK_DATA);
@@ -99,12 +103,11 @@ function App() {
   };
   console.log("SELECTED SUBJECT: " + selectedSubject);
 
-    const [selectedTask, setSelectedTask] = useState();
-    const onTaskSelectedDataHandler = (selectedTaskData) => {
-      setSelectedTask(selectedTaskData.name);
-    };
-    console.log(taskData);
-
+  const [selectedTask, setSelectedTask] = useState();
+  const onTaskSelectedDataHandler = (selectedTaskData) => {
+    setSelectedTask(selectedTaskData.name);
+  };
+  console.log(taskData);
 
   const onSubjectCreatedDataHandler = (createdSubjectData) => {
     setSubjectData((prevSubjectItems) => {
@@ -114,9 +117,6 @@ function App() {
   };
   console.log(subjectData);
 
- 
-
-
   //FILTROWANIE TASKÓW WYBRANEGO PRZEDMIOTU
   const filteredTasks = taskData.filter((e) => {
     return e.Task_subject === selectedSubject;
@@ -124,8 +124,9 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
 
+
+      <Navbar />
       {SubjectPopUpVisible ? (
         <SubjectCreatePopUp
           onCancel={ShowCreateSubjectWindow}
@@ -133,7 +134,6 @@ function App() {
           subjectArraySize={subjectData.length}
         />
       ) : null}
-
       <div className="Container">
         <div className="SubjectListContainer">
           {/* <Logo></Logo> */}
@@ -173,13 +173,13 @@ function App() {
         <div className="StudentListContainer">
           <h1>Student List</h1>
           {INITIAL_STUDENT_DATA.map((e, index) => (
-          <StudentItem
-        id={e.index}
-        name={e.Student_name}
-        mail={e.Student_mail}
-        date={e.Date}
-        status={e.Status}
-          />
+            <StudentItem
+              id={e.index}
+              name={e.Student_name}
+              mail={e.Student_mail}
+              date={e.Date}
+              status={e.Status}
+            />
           ))}
         </div>
       </div>

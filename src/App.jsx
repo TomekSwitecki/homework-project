@@ -2,6 +2,7 @@ import "./styles.css";
 import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
+
 import Registration from "./Registration/Registration";
 
 
@@ -18,8 +19,23 @@ import TaskAdd from "./Task/TaskAdd";
 
 import StudentItem from "./Students/StudentItem";
 
+import { getAuth, signOut } from "firebase/auth";
+const logout =()=>
+{
+  
 
-function App() {
+  const auth = getAuth();
+  signOut(auth)
+    .then(() => {
+      console.log("signed out");
+    })
+    .catch((error) => {
+      // An error happened.
+    });
+}
+
+const App=(props)=> {
+  console.log(props);
   const [SubjectPopUpVisible, setSubjectPopUpVisibility] = useState(false);
   function ShowCreateSubjectWindow() {
     setSubjectPopUpVisibility((prevValue) => {
@@ -124,8 +140,6 @@ function App() {
 
   return (
     <div className="App">
-
-
       <Navbar />
       {SubjectPopUpVisible ? (
         <SubjectCreatePopUp
@@ -139,6 +153,7 @@ function App() {
           {/* <Logo></Logo> */}
 
           <h1>Subjects</h1>
+          <h1>{props.rola}</h1>
 
           {subjectData.map((e, index) => (
             <SubjectItem
@@ -171,6 +186,7 @@ function App() {
         </div>
 
         <div className="StudentListContainer">
+          <button onClick={logout}>LOG OUT</button>
           <h1>Student List</h1>
           {INITIAL_STUDENT_DATA.map((e, index) => (
             <StudentItem

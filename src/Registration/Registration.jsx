@@ -1,8 +1,11 @@
 import React from "react";
 import { useState } from "react";
-
+import fire from "../config/fire";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getDatabase, push, ref, set } from "firebase/database";
 const Registration=()=>
 {
+   
    let RegistrationData = {
      f_name:"",
      l_name:"",
@@ -30,23 +33,40 @@ const Registration=()=>
           setPassword(event.target.value);
         };
 
-  
 
-                  async function registerUser(RegistrationData) {
-                      console.log("HUJ");
-                    const response = await fetch(
-                      "https://homework-com-ed42c-default-rtdb.europe-west1.firebasedatabase.app/users.json",
-                      {
-                        method: "POST",
-                        body: JSON.stringify(RegistrationData),
-                        headers: {
-                          "Content-Type": "application/json",
-                        }
-                      }
-                    );
 
-                    const data = await response.json();
-                    console.log(data);
+
+      const RegisterUser = () => {
+const auth = getAuth();
+createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    console.log("Succesfully signed up");
+    //console.log(auth.uid);
+  })
+  .catch((error) => {
+    console.log(error.toString());
+  });
+
+      }
+                  // TRZEBA POPRAWIĆ WYSYŁA 3 LITEROWA HASŁA DO BAZY DANYCH - Firebase Auth wymusza 6 literowe hasła
+                  async function registerUserdatabase(RegistrationData) {
+                      const database = getDatabase();
+                      push(ref(database, "users/"),RegistrationData);
+                        
+
+                    // const response = await fetch(
+                    //   "https://homework-com-ed42c-default-rtdb.europe-west1.firebasedatabase.app/users.json",
+                    //   {
+                    //     method: "POST",
+                    //     body: JSON.stringify(RegistrationData),
+                    //     headers: {
+                    //       "Content-Type": "application/json",
+                    //     }
+                    //   }
+                    // );
+
+                    // const data = await response.json();
+                    // console.log(data);
                   }
 
           const submitHandler = (argument_role, event) => {
@@ -65,8 +85,8 @@ const Registration=()=>
                 role: argument_role,
               };
               console.log(RegistrationData);
-              registerUser(RegistrationData);
-
+              registerUserdatabase(RegistrationData);
+              RegisterUser();
               setFirstName("");
               setLastName("");
               setEmail("");
@@ -75,6 +95,7 @@ const Registration=()=>
             } else {
               console.log("No data inserted");
             }
+
           };
 
 
@@ -119,6 +140,14 @@ return (
       >
         Register as student
       </button>
+
+      {/* <button
+        type="submit"
+        onClick={RegisterUser}
+      > 
+        Register as student
+      </button>
+      */}
     </form>
   </div>
 );

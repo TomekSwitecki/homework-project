@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styles from "./SubjectCreatePopUp.module.css";
 
+
+
 function SubjectAdd(props) {
   const [enteredSubjectName, setEnteredSubjectName] = useState("");
   const [enteredSubjectDescription, setEnteredSubjectDescription] = useState(
@@ -13,6 +15,11 @@ function SubjectAdd(props) {
   const subjectDescriptionHandler = (event) => {
     setEnteredSubjectDescription(event.target.value);
   };
+
+
+
+
+
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -33,6 +40,9 @@ function SubjectAdd(props) {
       console.log("No data inserted");
     }
   };
+
+
+
 
   return (
     <div className={styles.popUp}>

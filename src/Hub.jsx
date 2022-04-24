@@ -28,14 +28,14 @@ onAuthStateChanged(auth, (user) => {
     get(child(dbRef, `users/`))
       .then((snapshot) => {
         if (snapshot.exists()) {
-          console.log(snapshot.val());
+          //console.log(snapshot.val());
           snapshot.forEach(function (childSnapshot) {
-            console.log(childSnapshot.val().email);
+            //console.log(childSnapshot.val().email);
             if(childSnapshot.val().email == user.email)
             {
-              console.log("BINGO");
+              //console.log("BINGO");
               setRole(childSnapshot.val().role) ;
-              console.log(role);
+              //console.log(role);
             }
           });
         } else {
@@ -48,7 +48,7 @@ onAuthStateChanged(auth, (user) => {
     
     //console.log(user);
     setUser(user);
-    console.log(user.email);
+    //console.log(user.email);
 
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/firebase.User
@@ -61,9 +61,9 @@ onAuthStateChanged(auth, (user) => {
 
     // ...
   }
-  console.log(role);
+  //console.log(role);
 });
-console.log(role);
+//console.log(role);
   if(user)
   {
 return (

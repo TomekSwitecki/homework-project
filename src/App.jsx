@@ -1,15 +1,17 @@
 import "./styles.css";
-import React, { useState } from "react";
+import React, { useState , useEffect, useCallback } from "react";
 import { Routes, Route } from "react-router-dom";
 
 
 import Registration from "./Registration/Registration";
-
+import { getDatabase, ref, child, get,push } from "firebase/database";
 
 
 import Navbar from "./Navbar/Navbar";
 import Logo from "./Logo/Logo";
 
+
+import InitialSubjectData from "./Subject/InitialSubjectData";
 import SubjectItem from "./Subject/SubjectItem";
 import SubjectAdd from "./Subject/SubjectAdd";
 import SubjectCreatePopUp from "./Subject/SubjectCreatePopUp";
@@ -34,6 +36,8 @@ const logout =()=>
     });
 }
 
+
+
 const App=(props)=> {
   console.log(props);
   const [SubjectPopUpVisible, setSubjectPopUpVisibility] = useState(false);
@@ -42,24 +46,38 @@ const App=(props)=> {
       return !prevValue;
     });
   }
+//-----------------------------------------------------------------------------------------------------
+  //moze przeniesc przy rejestracji 
+  //InitialSubjectData();
+  async function getSubjectData()
+  {
+      const dbRef = ref(getDatabase());
+      get(child(dbRef, `subjects/`))
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            console.log(snapshot.val());
+            setSubjectData(snapshot.val());
+          } else {
+            console.log("No data available");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+  }
 
-  const INITIAL_SUBJECT_DATA = [
-    {
-      id: 0,
-      Subject_name: "Matematyka",
-      Subject_description: "",
-    },
-    {
-      id: 1,
-      Subject_name: "Biologia",
-      Subject_description: "",
-    },
-    {
-      id: 2,
-      Subject_name: "Informatyka",
-      Subject_description: "",
-    },
-  ];
+  async function fetchSubjecttDatabase(subject_data) {
+    console.log("Fetching created subject data to database");
+    const database = getDatabase();
+    console.log(subject_data);
+    push(ref(database, "subjects/"), subject_data);
+    getSubjectData();
+  }
+    useEffect(() => {
+      getSubjectData();
+    }, []);
+//----------------------------------------------------------------------------------------------------
+
 
   const INITIAL_TASK_DATA = [
     {
@@ -109,7 +127,9 @@ const App=(props)=> {
     },
   ];
 
-  const [subjectData, setSubjectData] = useState(INITIAL_SUBJECT_DATA);
+  
+  const [subjectData, setSubjectData] = useState([]);
+
   const [taskData, setTaskData] = useState(INITIAL_TASK_DATA);
   const [studentData, setStudentData] = useState(INITIAL_TASK_DATA);
 
@@ -126,13 +146,17 @@ const App=(props)=> {
   console.log(taskData);
 
   const onSubjectCreatedDataHandler = (createdSubjectData) => {
-    setSubjectData((prevSubjectItems) => {
-      return [...prevSubjectItems, createdSubjectData];
-    });
+    // setSubjectData((prevSubjectItems) => {
+    //   return [...prevSubjectItems, createdSubjectData];
+    // });
+    fetchSubjecttDatabase(createdSubjectData);
     ShowCreateSubjectWindow();
   };
+  console.log(Object.values(subjectData));
   console.log(subjectData);
 
+
+  
   //FILTROWANIE TASKÓW WYBRANEGO PRZEDMIOTU
   const filteredTasks = taskData.filter((e) => {
     return e.Task_subject === selectedSubject;
@@ -145,7 +169,8 @@ const App=(props)=> {
         <SubjectCreatePopUp
           onCancel={ShowCreateSubjectWindow}
           onCreatedSubject={onSubjectCreatedDataHandler}
-          subjectArraySize={subjectData.length}
+          //subjectArraySize={subjectData.length}
+          subjectArraySize={Object.keys(subjectData).length}
         />
       ) : null}
       <div className="Container">
@@ -155,7 +180,7 @@ const App=(props)=> {
           <h1>Subjects</h1>
           <h1>{props.rola}</h1>
 
-          {subjectData.map((e, index) => (
+          {Object.values(subjectData).map((e, index) => (
             <SubjectItem
               key={e.index}
               id={index}
@@ -202,5 +227,10 @@ const App=(props)=> {
     </div>
   );
 }
+
+
+
+
+
 
 export default App;

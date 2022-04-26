@@ -1,11 +1,25 @@
-.LandingPage {
-    display: flex;
-    height: 100%;
+
+.logo_pos {
+    padding: 70px 0;
 }
 
-.LandingPage__firstHalf {
+.LandingPage_container {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.LandingPage__left {
     display: flex;
     flex-direction: column;
+    padding-left: 50px;
+    width: 50%;
+}
+
+.LandingPage__right {
+    display: flex;
+    flex-direction: column-reverse;
+    
 }
 
 .LandingPage__logo {
@@ -29,7 +43,7 @@
     font-size: 96px;
     text-transform: lowercase;
 
-    margin: 151px 0 0 111px;
+    margin: 65px 0 0 0px;
 }
 
 .LandingPage__better {
@@ -42,7 +56,7 @@
     width: 391.91px;
     height: 54.04px;
 
-    margin: -16px 0 150px 400px;
+    margin: -16px 0 150px 40px;
 }
 
 .LandingPage__description {
@@ -52,86 +66,76 @@
     font-size: 40px;
     line-height: 50px;
 
-    margin: -150px 0px 90px 120px;
+    margin: -150px 0px 90px 0px;
 }
 
-.LandingPageButton {
+.btn_register{
+    font-family: "Outfit";
+padding: 25px 75px;
+border: none;
+background-color: #FF8100;
+box-shadow: 0px 8px 0px #D75309;
+border-radius: 9px;
+
+font-family: 'Outfit';
+font-style: normal;
+font-weight: 600;
+font-size: 20px;
+color: #ffffff;
+}
+
+
+.btn_register:hover
+{
+    cursor: pointer;
+    background-color: #e27201;
+}
+
+
+.btn_login {
     font-family: "Outfit";
 
     border-radius: 5px;
-    box-shadow: 0px 4px 0px #d75309;
-    font-weight: 600;
-    font-size: 20px;
-    background: #ff8100;
-    width: 241px;
-    height: 76px;
-    border: none;
-    color: white;
-    margin: -30px 0px 90px 120px;
-}
-
-.LandingPageButtonLogin {
-    font-family: "Outfit";
-
-    border-radius: 5px;
-    box-shadow: 0px 4px 0px #423ac2;
     font-weight: 600;
     font-size: 20px;
     background: #6c63ff;
-    width: calc(241px * 0.8);
-    height: calc(76px * 0.8);
+    box-shadow: 0px 8px 0px #423AC2;
+    border-radius: 9px;
     outline: none;
     border: none;
     color: white;
     margin: 20px 0 0 650px;
+    padding: 25px 75px;
+}
+.btn_login:hover
+{
+    background: #5f58e6;
 }
 
-.LandingPage__secondHalf {
-    flex-grow: 0;
+
+.LandingPage__dots {
+    position: relative;
+    left:-58px;
+    top:30px;
+    width: calc(667px * 0.1);
+
+
 }
 
-.LandingPage__secondHalf>img {
-    position: absolute;
+@media (max-width: 1725px) {
+.LandingPage_container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+}
+.btn_login
+{
+    position: relative;
+    top:-120px;
+    left:-234px;
 }
 
-.LandingPage__img1 {
-    left: 1120px;
-    width: calc(376px * 0.9);
-    height: calc(567px * 0.9);
-    top: 120.5px;
-}
-
-.LandingPage__img2 {
-    right: 100px;
-    top: 400px;
-
-    width: calc(596px * 0.85);
-    height: calc(471px * 0.85);
-}
-
-.LandingPage__dots1 {
-    right: 726px;
-    top: 490px;
-}
-
-.LandingPage__dots2 {
-    right: 158px;
-    top: 170px;
-    width: calc(256px * 0.95);
-    height: calc(346px * 0.95);
-    z-index: -1;
-}
-
-.LandingPage__dots3 {
-    width: calc(650px * 0.1);
-    height: calc(1361.33px * 0.1);
-    image-rendering: auto;
-}
-
-.LandingPage__shape1 {
-    right: 180px;
-    width: calc(584px * 0.85);
-    height: calc(732px * 0.9);
-    top: 60px;
-    z-index: -1;
 }

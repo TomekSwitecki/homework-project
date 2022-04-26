@@ -23,14 +23,15 @@ function SubjectAdd(props) {
 
   const submitHandler = (event) => {
     event.preventDefault();
+    
     if (enteredSubjectName !== "" && enteredSubjectDescription !== "") {
       //block page refreshing after submiting form
-
+      
       const CreatedSubjectData = {
         //tworzenie ID ręczne , nowy przedmiot musi byc na koncu
         id: props.subjectArraySize,
         Subject_name: enteredSubjectName,
-        Subject_description: enteredSubjectDescription
+        Subject_description: enteredSubjectDescription,
       };
 
       props.onCreatedSubject(CreatedSubjectData);
@@ -68,6 +69,7 @@ function SubjectAdd(props) {
           placeholder="Teacher"
           className={styles.input_description} 
         />
+        <h1>{}</h1>
 
         <div>
           <button

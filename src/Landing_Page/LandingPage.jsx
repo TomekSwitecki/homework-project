@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Link } from "react-router-dom";
-
+import Logo from "../Logo/Logo";
 
 import Swoosh from "./img/Swoosh.svg";
 import LandingPageButton from "./LandingPageButton";
@@ -11,18 +11,22 @@ import styles from "./LandingPage.module.css";
 
 function LandingPage() {
   return (
-    <div className={styles.LandingPage}>
-      <div className={styles.LandingPage__firstHalf}>
-        <div className={styles.LandingPage__logo}>
-          Homework<span className={styles.LandingPage__dot}>.</span>com
+    <div className={styles.LandingPage_container}>
+      <div className={styles.LandingPage__left}>
+        <div className={styles.logo_pos}>
+          <Logo />
         </div>
-
         <div className={styles.LandingPage__advert}>
           <div className={styles.LandingPage__grades}>
             get <span className={styles.LandingPage__better}>better</span>{" "}
             grades.
             <div className={styles.LandingPage__swooshDiv}>
-              <img className={styles.LandingPage__swoosh} src={Swoosh} />
+              <img
+                className={styles.LandingPage__swoosh}
+                src={Swoosh}
+                alt="swoosh"
+                draggable="false"
+              />
             </div>
           </div>
           <div className={styles.LandingPage__description}>
@@ -31,44 +35,25 @@ function LandingPage() {
             to help simplify <br />
             universities of the future.
           </div>
-          <Link to="/registration">
-            <LandingPageButton text="GET STARTED" />
-          </Link>
+          {/* <Link to="/registration"></Link> */}
+          <LandingPageButton text="GET STARTED" />
         </div>
         <img
-          className={styles.LandingPage__dots3}
+          className={styles.LandingPage__dots}
           src={require(`./img/dots3.png`)}
+          alt="dots"
+          draggable="false"
         />
       </div>
 
-      <div className={styles.LandingPage__secondHalf}>
+      <div className={styles.LandingPage__right}>
         <img
-          className={styles.LandingPage__img1}
-          src={require(`./img/img1.png`)}
+          className={styles.LandingPage__img_landing_right}
+          src={require(`./img/landing_right.png`)}
+          alt="image_main"
+          draggable="false"
         />
-        <img
-          className={styles.LandingPage__img2}
-          src={require(`./img/img2.png`)}
-        />
-        <img
-          className={styles.LandingPage__dots1}
-          src={require(`./img/dots1.png`)}
-        />
-        <img
-          className={styles.LandingPage__dots2}
-          src={require(`./img/dots2.png`)}
-        />
-
-        <img
-          className={styles.LandingPage__shape1}
-          src={require(`./img/shape1.png`)}
-        />
-        <Link to="/login">
-          <LandingPageButtonLogin
-            classname={styles.LandingPage__login}
-            text="LOG IN"
-          />
-        </Link>
+        <LandingPageButtonLogin classname={styles.btn_login} text="LOG IN" />
       </div>
     </div>
   );

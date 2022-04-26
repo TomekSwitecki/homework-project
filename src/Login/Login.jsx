@@ -29,28 +29,35 @@ const Login=()=>
                 // Signed in
                 const user = userCredential.user;
                 console.log("Succesfully signed in");
+                alert("Succesfully signed in");
                 // ...
               })
               .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
+                alert(error.toString());
                 console.log(error.toString());
               });
     }
 
 return (
-  <div className={styles.login}>
-   <div className={styles.logo}>
-      <Logo />
-      <img src={loginLeft}></img>
-   </div> 
-    <div className={styles.login_div}>
-      
-      
-      
-      <form className={styles.form}>
-      <div className={styles.welcome}>Welcome back!</div>
-      <div className={styles.new_here}>New Here? <Link to="/registration" className={styles.createAccount}>Create an account.</Link></div>
+  <div className={styles.login_container}>
+    <div className={styles.login_left}>
+      <div className={styles.logo_pos}>
+        <Logo />
+      </div>
+      <img draggable="false" src={loginLeft} alt="graphics-left"></img>
+    </div>
+
+    <div className={styles.login_center}>
+      <form className={styles.form_container}>
+        <div className={styles.welcome}>Welcome back!</div>
+        <div className={styles.new_here}>
+          New Here?{" "}
+          <Link to="/registration" className={styles.createAccount}>
+            Create an account.
+          </Link>
+        </div>
         <input
           className={styles.form__input}
           onChange={emailChangeHandler}
@@ -59,7 +66,7 @@ return (
           placeholder="Email address"
         />
         <input
-        className={styles.form__input}
+          className={styles.form__input}
           onChange={passwordChangeHandler}
           value={password}
           type="password"
@@ -67,20 +74,20 @@ return (
         />
 
         <button
-        className={styles.submit_form}
+          className={styles.btn_submit}
           type="submit"
           onClick={VerifyUser}
         >
           Sign In
         </button>
-
       </form>
-      <img src={loginRight} className={styles.login__right}></img>
+    </div>
+
+    <div className={styles.login_right}>
+      <img draggable="false" src={loginRight} alt="graphics-right"></img>
     </div>
   </div>
-
-
-)
+);
 }
 
 export default Login;

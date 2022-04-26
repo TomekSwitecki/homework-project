@@ -12,16 +12,19 @@ async function InitialSubjectData() {
       id: 0,
       Subject_name: "Matematyka",
       Subject_description: "",
+      Subject_code: 111,
     },
     {
       id: 1,
       Subject_name: "Biologia",
       Subject_description: "",
+      Subject_code: 222,
     },
     {
       id: 2,
       Subject_name: "Informatyka",
       Subject_description: "",
+      Subject_code: 333,
     },
   ];
 

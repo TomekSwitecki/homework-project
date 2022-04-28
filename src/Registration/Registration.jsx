@@ -3,6 +3,16 @@ import { useState } from "react";
 import fire from "../config/fire";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getDatabase, push, ref, set } from "firebase/database";
+import styles from "./Registration.module.css";
+import inputs from "../inputs.module.css"
+import buttons from "../buttons.module.css"
+
+import student_image from "./img/student_image.png"
+import dots from "./img/dots.png"
+import arch from "./img/arch.png"
+import Logo from "../Logo/Logo";
+
+
 const Registration=()=>
 {
    
@@ -100,55 +110,78 @@ createUserWithEmailAndPassword(auth, email, password)
 
 
 return (
-  <div>
-    <form>
-      <input
-        onChange={firstNameChangeHandler}
-        value={firstName}
-        type="text"
-        placeholder="First Name"
-      />
-      <input
-        onChange={lastNameChangeHandler}
-        value={lastName}
-        type="text"
-        placeholder="Last Name"
-      />
+  <div className={styles.registration_div}>
+    <div className={styles.register_left}>
+      <div className={styles.logo_registration}>
+          <Logo />
+      </div>
+      <div className={styles.started}>Let's get started!</div>
+      <div className={styles.details}>Enter your details</div>
+      <img className={styles.dots} src={dots}></img>
+      <img className={styles.arch} src={arch}></img>
+      <form className={styles.register_left_form}>
+        <input
+          className={`${inputs.form__input} ${inputs.form__input__viewport} ${styles.form_input_registration}` }
+          onChange={firstNameChangeHandler}
+          value={firstName}
+          type="text"
+          placeholder="First Name"
+        />
+        <input
+          className={`${inputs.form__input} ${inputs.form__input__viewport} ${styles.form_input_registration}` }
+          onChange={lastNameChangeHandler}
+          value={lastName}
+          type="text"
+          placeholder="Last Name"
+        />
 
-      <input
-        onChange={emailChangeHandler}
-        value={email}
-        type="email"
-        placeholder="Email"
-      />
-      <input
-        onChange={passwordChangeHandler}
-        value={password}
-        type="password"
-        placeholder="Password"
-      />
+        <input
+          className={`${inputs.form__input} ${inputs.form__input__viewport} ${styles.form_input_registration}` }
+          onChange={emailChangeHandler}
+          value={email}
+          type="email"
+          placeholder="Email"
+        />
+        <input
+          className={`${inputs.form__input} ${inputs.form__input__viewport}  ${styles.form_input_registration}` }
+          onChange={passwordChangeHandler}
+          value={password}
+          type="password"
+          placeholder="Password"
+        />
+        <div className={styles.register_as}>Register as a:</div>
+        <div className={styles.form_buttons}>
+          
+          <button
+            className={`${buttons.btn_large} ${buttons.btn_orange} ${styles.register_btn}`}
+            type="submit"
+            onClick={(event) => submitHandler("TEACHER", event)}
+          >
+            Teacher
+          </button>
+          <button
+            className={`${buttons.btn_large} ${buttons.btn_purple} ${styles.register_btn}`}
+            type="submit"
+            onClick={(event) => submitHandler("STUDENT", event)}
+          >
+            Student
+          </button>
+        </div>
 
-      <button
-        type="submit"
-        onClick={(event) => submitHandler("TEACHER", event)}
-      >
-        Register as teacher
-      </button>
-      <button
-        type="submit"
-        onClick={(event) => submitHandler("STUDENT", event)}
-      >
-        Register as student
-      </button>
+        {/* <button
+          type="submit"
+          onClick={RegisterUser}
+        > 
+          Register as student
+        </button>
+        */}
+      </form>
+    </div>
 
-      {/* <button
-        type="submit"
-        onClick={RegisterUser}
-      > 
-        Register as student
-      </button>
-      */}
-    </form>
+    <div className={styles.register_right}>
+      <img src={student_image} className={styles.student_image}></img>
+      </div>
+
   </div>
 );
 

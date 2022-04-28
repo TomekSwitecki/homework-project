@@ -11,26 +11,46 @@
     padding: 15px 60px;
 }
 
+
+
+.btn_orange {
+    background: #ff8100;
+    box-shadow: 0px 8px 0px #d75309;
+    
+    color: white;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: center;
+    outline: none;
+    border: none;
+    padding: 25px 75px;
+    border-radius: 9px;
+    
+    
+}
+
 .btn_orange:hover {
     background: rgb(231, 99, 22);
     box-shadow: 0px 8px 0px rgb(201, 79, 8);
 }
 
-.btn_orange {
-    color: white;
-    
+.btn_purple {
+    background: #6c63ff;
+    box-shadow: 0px 8px 0px #423AC2;
 
+    color: white;
+    font-size: 20px;
     font-style: normal;
-    font-weight: 900;
-    font-size: 16px;
+    font-weight: 600;
     line-height: 20px;
     text-align: center;
-
-
-    background: #ff8100;
-    box-shadow: 0px 8px 0px #d75309;
+    outline: none;
+    border: none;
+    padding: 25px 75px;
     border-radius: 9px;
-    
+
 }
 
 
@@ -38,19 +58,6 @@
     background: #5f58e6;
 }
 
-.btn_purple {
-border-radius: 5px;
-font-weight: 600;
-font-size: 20px;
-background: #6c63ff;
-box-shadow: 0px 8px 0px #423AC2;
-border-radius: 9px;
-outline: none;
-border: none;
-color: white;
-padding: 25px 75px;
-
-}
 
 
 

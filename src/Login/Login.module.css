@@ -11,6 +11,8 @@ padding: 70px;
     width: 100%;
     max-width: 100%;
     justify-content: center;
+    max-height: 100vh;
+    overflow: hidden;
 }
 .login_center
 {
@@ -21,7 +23,10 @@ padding: 70px;
 {
     max-width: 25%;
     width: 25%;
+    
 }
+
+
 
 .form_container
 {

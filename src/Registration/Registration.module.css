@@ -1,8 +1,4 @@
-*
-{
-    margin: 0;
-    box-sizing: border-box;
-}
+
 .registration_div
 {
     display: flex;
@@ -18,88 +14,9 @@
     flex-shrink: 1;
     float: right; 
 }
-@media only screen and (max-width: 1000px) 
-{
-    .register_right
-    {
-        display: none;
-    }
-    .registration_div > .register_left
-    {
-        width: 100vw;
-        margin-right: 0;
-        
-    }
-    .registration_div
-    {
-        margin:0;
-    }
-    .register_left_form
-    {
-        height: 100%;
-    }
-    .register_left_form > .form_input_registration
-    {
-    /* For mobile view */
-        width: 65%;
-        height: 6vh;
-        margin: 6% 0 0 2.5%;
-        
-    }
-    .registration_div > .register_left >  .logo_registration {
-    
-        /* For mobile view */
-    
-            margin: 5vh 0 0 0; 
-            align-self: center;
-            
-        }
 
-    /* I don't know why but doing ... > .started, .details doesn't work, so I do it seperately */
-    .registration_div > .register_left >  .started {
-    
-    /* For mobile view */
 
-        margin: 5% 0 0 0; 
-        
-    }
-    .registration_div > .register_left >  .details 
-    {
-    
-        /* For mobile view */
-         margin: 2.5% 0 5% 0;
-    }
 
-    .dots
-    {
-        display: none;
-    }
-    .arch
-    {
-        display: none;
-    }
-
-    .register_left_form > .form_buttons
-    {
-        flex-direction: column;
-        margin: 7% 0 0 0;
-        gap: 2.5vh;
-    }
-
-    .register_left_form > .register_as
-    {
-        margin: 20px 0 0 0;
-    }
-
-    .register_left_form > .form_buttons > .register_btn
-    {
-        width: 100%;
-        
-
-    }
-
-    
-}
 
 .register_left
 {
@@ -117,9 +34,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    
     width: 100%;
 }
+
+    .register_left {
+        margin-left: 120px;
+    }
 
 .form_input_registration
 {
@@ -163,12 +83,7 @@
     gap: 49px;
 }
 
-.register_btn
-{
-    width: 12.55vw;
-    height: 7.84vh;
-    
-}
+
 
 .register_left_form > .register_btn
 {
@@ -216,4 +131,91 @@
     border-radius: 0px 999px 0px 0px;
     transform: matrix(0.17, 0.98, 0.98, -0.17, 0, 0);
     z-index: -1;
+}
+
+
+
+
+@media only screen and (max-width: 1000px) {
+    .register_right {
+        display: none;
+    }
+    
+    .register_left
+    {
+        margin-left: 0px;
+    }
+
+    .registration_div>.register_left {
+        width: 100vw;
+        margin-right: 0;
+
+    }
+
+    .registration_div {
+        margin: 0;
+    }
+
+    .register_left_form {
+        
+        height: 100%;
+    }
+
+    .register_left_form>.form_input_registration {
+        /* For mobile view */
+        width: 65%;
+        height: 6vh;
+        margin: 6% 0 0 2.5%;
+
+    }
+
+    .registration_div>.register_left>.logo_registration {
+
+        /* For mobile view */
+
+        margin: 5vh 0 0 0;
+        align-self: center;
+
+    }
+
+    /* I don't know why but doing ... > .started, .details doesn't work, so I do it seperately */
+    .registration_div>.register_left>.started {
+
+        /* For mobile view */
+
+        margin: 5% 0 0 0;
+
+    }
+
+    .registration_div>.register_left>.details {
+
+        /* For mobile view */
+        margin: 2.5% 0 5% 0;
+    }
+
+    .dots {
+        display: none;
+    }
+
+    .arch {
+        display: none;
+    }
+
+    .register_left_form>.form_buttons {
+        flex-direction: column;
+        margin: 7% 0 0 0;
+        gap: 2.5vh;
+    }
+
+    .register_left_form>.register_as {
+        margin: 20px 0 0 0;
+    }
+
+    .register_left_form>.form_buttons>.register_btn {
+        width: 100%;
+
+
+    }
+
+
 }

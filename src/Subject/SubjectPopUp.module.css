@@ -1,0 +1,71 @@
+.popUp {
+    padding: 50px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    top: 150px;
+    left: 40%;
+
+    position: absolute;
+    width: 18%;
+
+    
+    background: #FFFFFF;
+    box-shadow: 0px 4px 46px rgba(0, 0, 0, 0.25);
+    border-radius: 7px;
+}
+
+.button_container
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.popUpTitle
+{
+    text-align: left;
+    font-weight: 900;
+    font-size: 28px;
+}
+
+.sectionTitles
+{
+    text-align: left;
+    font-weight: 900;
+    font-size: 18px;
+}
+
+.text_small
+{
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    
+    color: #B3B3B3;
+}
+
+.code_display
+{
+border-radius: 5px;
+font-weight: 600;
+background: #6c63ff;
+box-shadow: 0px 8px 0px #423AC2;
+border-radius: 9px;
+outline: none;
+border: none;
+color: white;
+padding: 25px 75px;
+text-align: center;
+font-size: 36px;
+margin-top: 15px;
+margin-bottom: 35px;
+width: 100%;
+}
+
+.code_display:hover {
+background: #5f58e6;
+}

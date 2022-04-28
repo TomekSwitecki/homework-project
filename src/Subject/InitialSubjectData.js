@@ -13,18 +13,33 @@ async function InitialSubjectData() {
       Subject_name: "Matematyka",
       Subject_description: "",
       Subject_code: 111,
+      Created_by: "default@gmail.com",
+      addedStudents: {
+        1: "a@gmail.com",
+        2: "b@gmail.com",
+      },
     },
     {
       id: 1,
       Subject_name: "Biologia",
       Subject_description: "",
       Subject_code: 222,
+      Created_by: "default@gmail.com",
+      addedStudents: {
+        1: "a@gmail.com",
+        2: "b@gmail.com",
+      },
     },
     {
       id: 2,
       Subject_name: "Informatyka",
       Subject_description: "",
       Subject_code: 333,
+      Created_by: "default@gmail.com",
+      addedStudents: {
+        1: "a@gmail.com",
+        2: "b@gmail.com",
+      },
     },
   ];
 

@@ -1,20 +1,24 @@
 import "./styles.css";
 import React, { useState , useEffect, useCallback } from "react";
 import { Routes, Route } from "react-router-dom";
-
+import fire from "./config/fire";
 
 import Registration from "./Registration/Registration";
-import { getDatabase, ref, child, get,push } from "firebase/database";
+import { getDatabase, ref, child, get,push, set } from "firebase/database";
 
 
 import Navbar from "./Navbar/Navbar";
 import Logo from "./Logo/Logo";
 
 
+import CodeGenerator from "./CodeGenerator";
 import InitialSubjectData from "./Subject/InitialSubjectData";
 import SubjectItem from "./Subject/SubjectItem";
+
+import SubjectCreate from "./Subject/SubjectCreate";
+import SubjectPopUp from "./Subject/SubjectPopUp";
+
 import SubjectAdd from "./Subject/SubjectAdd";
-import SubjectCreatePopUp from "./Subject/SubjectCreatePopUp";
 
 import TaskItem from "./Task/TaskItem";
 import TaskAdd from "./Task/TaskAdd";
@@ -22,6 +26,7 @@ import TaskAdd from "./Task/TaskAdd";
 import StudentItem from "./Students/StudentItem";
 
 import { getAuth, signOut } from "firebase/auth";
+
 const logout =()=>
 {
   
@@ -39,25 +44,88 @@ const logout =()=>
 
 
 const App=(props)=> {
+  const [GeneratedSubjectCode,setGenereatedSubjectCode]=useState();
   console.log(props);
   const [SubjectPopUpVisible, setSubjectPopUpVisibility] = useState(false);
-  function ShowCreateSubjectWindow() {
+  function SubjectPopUpVisibility() {
+    setGenereatedSubjectCode(CodeGenerator());
+    //console.log(GeneratedSubjectCode);
     setSubjectPopUpVisibility((prevValue) => {
       return !prevValue;
     });
   }
+
+
+
+
 //-----------------------------------------------------------------------------------------------------
   //moze przeniesc przy rejestracji 
   //InitialSubjectData();
+ 
+
   async function getSubjectData()
-  {
+  {   
+
       const dbRef = ref(getDatabase());
       get(child(dbRef, `subjects/`))
         .then((snapshot) => {
-          if (snapshot.exists()) {
-            console.log(snapshot.val());
-            setSubjectData(snapshot.val());
-          } else {
+          if (snapshot.exists()) 
+          {
+
+             console.log(snapshot.val());
+            Object.entries(snapshot.val()).forEach(([key, value]) => {
+              console.log(key, value);
+
+              
+              if (value.Created_by == getAuth(fire).currentUser.email) 
+              {
+                console.log(value);
+                setSubjectData((oldArray) => [
+                  ...oldArray,
+                  value,
+                ]);
+              }
+               
+
+                //setSubjectData(snapshot.val());
+                //  subjectData.filter(
+                //    (subject) =>
+                //      subject.created_by == getAuth(fire).currentUser.email
+                //  );
+                 
+                  
+              
+            });
+            console.log(subjectData);
+            //setSubjectData(snapshot.val());
+
+          
+          // if (props.rola === "STUDENT") 
+          // {
+          //   console.log(snapshot.val());
+          //   Object.entries(snapshot.val()).forEach(
+          //   ([key, value]) => {
+          //     console.log(key, value);
+
+          //     if (
+          //       value.addedStudents.includes(getAuth(fire).currentUser.email)
+          //     ) {
+          //       console.log(value);
+          //       temp.push(value);
+          //     }
+          //   }
+          // );
+
+          // console.log(temp);
+          // setSubjectData(temp);
+          // console.log(subjectData);
+            
+          // }
+          } 
+
+
+
+          else {
             console.log("No data available");
           }
         })
@@ -66,16 +134,22 @@ const App=(props)=> {
         });
   }
 
+
+
+
+
   async function fetchSubjecttDatabase(subject_data) {
     console.log("Fetching created subject data to database");
     const database = getDatabase();
     console.log(subject_data);
     push(ref(database, "subjects/"), subject_data);
-    getSubjectData();
   }
-    useEffect(() => {
-      getSubjectData();
-    }, []);
+
+
+
+      useEffect(() => {
+        getSubjectData();
+      }, []);
 //----------------------------------------------------------------------------------------------------
 
 
@@ -128,8 +202,8 @@ const App=(props)=> {
   ];
 
   
-  const [subjectData, setSubjectData] = useState([]);
-
+ 
+const [subjectData, setSubjectData] = useState([]);
   const [taskData, setTaskData] = useState(INITIAL_TASK_DATA);
   const [studentData, setStudentData] = useState(INITIAL_TASK_DATA);
 
@@ -149,8 +223,9 @@ const App=(props)=> {
     // setSubjectData((prevSubjectItems) => {
     //   return [...prevSubjectItems, createdSubjectData];
     // });
+    
     fetchSubjecttDatabase(createdSubjectData);
-    ShowCreateSubjectWindow();
+    SubjectPopUpVisibility();
   };
   console.log(Object.values(subjectData));
   console.log(subjectData);
@@ -166,11 +241,13 @@ const App=(props)=> {
     <div className="App">
       <Navbar />
       {SubjectPopUpVisible ? (
-        <SubjectCreatePopUp
-          onCancel={ShowCreateSubjectWindow}
+        <SubjectPopUp
+          onCancel={SubjectPopUpVisibility}
           onCreatedSubject={onSubjectCreatedDataHandler}
           //subjectArraySize={subjectData.length}
           subjectArraySize={Object.keys(subjectData).length}
+          subjectCode={GeneratedSubjectCode}
+          role={props.rola}
         />
       ) : null}
       <div className="Container">
@@ -190,7 +267,11 @@ const App=(props)=> {
             />
           ))}
 
-          <SubjectAdd onClick={ShowCreateSubjectWindow} />
+          {props.rola === "TEACHER" ? (
+            <SubjectCreate onClick={SubjectPopUpVisibility} />
+          ) : (
+            <SubjectAdd onClick={SubjectPopUpVisibility} />
+          )}
         </div>
 
         <div className="TaskContainer">
@@ -207,11 +288,10 @@ const App=(props)=> {
               onTaskSelected={onTaskSelectedDataHandler}
             />
           ))}
-          <TaskAdd onClick={ShowCreateSubjectWindow} />
+          <TaskAdd onClick={SubjectPopUpVisibility} />
         </div>
 
         <div className="StudentListContainer">
-          <button onClick={logout}>LOG OUT</button>
           <h1>Student List</h1>
           {INITIAL_STUDENT_DATA.map((e, index) => (
             <StudentItem
@@ -223,6 +303,7 @@ const App=(props)=> {
             />
           ))}
         </div>
+        <button onClick={logout}>LOG OUT</button>
       </div>
     </div>
   );

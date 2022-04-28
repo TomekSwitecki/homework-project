@@ -5,7 +5,7 @@ h1 {
   font-weight: 500;
   font-size: 32px;
   line-height: 40px;
-  text-align: center;
+  
 }
 
 body,
@@ -27,20 +27,18 @@ input {
   border-radius: 8px; */
 }
 
-button {
-  /* zrobić css modules */
-  /* border-radius: 10px;
-  padding: 12px 30px;
-  border: none;
-  color: white;
-  background: #6c63ff;
-  border-radius: 5px 0px 0px 5px; */
-}
+
 
 hr {
   width: 100%;
 }
+
 button {
+  font-family: "Outfit";
+  border: none;
+  outline: none;
+}
+button:hover {
   cursor: pointer;
 }
 
@@ -48,31 +46,7 @@ button {
 
 
 
-.btn-orange:hover {
-  background: rgb(231, 99, 22);
-  box-shadow: 0px 8px 0px rgb(201, 79, 8);
-}
 
-.btn-orange {
-  font-family: "Outfit";
-  font-style: normal;
-  font-weight: 900;
-  font-size: 16px;
-  line-height: 20px;
-  text-align: center;
-  background: #ff8100;
-  box-shadow: 0px 8px 0px #d75309;
-  border-radius: 9px;
-}
-
-.btn-cancel {
-  color: black;
-  background: #ffffff;
-  border: 1px solid #ababab;
-  box-sizing: border-box;
-  box-shadow: 0px 8px 0px #ababab;
-  border-radius: 9px;
-}
 
 
 .Container {

@@ -1,15 +1,15 @@
-import React from "react";
+import React from "react"
 import buttons from "../buttons.module.css";
 
-function SubjectAdd(props) {
+function SubjectCreate(props) {
   return (
     <button
       className={`${buttons.btn_normal} ${buttons.btn_orange}`}
       onClick={props.onClick}
     >
-      Add Class
+      Create Class
     </button>
   );
 }
 
-export default SubjectAdd;
+export default SubjectCreate;

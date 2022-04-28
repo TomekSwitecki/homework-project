@@ -2,7 +2,12 @@ import React,{useState} from "react";
 import fire from "../config/fire";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Link } from "react-router-dom";
+
 import styles from "./Login.module.css";
+import buttons from "../buttons.module.css";
+import inputs from "../inputs.module.css";
+
+
 import loginLeft from "./img/Login__leftSide.png";
 import loginRight from "./img/Login__rightSide.png";
 import Logo from "../Logo/Logo";
@@ -59,14 +64,14 @@ return (
           </Link>
         </div>
         <input
-          className={styles.form__input}
+          className={`${inputs.form__input} ${inputs.form__input__big}`}
           onChange={emailChangeHandler}
           value={email}
           type="email"
           placeholder="Email address"
         />
         <input
-          className={styles.form__input}
+          className={`${inputs.form__input} ${inputs.form__input__big}`}
           onChange={passwordChangeHandler}
           value={password}
           type="password"
@@ -74,7 +79,7 @@ return (
         />
 
         <button
-          className={styles.btn_submit}
+          className={`${buttons.btn_large} ${buttons.btn_orange}`}
           type="submit"
           onClick={VerifyUser}
         >

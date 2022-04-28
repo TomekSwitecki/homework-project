@@ -30,11 +30,14 @@ onAuthStateChanged(auth, (user) => {
         if (snapshot.exists()) {
           //console.log(snapshot.val());
           snapshot.forEach(function (childSnapshot) {
-            //console.log(childSnapshot.val().email);
-            if(childSnapshot.val().email == user.email)
-            {
+            
+            if (
+              childSnapshot.val().email.toLowerCase() ===
+              user.email.toLowerCase()
+            ) {
               //console.log("BINGO");
-              setRole(childSnapshot.val().role) ;
+              //console.log(childSnapshot.val().email);
+              setRole(childSnapshot.val().role);
               //console.log(role);
             }
           });
@@ -73,7 +76,7 @@ return (
     <Route path="/landing" element={<Navigate to="/home" />} />
     <Route path="/login" element={<Navigate to="/home" />} />
     <Route path="/registration" element={<Navigate to="/home" />} />
-    <Route path="/home" element={<App test={"dasdsadsa"} rola={role}  />} />
+    <Route path="/home" element={<App  rola={role}  />} />
   </Routes>
 );
   }

@@ -23,80 +23,79 @@ const Registration=()=>
     setLastName(event.target.value);
   };
 
-    const [email, setEmail] = useState("");
-    const emailChangeHandler = (event) => {
-      setEmail(event.target.value);
+  const [email, setEmail] = useState("");
+  const emailChangeHandler = (event) => {
+    setEmail(event.target.value);
+  };
+
+    const [password, setPassword] = useState("");
+    const passwordChangeHandler = (event) => {
+      setPassword(event.target.value);
     };
 
-        const [password, setPassword] = useState("");
-        const passwordChangeHandler = (event) => {
-          setPassword(event.target.value);
-        };
 
 
+                  // if (firstName !== "" && lastName !== "" && email !== "") {
+                  //   console.log("Succesfully signed up");
 
+                  //   RegistrationData = {
+                  //     f_name: firstName,
+                  //     l_name: lastName,
+                  //     email: email.toLowerCase(),
+                  //     password: password,
+                  //     role: argument_role,
+                  //   };
 
-      const RegisterUser = () => {
-const auth = getAuth();
-createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    console.log("Succesfully signed up");
-    //console.log(auth.uid);
-  })
-  .catch((error) => {
-    console.log(error.toString());
-  });
+                  //   registerUserdatabase(RegistrationData);
 
-      }
-                  // TRZEBA POPRAWIĆ WYSYŁA 3 LITEROWA HASŁA DO BAZY DANYCH - Firebase Auth wymusza 6 literowe hasła
-                  async function registerUserdatabase(RegistrationData) {
-                      const database = getDatabase();
-                      push(ref(database, "users/"),RegistrationData);
-                        
-
-                    // const response = await fetch(
-                    //   "https://homework-com-ed42c-default-rtdb.europe-west1.firebasedatabase.app/users.json",
-                    //   {
-                    //     method: "POST",
-                    //     body: JSON.stringify(RegistrationData),
-                    //     headers: {
-                    //       "Content-Type": "application/json",
-                    //     }
-                    //   }
-                    // );
-
-                    // const data = await response.json();
-                    // console.log(data);
-                  }
+                  //   setFirstName("");
+                  //   setLastName("");
+                  //   setEmail("");
+                  //   setPassword("");
+                  //   console.log("Registration Succesfull");
+                  //   //console.log(auth.uid);
+                  // } 
 
           const submitHandler = (argument_role, event) => {
-            event.preventDefault();
-            if (
-              firstName !== "" &&
-              lastName !== "" &&
-              email !== "" &&
-              password !== ""
-            ) {
-              RegistrationData = {
-                f_name: firstName,
-                l_name: lastName,
-                email: email,
-                password: password,
-                role: argument_role,
-              };
-              console.log(RegistrationData);
-              registerUserdatabase(RegistrationData);
-              RegisterUser();
-              setFirstName("");
-              setLastName("");
-              setEmail("");
-              setPassword("");
-              console.log("Registration Succesfull");
-            } else {
-              console.log("No data inserted");
-            }
+            if (firstName !== "" && lastName !== "")
+            {
+              event.preventDefault();
 
+              const auth = getAuth();
+              createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                  console.log(userCredential._tokenResponse.email);
+                  RegistrationData = {
+                    f_name: firstName,
+                    l_name: lastName,
+                    email: userCredential._tokenResponse.email,
+                    password: password,
+                    role: argument_role,
+                  };
+                  registerUserdatabase(RegistrationData);
+                  setFirstName("");
+                  setLastName("");
+                  setEmail("");
+                  setPassword("");
+                  alert("Succesfully signed up");
+                })
+                .catch((error) => {
+                  console.log(error.toString());
+                  alert(error.toString());
+                });
+            }
+            else
+            {
+              alert("No full data entered");
+            }
           };
+
+          async function registerUserdatabase(
+            RegistrationData
+          ) {
+            const database = getDatabase();
+            push(ref(database, "users/"), RegistrationData);
+          }
 
 
 return (

@@ -71,13 +71,22 @@ const App=(props)=> {
         .then((snapshot) => {
           if (snapshot.exists()) 
           {
-
-             console.log(snapshot.val());
+            let ObjectHelper;
+            console.log(snapshot.val());
             Object.entries(snapshot.val()).forEach(([key, value]) => {
-              console.log(key, value);
-
-              
-              if (value.Created_by == getAuth(fire).currentUser.email) 
+            console.log(key, value);
+            console.log(value.addedStudents);
+            if (Array.isArray(value.addedStudents)) 
+            {   
+                ObjectHelper=value.addedStudents.includes(getAuth(fire).currentUser.email);
+                console.log("Array");
+            }
+            else
+            {
+               ObjectHelper=Object.values(value.addedStudents).includes(getAuth(fire).currentUser.email);
+              console.log("Object");
+            }
+              if (value.Created_by == getAuth(fire).currentUser.email || ObjectHelper  ) 
               {
                 console.log(value);
                 setSubjectData((oldArray) => [
@@ -85,18 +94,9 @@ const App=(props)=> {
                   value,
                 ]);
               }
-               
-
-                //setSubjectData(snapshot.val());
-                //  subjectData.filter(
-                //    (subject) =>
-                //      subject.created_by == getAuth(fire).currentUser.email
-                //  );
-                 
-                  
-              
             });
             console.log(subjectData);
+            
             //setSubjectData(snapshot.val());
 
           
@@ -219,12 +219,21 @@ const [subjectData, setSubjectData] = useState([]);
   };
   console.log(taskData);
 
+const onSubjectJoinedHandler=()=>
+{
+      setSubjectData([]);
+      getSubjectData();
+      SubjectPopUpVisibility();
+}
+
+
   const onSubjectCreatedDataHandler = (createdSubjectData) => {
     // setSubjectData((prevSubjectItems) => {
     //   return [...prevSubjectItems, createdSubjectData];
     // });
-    
     fetchSubjecttDatabase(createdSubjectData);
+    setSubjectData([]);
+    getSubjectData();
     SubjectPopUpVisibility();
   };
   console.log(Object.values(subjectData));
@@ -244,6 +253,7 @@ const [subjectData, setSubjectData] = useState([]);
         <SubjectPopUp
           onCancel={SubjectPopUpVisibility}
           onCreatedSubject={onSubjectCreatedDataHandler}
+          onJoinedSubject={onSubjectJoinedHandler}
           //subjectArraySize={subjectData.length}
           subjectArraySize={Object.keys(subjectData).length}
           subjectCode={GeneratedSubjectCode}

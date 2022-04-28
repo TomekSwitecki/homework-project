@@ -89,6 +89,8 @@ function SubjectPopUp(props) {
                   );
                   alert("Subject Added Succesfully");
                   setSubjectCode("");
+                  props.onJoinedSubject();
+                  
                 }
                 else
                 {

@@ -1,43 +1,6 @@
-.popUp {
-    padding: 50px;
-    display: flex;
-    gap: 10px;
-    flex-direction: column;
-    background-color: rgb(255, 255, 255);
-    top: 150px;
-    left: 40%;
 
-    position: absolute;
-    width: 18%;
 
-    
-    background: #FFFFFF;
-    box-shadow: 0px 4px 46px rgba(0, 0, 0, 0.25);
-    border-radius: 7px;
-}
 
-.button_container
-{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    margin-top: 25px;
-}
-
-.popUpTitle
-{
-    text-align: left;
-    font-weight: 900;
-    font-size: 28px;
-}
-
-.sectionTitles
-{
-    text-align: left;
-    font-weight: 900;
-    font-size: 18px;
-}
 
 .text_small
 {

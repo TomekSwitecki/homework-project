@@ -39,7 +39,7 @@ const TaskItem = (props) => {
         {/* {props.id + " "} */}
         <div className={styles.TaskItemContainer}>
           <div>
-            <box-icon name="file"></box-icon>
+            <box-icon name="file" type="solid" color="#b7b3b3"></box-icon>
           </div>
           <div className={styles.TaskItemTitleContainer}>
             <span className={styles.TaskName}> {props.name + " "}</span>
@@ -55,11 +55,7 @@ const TaskItem = (props) => {
             </span>
           </div>
 
-          <box-icon
-            name="checkbox-checked"
-            color="#7FE789"
-            type="solid"
-          ></box-icon>
+          <box-icon name="check-square" type="solid" color="#7fe789"></box-icon>
         </div>
 
         {/* {props.description + " "} */}

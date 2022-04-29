@@ -112,7 +112,7 @@ return (
   <div className={styles.registration_div}>
     <div className={styles.register_left}>
       <div className={styles.logo_registration}>
-          <Logo />
+        <Logo />
       </div>
       <div className={styles.started}>Let's get started!</div>
       <div className={styles.details}>Enter your details</div>
@@ -120,14 +120,16 @@ return (
       <img className={styles.arch} src={arch}></img>
       <form className={styles.register_left_form}>
         <input
-          className={`${inputs.form__input} ${inputs.form__input__viewport} ${styles.form_input_registration}` }
+          required
+          className={`${inputs.form__input} ${inputs.form__input__viewport} ${styles.form_input_registration}`}
           onChange={firstNameChangeHandler}
           value={firstName}
           type="text"
           placeholder="First Name"
         />
         <input
-          className={`${inputs.form__input} ${inputs.form__input__viewport} ${styles.form_input_registration}` }
+          required
+          className={`${inputs.form__input} ${inputs.form__input__viewport} ${styles.form_input_registration}`}
           onChange={lastNameChangeHandler}
           value={lastName}
           type="text"
@@ -135,14 +137,16 @@ return (
         />
 
         <input
-          className={`${inputs.form__input} ${inputs.form__input__viewport} ${styles.form_input_registration}` }
+          required
+          className={`${inputs.form__input} ${inputs.form__input__viewport} ${styles.form_input_registration}`}
           onChange={emailChangeHandler}
           value={email}
           type="email"
           placeholder="Email"
         />
         <input
-          className={`${inputs.form__input} ${inputs.form__input__viewport}  ${styles.form_input_registration}` }
+          required
+          className={`${inputs.form__input} ${inputs.form__input__viewport}  ${styles.form_input_registration}`}
           onChange={passwordChangeHandler}
           value={password}
           type="password"
@@ -150,7 +154,6 @@ return (
         />
         <div className={styles.register_as}>Register as a:</div>
         <div className={styles.form_buttons}>
-          
           <button
             className={`${buttons.btn_large} ${buttons.btn_orange} ${styles.register_btn}`}
             type="submit"
@@ -179,8 +182,7 @@ return (
 
     <div className={styles.register_right}>
       <img src={student_image} className={styles.student_image}></img>
-      </div>
-
+    </div>
   </div>
 );
 

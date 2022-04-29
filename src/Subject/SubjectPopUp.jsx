@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./SubjectPopUp.module.css";
+import popup from "../popup.module.css";
 import buttons from "../buttons.module.css"
 import inputs from "../inputs.module.css";
 import fire from "../config/fire";
@@ -118,13 +119,14 @@ function SubjectPopUp(props) {
 
   if (props.role === "TEACHER") {
     return (
-      <div className={styles.popUp}>
+      <div className={popup.popUp}>
         <form onSubmit={submitHandler}>
-          <div className={styles.popUpTitle}>Create class</div>
+          <div className={popup.popUpTitle}>Create class</div>
           <hr />
-          <div className={styles.sectionTitles}>Subject name</div>
+          <div className={popup.sectionTitles}>Subject name</div>
 
           <input
+            required
             onChange={subjectNameChangeHandler}
             value={enteredSubjectName}
             type="text"
@@ -132,22 +134,23 @@ function SubjectPopUp(props) {
             className={`${inputs.form__input} ${inputs.form__input__normal}`}
           />
 
-          <div className={styles.sectionTitles}>Subject Description</div>
+          <div className={popup.sectionTitles}>Subject Description</div>
 
           <input
+            required
             onChange={subjectDescriptionHandler}
             value={enteredSubjectDescription}
             type="text"
             placeholder="Enter subject description..."
             className={`${inputs.form__input} ${inputs.form__input__normal}`}
           />
-          <div className={styles.sectionTitles}>
+          <div className={popup.sectionTitles}>
             Your class code has been generated!
           </div>
           <span className={styles.text_small}>Click to copy to clipborad.</span>
           <button className={styles.code_display}>{props.subjectCode}</button>
 
-          <div className={styles.button_container}>
+          <div className={popup.button_container}>
             <button
               className={`${buttons.btn_normal} ${buttons.btn_cancel}`}
               onClick={() => {
@@ -170,13 +173,14 @@ function SubjectPopUp(props) {
     );
   } else {
     return (
-      <div className={styles.popUp}>
+      <div className={popup.popUp}>
         <form onSubmit={submitHandler}>
-          <div className={styles.popUpTitle}>Join class</div>
+          <div className={popup.popUpTitle}>Join class</div>
           <hr />
-          <div className={styles.sectionTitles}>Subject code</div>
+          <div className={popup.sectionTitles}>Subject code</div>
 
           <input
+            required
             onChange={subjectCodeHandler}
             value={enteredSubjectCode}
             type="text"
@@ -184,7 +188,7 @@ function SubjectPopUp(props) {
             className={`${inputs.form__input} ${inputs.form__input__code}`}
           />
 
-          <div className={styles.button_container}>
+          <div className={popup.button_container}>
             <button
               className={`${buttons.btn_normal} ${buttons.btn_cancel}`}
               onClick={() => {

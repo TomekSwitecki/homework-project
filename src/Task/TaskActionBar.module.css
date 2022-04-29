@@ -1,0 +1,18 @@
+.actionBar_container
+{
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+font-family: 'Outfit';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 20px;
+color: white;
+    background: #28383D;
+    border-radius: 4px;
+}
+.title_container
+{
+    width: 235px;
+}

@@ -64,6 +64,7 @@ return (
           </Link>
         </div>
         <input
+          required
           className={`${inputs.form__input} ${inputs.form__input__big}`}
           onChange={emailChangeHandler}
           value={email}
@@ -71,6 +72,7 @@ return (
           placeholder="Email address"
         />
         <input
+          required
           className={`${inputs.form__input} ${inputs.form__input__big}`}
           onChange={passwordChangeHandler}
           value={password}

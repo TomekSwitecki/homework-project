@@ -29,20 +29,18 @@ import StudentItem from "./Students/StudentItem";
 
 import { getAuth, signOut } from "firebase/auth";
 
-const logout =()=>
-{
-  
 
+const logout = () => {
   const auth = getAuth();
   signOut(auth)
     .then(() => {
+      window.location.reload();
       console.log("signed out");
     })
     .catch((error) => {
       // An error happened.
     });
-}
-
+};
 
 
 const App=(props)=> {
@@ -83,6 +81,7 @@ const App=(props)=> {
             console.log(value.addedStudents);
               console.log(value);
               setSubjectData((oldArray) => [...oldArray, value]);
+              
           });
           console.log(subjectData);
 
@@ -230,6 +229,7 @@ async function getTaskData() {
 
   const onTaskCreatedDataHandler = (createdTaskData) => {
     console.log(createdTaskData);
+    
     fetchTaskDatabase(createdTaskData);
     setTaskData([]);
     getTaskData();
@@ -284,7 +284,7 @@ async function getTaskData() {
         <div className="SubjectListContainer">
           {/* <Logo></Logo> */}
 
-          <h1>Subjects</h1>
+          <h1 className="Container_titles">Subjects</h1>
           <h1>{props.rola}</h1>
 
           {filteredSubjects.map((e, index) => (
@@ -305,15 +305,15 @@ async function getTaskData() {
         </div>
 
         <div className="TaskContainer">
-          <h1>Tasks </h1>
-          <TaskActionBar/>
+          <h1 className="Container_titles">Tasks </h1>
+          <TaskActionBar />
           {filteredTasks.map((e, index) => (
             <TaskItem
               key={e.index}
               name={e.Task_title}
               description={e.Task_description}
               subject={e.Task_subject}
-              //deadline={e.Task_deadline}
+              deadline={e.Task_date}
               chosenSubject={selectedSubject}
               onTaskSelected={onTaskSelectedDataHandler}
             />
@@ -324,7 +324,7 @@ async function getTaskData() {
         </div>
 
         <div className="StudentListContainer">
-          <h1>Student List</h1>
+          <h1 className="Container_titles">Student List</h1>
           {INITIAL_STUDENT_DATA.map((e, index) => (
             <StudentItem
               id={e.index}

@@ -10,7 +10,8 @@ line-height: 20px;
 .TaskItem__active {
   color:#000000;
   width: 100%;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  /* filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); */
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0,0.4);
   background: #f5f5f5;
   border-radius: 12px;
   /* width: 567px; */

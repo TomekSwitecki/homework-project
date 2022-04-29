@@ -16,7 +16,7 @@ import Login from "./Login/Login";
 const Hub=()=>
 {
 const [role,setRole]=useState("");
-const [user,setUser]=useState({});
+const [user,setUser]=useState(null);
 
 
 const auth = getAuth();
@@ -55,6 +55,8 @@ onAuthStateChanged(auth, (user) => {
 
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/firebase.User
+
+
     const uid = user.uid;
     // ...
   } else {
@@ -93,49 +95,7 @@ return (
       </Routes>
     );
   }
-    // return (
-    //   <div>
-    //     <Routes>
-    //       <Route
-    //         path="/"
-    //         element={
-    //           user ? <Navigate to="/login" /> : '<Navigate to="/home" />'
-    //         }
-    //       />
-
-    //       <Route
-    //         path="/home"
-    //         element={user ? <App /> : '<Navigate to="/login" />'}
-    //       />
-
-          {/* <Route
-            path="/login"
-            element={user ? <Navigate to="/home" /> : <Login />}
-          /> */}
-
-          {/* <Route path="/login" element={!user ? <Navigate to="/home"/> : <Login/>}
-          /> */}
-
-          {/* <Route
-            path="/landing"
-            element={!user ? <Navigate to="/login" /> : <Navigate to="/" />}
-          />
-          <Route
-            path="/login"
-            element={user ? <Navigate to="/home" /> : "hello"}
-          />
-          <Route
-            path="/home"
-            element={user ? <App /> : <Navigate to="/landing" /> }
-          /> */}
-
-          {/* <Route path="/landing" element={<LandingPage />} />
-          <Route path="/registration" element={<Registration />} />*/}
-          // <Route path="/login" element={<Login />} />
-          {/* <Route path="/home" element={<App />} /> */}
-        // </Routes>
-      // </div>
-    // );
+  
 }
 
 export default Hub

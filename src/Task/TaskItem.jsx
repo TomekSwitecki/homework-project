@@ -25,6 +25,22 @@ const TaskItem = (props) => {
     props.onTaskSelected(ChosenSubjectData);
   };
 
+
+
+  // const date = new Date();
+  // const year = date.getFullYear();
+  // const month = String(date.getMonth() + 1).padStart(2, "0");
+  // const day = String(date.getDate()).padStart(2, "0");
+  // const date_prepared = [year, month, day].join("-");
+const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+const firstDate = new Date();
+//console.log(firstDate.toLocaleDateString());
+const dueDate = new Date(props.deadline);
+//console.log(dueDate);
+const diffDays = Math.round(Math.abs((firstDate - dueDate) / oneDay));
+//console.log(diffDays.toLocaleString());
+const diffHours = (diffDays % 1) * 24;
+//console.log(diffHours);
   return (
     <div>
       <button
@@ -51,7 +67,9 @@ const TaskItem = (props) => {
               {props.deadline + " "}
             </span>
             <span className={styles.TaskDaysRemaining}>
-              {"2 days remaining"}
+              {diffDays !== 0
+                ? diffDays + " days remaining"
+                : diffHours + " hours remaining"}
             </span>
           </div>
 

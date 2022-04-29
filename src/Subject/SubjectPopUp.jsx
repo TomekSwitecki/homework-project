@@ -148,7 +148,9 @@ function SubjectPopUp(props) {
             Your class code has been generated!
           </div>
           <span className={styles.text_small}>Click to copy to clipborad.</span>
-          <button className={styles.code_display}>{props.subjectCode}</button>
+          <button disabled className={styles.code_display}>
+            {props.subjectCode}
+          </button>
 
           <div className={popup.button_container}>
             <button

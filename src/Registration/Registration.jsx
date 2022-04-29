@@ -38,6 +38,12 @@ const Registration=()=>
     setEmail(event.target.value);
   };
 
+  const [invalidEmail, setInvalidEmail] = useState(false);
+  const invalidEmailChangeHandler = () => {
+    setInvalidEmail(invalidEmail ? "" : !invalidEmail)
+    console.log(invalidEmail);
+  }
+
     const [password, setPassword] = useState("");
     const passwordChangeHandler = (event) => {
       setPassword(event.target.value);
@@ -71,28 +77,43 @@ const Registration=()=>
             {
               event.preventDefault();
 
-              const auth = getAuth();
-              createUserWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                  console.log(userCredential._tokenResponse.email);
-                  RegistrationData = {
-                    f_name: firstName,
-                    l_name: lastName,
-                    email: userCredential._tokenResponse.email,
-                    password: password,
-                    role: argument_role,
-                  };
-                  registerUserdatabase(RegistrationData);
-                  setFirstName("");
-                  setLastName("");
-                  setEmail("");
-                  setPassword("");
-                  alert("Succesfully signed up");
-                })
-                .catch((error) => {
-                  console.log(error.toString());
-                  alert(error.toString());
-                });
+              // Email matching 
+              let emailRegex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+
+              if(email.match(emailRegex) != null)
+              {
+                
+                const auth = getAuth();
+                createUserWithEmailAndPassword(auth, email, password)
+                   .then((userCredential) => {
+                    console.log(userCredential._tokenResponse.email);
+                    RegistrationData = {
+                      f_name: firstName,
+                      l_name: lastName,
+                      email: userCredential._tokenResponse.email,
+                      password: password,
+                      role: argument_role,
+                    };
+                     registerUserdatabase(RegistrationData);
+                    setFirstName("");
+                    setLastName("");
+                    setEmail("");
+                    setPassword("");
+                    alert("Succesfully signed up");
+                  })
+                  .catch((error) => {
+                    console.log(error.toString());
+                    alert(error.toString());
+                                });
+
+              }
+              //if email is incorrectx
+              else
+              {
+                invalidEmailChangeHandler();
+                //alert("Incorrect email");
+                //alert(email);
+              }
             }
             else
             {
@@ -144,6 +165,7 @@ return (
           type="email"
           placeholder="Email"
         />
+        <div className={`${styles.invalid__email}`}  style={ {display: invalidEmail ? 'block' : 'none'} }>Incorrect email</div>
         <input
           required
           className={`${inputs.form__input} ${inputs.form__input__viewport}  ${styles.form_input_registration}`}

@@ -1,16 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./TaskItem.module.css";
 
 let ChosenTask = "";
 
 const TaskItem = (props) => {
-  // console.log(new Date().toLocaleDateString());
-  // console.log(props.deadline);
-  // const firstDate = new Date().toLocaleDateString();
-  // const deadline = props.deadline;
-  // // To calculate the time difference of two dates
-  // var Difference_In_Time = firstDate.getTime() - deadline.getTime();
-  // var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+
 
   let ChosenSubjectData = {
     id: 1,
@@ -26,21 +20,28 @@ const TaskItem = (props) => {
   };
 
 
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  const date_YYMMDD = [year, month, day].join(".");
+  console.log(date_YYMMDD);
 
-  // const date = new Date();
-  // const year = date.getFullYear();
-  // const month = String(date.getMonth() + 1).padStart(2, "0");
-  // const day = String(date.getDate()).padStart(2, "0");
-  // const date_prepared = [year, month, day].join("-");
-const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-const firstDate = new Date();
-//console.log(firstDate.toLocaleDateString());
-const dueDate = new Date(props.deadline);
-//console.log(dueDate);
-const diffDays = Math.round(Math.abs((firstDate - dueDate) / oneDay));
-//console.log(diffDays.toLocaleString());
-const diffHours = (diffDays % 1) * 24;
-//console.log(diffHours);
+  const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+  const firstDate = new Date();
+  //console.log(firstDate.toLocaleDateString());
+  const dueDate = new Date(props.deadline);
+  //console.log(dueDate);
+  var diffDays = Math.round((firstDate - dueDate) / oneDay) * -1;
+  //console.log(diffDays.toLocaleString());
+  // const diffHours = (diffDays % 1) * 24;
+  //console.log(diffHours);
+
+
+
+
+
+
   return (
     <div>
       <button
@@ -67,13 +68,29 @@ const diffHours = (diffDays % 1) * 24;
               {props.deadline + " "}
             </span>
             <span className={styles.TaskDaysRemaining}>
-              {diffDays !== 0
+              {/* condition1 ? result1 : condition2 ? result3 : result4 */}
+              {diffDays > 0
                 ? diffDays + " days remaining"
-                : diffHours + " hours remaining"}
+                : diffDays < 0
+                ? null
+                : diffDays == 0
+                ? "Today"
+                : ""}
             </span>
           </div>
-
-          <box-icon name="check-square" type="solid" color="#7fe789"></box-icon>
+          {diffDays > 0 ? (
+            <box-icon name="time" type="solid" color="#F69400"></box-icon>
+          ) : diffDays < 0 ? (
+            <box-icon
+              name="check-square"
+              type="solid"
+              color="#7FE789"
+            ></box-icon>
+          ) : diffDays == 0 ? (
+            <box-icon name="time-five" type="solid" color="#FF6635"></box-icon>
+          ) : (
+            ""()
+          )}
         </div>
 
         {/* {props.description + " "} */}

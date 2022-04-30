@@ -18,6 +18,7 @@ const SubjectItem = (props) => {
 
   return (
     <button
+    title={"Subject Description : " + props.description}
       className={
         props.name === ChosenSubject ? styles['btn-subject-active'] : styles['btn-subject']
       }

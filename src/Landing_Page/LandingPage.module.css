@@ -6,6 +6,7 @@
 .LandingPage_container {
     display: flex;
     justify-content: space-around;
+    
 
 }
 
@@ -19,6 +20,7 @@
 .LandingPage__right {
     display: flex;
     flex-direction: column-reverse;
+    height: 100%;
     
 }
 
@@ -62,18 +64,18 @@
 .LandingPage__description {
     font-family: "Outfit";
     font-style: normal;
-    font-weight: 400;
-    font-size: 40px;
-    line-height: 50px;
-
-    margin: -150px 0px 90px 0px;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 40px;
+    letter-spacing: 1px;
+    margin: -150px 0px 50px 0px;
 }
 
 
 
 
 .btn_login {
-        margin: 20px 0 0 650px;
+        margin: 60px 0 0 650px;
 }
 
 
@@ -83,12 +85,17 @@
     position: relative;
     left:-58px;
     top:30px;
-    width: calc(667px * 0.1);
+    width:100px;
 
 
 }
 
-@media (max-width: 1725px) {
+.LandingPage__img_landing_right
+{
+    height: 80%;
+}
+
+@media (max-width: 1375px) {
 .LandingPage_container {
     display: flex;
     justify-content: center;

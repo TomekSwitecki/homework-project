@@ -13,17 +13,22 @@ padding: 70px;
     justify-content: center;
     max-height: 100vh;
     overflow: hidden;
+    background-color: #FFFFFF;
 }
 .login_center
 {
     max-width: 50%;
     width: 50%;
 }
-.login_left .login_right
+.login_left 
 {
-    max-width: 25%;
-    width: 25%;
+max-width: 25%;
+width: 25%;
     
+}
+.login_right{
+max-width: 25%;
+width: 25%;
 }
 
 
@@ -54,7 +59,7 @@ padding: 70px;
     font-family: 'Outfit';
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 25px;
     text-align: center;
 
@@ -75,3 +80,18 @@ padding: 70px;
 }
 
 
+.img_left
+{
+
+    height: 74%;
+}
+
+.img_right {
+
+    height: 94%;
+}
+
+.btn_margin
+{
+    margin-top: 75px;
+}

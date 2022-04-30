@@ -23,7 +23,7 @@
 {
 padding: 0 0 0 55px;
     margin: 20px;
-    width: 100%;
+    width: 55%;
     height: 70px;
     font-size: 20px;
 }
@@ -69,4 +69,12 @@ padding: 0 0 0 55px;
 .form__input__viewport::placeholder
 {
     font-size: 16px;
+}
+
+.form__input__searchbar
+{       
+        padding: 0 0 0 20px;
+        height: 50px;
+        font-size: 16px;
+        width: 15%;
 }

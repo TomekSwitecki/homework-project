@@ -12,6 +12,7 @@ import dots from "./img/dots.png"
 import arch from "./img/arch.png"
 import Logo from "../Logo/Logo";
 
+import { Link } from "react-router-dom";
 
 const Registration=()=>
 {
@@ -110,7 +111,8 @@ const Registration=()=>
               //if email is incorrectx
               else
               {
-                invalidEmailChangeHandler();
+                 setInvalidEmail(true);
+                //invalidEmailChangeHandler();
                 //alert("Incorrect email");
                 //alert(email);
               }
@@ -136,9 +138,15 @@ return (
         <Logo />
       </div>
       <div className={styles.started}>Let's get started!</div>
-      <div className={styles.details}>Enter your details</div>
-      <img className={styles.dots} src={dots}></img>
-      <img className={styles.arch} src={arch}></img>
+      {/* <div className={styles.details}>Enter your details</div> */}
+      <div className={styles.new_here}>
+        Already registered?{" "}
+        <Link to="/login" className={styles.login}>
+          Sign in.
+        </Link>
+      </div>
+      <img draggable="false" className={styles.dots} src={dots}></img>
+      <img draggable="false" className={styles.arch} src={arch}></img>
       <form className={styles.register_left_form}>
         <input
           required
@@ -156,16 +164,22 @@ return (
           type="text"
           placeholder="Last Name"
         />
-
-        <input
-          required
-          className={`${inputs.form__input} ${inputs.form__input__viewport} ${styles.form_input_registration}`}
-          onChange={emailChangeHandler}
-          value={email}
-          type="email"
-          placeholder="Email"
-        />
-        <div className={`${styles.invalid__email}`}  style={ {display: invalidEmail ? 'block' : 'none'} }>Incorrect email</div>
+        
+          <input
+            required
+            className={`${inputs.form__input} ${inputs.form__input__viewport} ${styles.form_input_registration}`}
+            onChange={emailChangeHandler}
+            value={email}
+            type="email"
+            placeholder="Email"
+          />
+          <span
+            className={`${styles.invalid__email}`}
+            style={{ display: invalidEmail ? "block" : "none" }}
+          >
+            Incorrect email
+          </span>
+        
         <input
           required
           className={`${inputs.form__input} ${inputs.form__input__viewport}  ${styles.form_input_registration}`}
@@ -174,6 +188,7 @@ return (
           type="password"
           placeholder="Password"
         />
+
         <div className={styles.register_as}>Register as a:</div>
         <div className={styles.form_buttons}>
           <button
@@ -203,7 +218,11 @@ return (
     </div>
 
     <div className={styles.register_right}>
-      <img src={student_image} className={styles.student_image}></img>
+      <img
+        draggable="false"
+        src={student_image}
+        className={styles.student_image}
+      ></img>
     </div>
   </div>
 );

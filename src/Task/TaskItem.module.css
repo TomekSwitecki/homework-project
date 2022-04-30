@@ -11,7 +11,8 @@ line-height: 20px;
   color:#000000;
   width: 100%;
   /* filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); */
-  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0,0.4);
+  
+  box-shadow: 0px 7px 3px 0px rgba(172, 172, 172, 0.4);
   background: #f5f5f5;
   border-radius: 12px;
   /* width: 567px; */
@@ -32,6 +33,11 @@ line-height: 20px;
 
   
   padding: 10px 25px;
+}
+
+.TaskItem:hover
+{
+  box-shadow: 0px 2px 3px 0px rgba(172, 172, 172, 0.4);
 }
 
 .TaskSubject

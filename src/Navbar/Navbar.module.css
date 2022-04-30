@@ -3,17 +3,18 @@
     padding: 20px;
     /* background-color: #28383D; */
     background-color: #ffffff;
+   
 }
 
 
 .logo {
     font-family: 'Outfit';
     font-style: normal;
-    font-weight: 500;
-    font-size: 32px;
+    font-weight: 700;
+    font-size: 28px;
     line-height: 40px;
     text-transform: lowercase;
-
+    background-color: white;
     color: #000000;
 }
 
@@ -31,11 +32,35 @@ border-top: 1px solid #eeeeee;
 {
 font-family: 'Outfit';
 font-style: normal;
-font-weight: 500;
-font-size: 20px;
+font-weight: 600;
+font-size: 18px;
 line-height: 25px;
 
 color: #000000;
 
 margin-left: 100px;
+}
+
+.calendarIcon
+{
+    position: relative;
+    top: 4px;
+    left: -10px;
+}
+
+.form_input_searchbar
+{
+    /* margin-left: 50px; */
+    position: relative;
+    left: 45%;
+}
+
+.user_profile_picture
+{   
+    position: relative;
+    top: 15px;
+    left: 900px;
+    border-radius: 999px;
+    height: 55px;
+    width: 55px;
 }

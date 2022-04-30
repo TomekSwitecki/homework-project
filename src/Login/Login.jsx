@@ -51,7 +51,12 @@ return (
       <div className={styles.logo_pos}>
         <Logo />
       </div>
-      <img draggable="false" src={loginLeft} alt="graphics-left"></img>
+      <img
+        className={styles.img_left}
+        draggable="false"
+        src={loginLeft}
+        alt="graphics-left"
+      ></img>
     </div>
 
     <div className={styles.login_center}>
@@ -81,7 +86,7 @@ return (
         />
 
         <button
-          className={`${buttons.btn_large} ${buttons.btn_orange}`}
+          className={`${buttons.btn_large} ${buttons.btn_orange} ${styles.btn_margin}`}
           type="submit"
           onClick={VerifyUser}
         >
@@ -91,7 +96,12 @@ return (
     </div>
 
     <div className={styles.login_right}>
-      <img draggable="false" src={loginRight} alt="graphics-right"></img>
+      <img
+        className={styles.img_right}
+        draggable="false"
+        src={loginRight}
+        alt="graphics-right"
+      ></img>
     </div>
   </div>
 );

@@ -1,2 +1,2 @@
-https://tomekswitecki.github.io/homework-project/#/landing
+# homework.com
 ![screenshot](github_readme.jpg)

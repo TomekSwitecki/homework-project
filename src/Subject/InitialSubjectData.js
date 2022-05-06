@@ -46,7 +46,7 @@ async function InitialSubjectData() {
   const object = arrayToObject(INITIAL_SUBJECT_DATA);
   console.log(object);
   const database = getDatabase();
-  set(ref(database, "subjects/"), object);
+  //set(ref(database, "subjects/"), object);
 
 //   const dbRef = ref(getDatabase());
 //   get(child(dbRef, `subjects/`))

@@ -8,14 +8,16 @@ const TaskItem = (props) => {
 
   let ChosenSubjectData = {
     id: 1,
-    subject: props.subject,
-    name: props.name,
-    description:props.description,
-    deadline: props.deadline
+    Created_by:props.Created_by,
+    Task_date:props.Task_date,
+    Task_description:props.Task_description,
+    Task_file_URL:props.Task_file_URL,
+    Task_subject:props.Task_subject,
+    Task_title:props.Task_title,
   };
 
   const SelectTask = () => {
-    ChosenTask = props.name;
+    ChosenTask = props.Task_title;
     props.onTaskSelected(ChosenSubjectData);
   };
 
@@ -30,7 +32,7 @@ const TaskItem = (props) => {
   const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
   const firstDate = new Date();
   //console.log(firstDate.toLocaleDateString());
-  const dueDate = new Date(props.deadline);
+  const dueDate = new Date(props.Task_date);
   //console.log(dueDate);
   var diffDays = Math.round((firstDate - dueDate) / oneDay) * -1;
   //console.log(diffDays.toLocaleString());
@@ -47,7 +49,7 @@ const TaskItem = (props) => {
       <button
         onClick={SelectTask}
         className={
-          props.name === ChosenTask
+          props.Task_title === ChosenTask
             ? styles["TaskItem__active"]
             : styles["TaskItem"]
         }
@@ -59,13 +61,19 @@ const TaskItem = (props) => {
             <box-icon name="file" type="solid" color="#b7b3b3"></box-icon>
           </div>
           <div className={styles.TaskItemTitleContainer}>
-            <span className={styles.TaskName}> {props.name + " "}</span>
-            <span className={styles.TaskSubject}> {props.subject + " "} </span>
+            <span className={styles.TaskName}>
+              {" "}
+              {props.Task_title + " "}
+            </span>
+            <span className={styles.TaskSubject}>
+              {" "}
+              {props.Task_subject + " "}{" "}
+            </span>
           </div>
 
           <div className={styles.TaskItemDateContainer}>
             <span className={styles.TaskDeadlineDate}>
-              {props.deadline + " "}
+              {props.Task_date + " "}
             </span>
             <span className={styles.TaskDaysRemaining}>
               {/* condition1 ? result1 : condition2 ? result3 : result4 */}
@@ -89,7 +97,7 @@ const TaskItem = (props) => {
           ) : diffDays == 0 ? (
             <box-icon name="time-five" type="solid" color="#FF6635"></box-icon>
           ) : (
-            ""()
+            ""
           )}
         </div>
 

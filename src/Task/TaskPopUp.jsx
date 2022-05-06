@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import styles from "./TaskPopUp.module.css";
 import popup from "../popup.module.css";
 import buttons from "../buttons.module.css";
 import inputs from "../inputs.module.css";
@@ -162,7 +161,7 @@ function TaskPopUp(props) {
           onChange={taskNameChangeHandler}
           value={enteredTaskTitle}
           type="text"
-          placeholder="Enter subject name..."
+          placeholder="Enter task name..."
           className={`${inputs.form__input} ${inputs.form__input__normal}`}
         />
 
@@ -195,7 +194,7 @@ function TaskPopUp(props) {
         <input
           onChange={fileHandler}
           type="file"
-          className={styles.drop_file}
+          className={inputs.drop_file}
           id="file_input"
           name="file"
         ></input>

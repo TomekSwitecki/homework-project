@@ -45,7 +45,7 @@ const Navbar=()=>
           placeholder="Search anything here..."
         />
         <img
-        draggable
+        draggable="false"
           className={styles.user_profile_picture}
           src="https://cdn-icons-png.flaticon.com/512/147/147144.png"
         ></img>

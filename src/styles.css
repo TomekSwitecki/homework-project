@@ -10,6 +10,7 @@ h1 {
 
 body,
 html {
+  user-select: none;
   /* overflow: hidden; */
 }
 body {
@@ -73,6 +74,10 @@ button:hover {
 }
 
 
+
+
+
+
 .TaskContainer {
   flex-direction: column;
   display: flex;
@@ -99,4 +104,16 @@ button:hover {
     padding: 50px;
     margin-top: 70px;
     margin-right: 50px;
+}
+
+.TaskDescriptionContainer 
+{
+  width: 640px;
+  flex-direction: column;
+  display: flex;
+  gap: 15px;
+  background-color: rgb(255, 255, 255);
+  padding: 50px;
+  margin-top: 70px;
+  margin-right: 50px;
 }

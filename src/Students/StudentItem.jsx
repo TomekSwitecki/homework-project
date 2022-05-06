@@ -7,13 +7,17 @@ const StudentItem = (props) => {
         <input type="checkbox" id="selected" className="checkbox" />
       </div>
       <div>
-        <box-icon name="male" color="#090a09"></box-icon>
+        <img
+          draggable="false"
+          className={styles.user_profile_picture}
+          src="https://cdn-icons-png.flaticon.com/512/147/147144.png"
+        ></img>
       </div>
-      <div>{props.name}</div>
+      <div>{props.f_name + " " + props.l_name}</div>
       <div>{props.mail}</div>
       <div>{props.date}</div>
-      <div>
-        <box-icon name="polygon" type="solid" color="#08f70d"></box-icon>
+      <div className={styles.statusbar}>
+        {/* <box-icon className={styles.statusbar} name="polygon" type="solid" color="#08f70d"></box-icon> */}
       </div>
     </div>
   );

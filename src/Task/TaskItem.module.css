@@ -48,6 +48,7 @@ font-weight: 400;
 font-size: 15px;
 line-height: 19px;
 color: #959595;
+
 }
 
 .TaskItemContainer
@@ -64,7 +65,7 @@ color: #959595;
   text-align: left;
   display: flex; 
   flex-direction: column;
-  width: 210px;
+  width: 65%;
 }
 
 .TaskItemDateContainer

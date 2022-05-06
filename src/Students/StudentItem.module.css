@@ -7,7 +7,37 @@
 }
 .student_item {
     display: flex;
+    align-items: center;
+
     justify-content: space-between;
     background-color: #ffffff;
     padding: 2px 15px;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 20px;
+    
+    color: #555555;
+}
+.student_item:hover
+{
+    cursor: pointer;
+    background-color: #e8f7ea;
+}
+
+.user_profile_picture
+{
+    width: 25px;
+    height: 25px;
+}
+.statusbar
+{
+    width: 53px;
+    height: 10px;
+    background: #7FE789;
+    width: 35px;
+    height: 10px;
+    border-radius: 49px;
 }

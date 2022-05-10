@@ -7,7 +7,6 @@ const TaskItem = (props) => {
 
 
   let ChosenSubjectData = {
-    id: 1,
     Created_by:props.Created_by,
     Task_date:props.Task_date,
     Task_description:props.Task_description,

@@ -273,6 +273,7 @@ async function getTaskData() {
     console.log(selectedSubjectData);
          getTaskData();
          setSelectedSubject(selectedSubjectData);
+         setSelectedTask({});
          
 
 
@@ -358,7 +359,6 @@ console.log(selectedTask);
 
 
 
-
   return (
     <div className="App">
       <Navbar />
@@ -431,6 +431,7 @@ console.log(selectedTask);
             {filteredStudents.map((e, index) => (
               <StudentItem
                 //id={e.index}
+                selectedTask={selectedTask}
                 f_name={e.f_name}
                 l_name={e.l_name}
                 mail={e.email}
@@ -439,11 +440,11 @@ console.log(selectedTask);
               />
             ))}
           </div>
-        ) : 
-        (
-            <TaskDescription
+        ) : (
+          <TaskDescription
+            userEmail={getAuth(fire).currentUser.email}
             selectedTask={selectedTask}
-            />
+          />
         )}
         <button onClick={logout}>LOG OUT</button>
       </div>

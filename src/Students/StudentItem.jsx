@@ -1,11 +1,59 @@
 import React from "react";
 import styles from "./StudentItem.module.css";
+import { getDatabase, ref, child, get, push, set } from "firebase/database";
+import { getAuth, signOut } from "firebase/auth";
+import fire from "../config/fire";
+
 const StudentItem = (props) => {
+
+async function downloadStudentWork() {
+  console.log(props.selectedTask);
+  const dbRef = ref(getDatabase());
+  get(child(dbRef, `task/`))
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        Object.entries(snapshot.val()).forEach(([key, value]) => {
+          //console.log(key, value);
+          
+          if (
+            value.Task_subject == props.selectedTask.Task_subject &&
+            value.Task_description == props.selectedTask.Task_description
+          )
+          {
+          console.log(value);
+          Object.entries(value.answers).forEach(([key1, value1]) => {
+            console.log(value1);
+             Object.entries(value1).forEach(([key2, value2]) => {
+               console.log(value2.Student_Email);
+                  if (value2.Task_file_URL!="") 
+                  {
+                    alert(value2.Task_file_URL);
+                  }
+                  
+                
+             });
+          });
+          }
+          
+        });
+        // console.log(taskData);
+        //setSubjectData(snapshot.val());
+      } else {
+        console.log("No data available");
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
+
+
   return (
-    <div className={styles.student_item}>
-      <div>
+    <div className={styles.student_item} onClick={downloadStudentWork}>
+      {/* <div>
         <input type="checkbox" id="selected" className="checkbox" />
-      </div>
+      </div> */}
       <div>
         <img
           draggable="false"

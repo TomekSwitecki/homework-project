@@ -8,43 +8,53 @@ const StudentItem = (props) => {
 
 async function downloadStudentWork() {
   console.log(props.selectedTask);
-  const dbRef = ref(getDatabase());
-  get(child(dbRef, `task/`))
-    .then((snapshot) => {
-      if (snapshot.exists()) {
-        Object.entries(snapshot.val()).forEach(([key, value]) => {
-          //console.log(key, value);
-          
-          if (
-            value.Task_subject == props.selectedTask.Task_subject &&
-            value.Task_description == props.selectedTask.Task_description
-          )
-          {
-          console.log(value);
-          Object.entries(value.answers).forEach(([key1, value1]) => {
-            console.log(value1);
-             Object.entries(value1).forEach(([key2, value2]) => {
-               console.log(value2.Student_Email);
-                  if (value2.Task_file_URL!="") 
-                  {
-                    alert(value2.Task_file_URL);
+  if (Object.keys(props.selectedTask).length != 0) {
+    const dbRef = ref(getDatabase());
+    get(child(dbRef, `task/`))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          Object.entries(snapshot.val()).forEach(([key, value]) => {
+            //console.log(key, value);
+
+            if (
+              value.Task_subject == props.selectedTask.Task_subject &&
+              value.Task_description == props.selectedTask.Task_description
+            ) {
+              console.log(value);
+              Object.entries(value.answers).forEach(([key1, value1]) => {
+                console.log(value1);
+                Object.entries(value1).forEach(([key2, value2]) => {
+                  console.log(value2);
+                  if (
+                    value2.Task_file_URL != "" &&
+                    props.mail == value2.Student_Email
+                  ) {
+                    var element = document.createElement("a");
+                    element.setAttribute("href", value2.Task_file_URL);
+                    element.setAttribute("target", "_blank");
+                    element.style.display = "none";
+                    document.body.appendChild(element);
+
+                    element.click();
+
+                    document.body.removeChild(element);
                   }
-                  
-                
-             });
+                });
+              });
+            }
           });
-          }
-          
-        });
-        // console.log(taskData);
-        //setSubjectData(snapshot.val());
-      } else {
-        console.log("No data available");
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+          // console.log(taskData);
+          //setSubjectData(snapshot.val());
+        } else {
+          console.log("No data available");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  } else {
+    alert("Select task first");
+  }
 }
 
 

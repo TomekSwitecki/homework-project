@@ -1,0 +1,27 @@
+.Heading_container
+{
+width: 100%;
+}
+
+.Heading_text
+{
+font-weight: 500;
+font-size: 40px;
+line-height: 50px;
+color: #1D1D1F;
+}
+
+.Subheading_container
+{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.Subheading_text
+{
+font-weight: 500;
+font-size: 16px;
+line-height: 20px;
+color: #1D1D1F;
+}

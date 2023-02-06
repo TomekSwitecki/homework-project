@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import {useLocation} from 'react-router-dom';
 import fire from "../config/fire";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getDatabase, push, ref, set } from "firebase/database";
@@ -7,12 +8,23 @@ import styles from "./Registration.module.css";
 import inputs from "../inputs.module.css"
 import buttons from "../buttons.module.css"
 
+import Button from "../Button/Button";
+import RadioButton from "../RadioButton/RadioButton";
+import Inputfield from "../Inputfield/Inputfield"
+import Heading from "../Heading/Heading";
+
 import student_image from "./img/student_image.png"
 import dots from "./img/dots.png"
 import arch from "./img/arch.png"
 import Logo from "../Logo/Logo";
-
+import pattern_purple from "./img/pattern-purple.png";
+import pattern_orange from "./img/pattern-orange.png";
+import Divider from "../Divider/Divider";
 import { Link } from "react-router-dom";
+
+import logo from "../logo.svg";
+
+import google_icon from "../icons/icon_google.svg";
 
 const Registration=()=>
 {
@@ -52,6 +64,22 @@ const Registration=()=>
 
 
 
+    const location = useLocation();
+    const role= location.state;
+    console.log("location role"+role);
+
+    
+    const[Role,setRole]=useState(role);
+    console.log(Role);
+    // const roleChangeHandler = (event) => {
+    //   // console.log(Role);
+    //   // setRole(event.target.value);
+    //   console.log(event.target.value);
+    //   setRole(event.target.value);
+    //   // console.log(Role);
+    //   // console.log(Role);
+    // };
+    
                   // if (firstName !== "" && lastName !== "" && email !== "") {
                   //   console.log("Succesfully signed up");
 
@@ -132,98 +160,50 @@ const Registration=()=>
 
 
 return (
-  <div className={styles.registration_div}>
-    <div className={styles.register_left}>
-      <div className={styles.logo_registration}>
-        <Logo />
-      </div>
-      <div className={styles.started}>Let's get started!</div>
-      {/* <div className={styles.details}>Enter your details</div> */}
-      <div className={styles.new_here}>
-        Already registered?{" "}
-        <Link to="/login" className={styles.login}>
-          Sign in.
-        </Link>
-      </div>
-      <img draggable="false" className={styles.dots} src={dots}></img>
-      <img draggable="false" className={styles.arch} src={arch}></img>
-      <form className={styles.register_left_form}>
-        <input
-          required
-          className={`${inputs.form__input} ${inputs.form__input__viewport} ${styles.form_input_registration}`}
-          onChange={firstNameChangeHandler}
-          value={firstName}
-          type="text"
-          placeholder="First Name"
-        />
-        <input
-          required
-          className={`${inputs.form__input} ${inputs.form__input__viewport} ${styles.form_input_registration}`}
-          onChange={lastNameChangeHandler}
-          value={lastName}
-          type="text"
-          placeholder="Last Name"
-        />
-        
-          <input
-            required
-            className={`${inputs.form__input} ${inputs.form__input__viewport} ${styles.form_input_registration}`}
-            onChange={emailChangeHandler}
-            value={email}
-            type="email"
-            placeholder="Email"
-          />
-          <span
+
+  <div className={styles.registration_container}>
+
+      <div className={styles.logo}>
+           <img src={logo}></img>
+        </div>
+
+      <form className={styles.register_form_container}>
+        <Heading Heading={"Sign up"} Subheading={"Already have an account?"} LinkText={"Login"} LinkTo={"/login"}></Heading>
+        <form>
+        <div className={styles.register_form_double__radio}>
+          <RadioButton name={"role"}  onChange={(e) => setRole("TEACHER")} color="purple" value="TEACHER" label="Teacher" isDefaultChecked={Role=="TEACHER"} ></RadioButton>
+          <RadioButton name={"role"}  onChange={(e) => setRole("STUDENT")} color="orange" value="STUDENT" label="Student" isDefaultChecked={Role=="STUDENT"} ></RadioButton>
+        </div>
+        </form>
+        <div className={styles.register_form_double__input}>
+          <Inputfield value={firstName} type="text" onChange={firstNameChangeHandler} label={"First name"}></Inputfield>
+          <Inputfield value={lastName} type="text" onChange={lastNameChangeHandler} label={"Last name"}></Inputfield>
+        </div>
+        <Inputfield value={email} type="email" onChange={emailChangeHandler} label={"Email address"}></Inputfield>
+        <span
             className={`${styles.invalid__email}`}
             style={{ display: invalidEmail ? "block" : "none" }}
           >
             Incorrect email
           </span>
+        <Inputfield sublabel LinkTo="/Landing" LinkText="Forgot Password?" value={password} type="password" onChange={passwordChangeHandler} label={"Password"}></Inputfield>
         
-        <input
-          required
-          className={`${inputs.form__input} ${inputs.form__input__viewport}  ${styles.form_input_registration}`}
-          onChange={passwordChangeHandler}
-          value={password}
-          type="password"
-          placeholder="Password"
-        />
+        
 
-        <div className={styles.register_as}>Register as a:</div>
+
+          
+
         <div className={styles.form_buttons}>
-          <button
-            className={`${buttons.btn_large} ${buttons.btn_orange} ${styles.register_btn}`}
-            type="submit"
-            onClick={(event) => submitHandler("TEACHER", event)}
-          >
-            Teacher
-          </button>
-          <button
-            className={`${buttons.btn_large} ${buttons.btn_purple} ${styles.register_btn}`}
-            type="submit"
-            onClick={(event) => submitHandler("STUDENT", event)}
-          >
-            Student
-          </button>
+        <Button medium  linkTo="#" type="submit" color="black" text="Create account" onClick={(event) => submitHandler(Role, event)} />
+        <Divider text="or" type="text"></Divider>
+        <Button icon={google_icon} medium linkTo="#" type="submit" color="white" text="Log in with Google" onClick={(event) => submitHandler(Role, event)} />   
         </div>
-
-        {/* <button
-          type="submit"
-          onClick={RegisterUser}
-        > 
-          Register as student
-        </button>
-        */}
       </form>
-    </div>
 
-    <div className={styles.register_right}>
-      <img
-        draggable="false"
-        src={student_image}
-        className={styles.student_image}
-      ></img>
-    </div>
+      <div className={Role=="STUDENT" ? styles.pattern_container__orange : styles.pattern_container__purple }>
+      {/* <img src={Role=="STUDENT" ? pattern_orange : pattern_purple} className={styles.pattern_img}></img> */}
+       </div>
+
   </div>
 );
 

@@ -1,245 +1,110 @@
 
-.registration_div
+    .logo
 {
-    display: flex;
-    justify-content: space-between;
-   max-height: 100%;
-   max-width: 100%;
-background-color: rgba(255, 255, 255, 0);
+    display: grid;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    align-self: center;
+    grid-row-start: 1;
+    width: 144px;
 }
-.student_image
+
+.registration_container
+{   
+    min-height: 100vh;
+    grid-row-start: 2;
+    max-width: 1120px;
+    display: grid;
+    grid-template-columns: repeat(12, 64px);
+    grid-template-rows: repeat(5,auto);
+    grid-column-gap: 32px;
+    grid-row-gap: 8px;
+    margin: 64px auto;
+    height: 86vh;
+
+    vertical-align: middle;
+    max-height: 100%;
+
+    background-color: white;
+}
+
+.register_form_container
 {
-   
-    height: 100vh;
-    object-fit: cover; 
-    flex-shrink: 1;
-    float: right; 
+    display: grid;
+    grid-row-start: 2;
+    grid-column-start: 3;
+    grid-column-end: 8;
+
+    margin-top: 48px;
+    gap: 36px;
 }
 
 
-
-
-.register_left
+.register_form_double__input
 {
-   display: flex;
-   width: 50%;
-   flex-direction: column;
-   
-   
-}
-.register_right
-{
-    padding: 0;
-    margin: 0 0 0 5.11vw;
-}
-.register_left_form
-{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     width: 100%;
-    gap:45px;
+    display: flex;
+    flex-direction: row;
+    gap:32px;
+    
 }
 
-    .register_left {
-        margin-left: 120px;
-        
-    }
+.register_form_double__radio
+{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap:32px;
+    flex: 2 1;
+    
+}
 
-.form_input_registration
+
+.pattern_container__orange
 {
-    /* should be width: 531px and height: 70px, converted to vh and vw
-    width: 27.65vw;
-    height: 7.22vh;
-     overriden by form__input__viewport in inputs.module.css */
-    /* margin: 1.97vw 20.3% 0 0; */
+        grid-row-start: 1;
+            display: inline-grid;
+            grid-row-end: 12;
+            grid-column-start: 10;
+            grid-column-end: 12;
+            background-size: cover;
+            width: 40vw;
+            height: 110%;
+            overflow: visible;
+            transform: translateY(-8%);       
+background-image: url("./img/pattern-orange.png");
 }
-.started
+
+.pattern_container__purple
 {
-    font-family: 'Outfit';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 50px;
-    text-align: center;
-    margin-top: 30px;
-   
+        grid-row-start: 1;
+            display: inline-grid;
+            grid-row-end: 12;
+            grid-column-start: 10;
+            grid-column-end: 12;
+            background-size: cover;
+            width: 40vw;
+            height: 110%;
+            overflow: visible;
+            transform: translateY(-8%);       
+background-image: url("./img/pattern-purple.png");
 }
-.details
+.pattern_img
 {
-    font-family: 'Outfit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 30px;
-    text-align: center;
-    margin: 28px 20% 0 0; 
-    color: #C7C7C7;
+    height: auto;
+    width:45%;
 }
-.logo_registration
-{
-    margin: 50px 0 0 75px;
-}
+
 
 .form_buttons
 {
     display: flex;
-    flex-direction: row-reverse;
-    gap: 49px;
-    margin-bottom: 50px;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
 }
 
-
-
-.register_left_form > .register_btn
-{
-    font-family: 'Outfit';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 30px;
-    text-align: center;
-}
-
-.register_as
-{
-    font-family: 'Outfit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 30px;
-    text-align: center;
-
-    color: #000000;
-    
-}
-
-.dots
-{
-    position: absolute;
-    width: calc(256px*1.1);
-    height: 346px;
-    left: 500px;
-    top: 72px;
-
-    z-index: -1;
-}
-
-.arch
-{
-    position: absolute;
-    width: 342px;
-    height: 283px;
-    left: 852.96px;
-    top: -65.33px;
-
-    
-    border-radius: 0px 999px 0px 0px;
-    transform: matrix(0.17, 0.98, 0.98, -0.17, 0, 0);
-    z-index: -1;
-}
-
-
-.new_here {
-    
-    
-    font-family: 'Outfit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 25px;
-    text-align: center;
-    color: #727272;
-    margin: 55px 0 35px 0;
-}
-
-.login {
-    color: #00FF66
-}
-
-
-@media only screen and (max-width: 1000px) {
-    .register_right {
-        display: none;
-    }
-    
-    .register_left
-    {
-        margin-left: 0px;
-    }
-
-    .registration_div>.register_left {
-        width: 100vw;
-        margin-right: 0;
-
-    }
-
-    .registration_div {
-        margin: 0;
-    }
-
-    .register_left_form {
-        
-        height: 100%;
-    }
-
-    .register_left_form>.form_input_registration {
-        /* For mobile view */
-        width: 65%;
-        height: 6vh;
-        /* margin: 6% 0 0 2.5%; */
-
-    }
-
-    .registration_div>.register_left>.logo_registration {
-
-        /* For mobile view */
-
-        margin: 5vh 0 0 0;
-        align-self: center;
-
-    }
-
-    
-    .registration_div>.register_left>.started {
-
-
-        margin: 5% 0 0 0;
-
-    }
-
-    .registration_div>.register_left>.details {
-
-        /* For mobile view */
-        margin: 2.5% 0 5% 0;
-    }
-
-    .dots {
-        display: none;
-    }
-
-    .arch {
-        display: none;
-    }
-
-    .register_left_form>.form_buttons {
-       
-        margin-bottom: 50px;
-        gap: 2.5vh;
-    }
-
-    .register_left_form>.register_as {
-        margin: 20px 0 0 0;
-    }
-
-    .register_left_form>.form_buttons>.register_btn {
-        width: 100%;
-
-
-    }
-
-
-}
 
 .invalid__email
 {   

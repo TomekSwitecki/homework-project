@@ -1,0 +1,168 @@
+input
+{
+    font-family: 'Outfit';
+    font-style: normal;
+}
+
+.Inputfield_container
+{
+height: 76px;
+width: 100%;
+display: flex;
+flex-direction: column;
+gap: 0px;
+}
+
+.Inputfield_labels_container
+{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    height: 32px;
+}
+.Inputfield_label
+{
+font-weight: 500;
+font-size: 16px;
+line-height: 20px;
+display: flex;
+align-items: center;
+color: #1D1D1F;
+}
+
+.form__input {
+    box-sizing: border-box;
+    padding: 12px 16px;
+    height: 44px;
+    
+    background: #FBFBFB;
+    border: 1px solid #E8E8E8;
+
+    width: 100%;
+
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+
+    color: #1D1D1F;
+    
+}
+
+/* .form__input::placeholder {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    
+    color: #7D797E;
+
+} */
+
+
+.form__input__big
+{
+padding: 0 0 0 55px;
+    margin: 20px;
+    width: 55%;
+    height: 70px;
+    font-size: 20px;
+}
+
+.form__input__normal {
+    padding: 0 0 0 20px;
+    margin: 20px 0;
+    height: 50px;
+    font-size: 16px;
+    width: 95%;
+}
+
+.form__input__code
+{
+    text-align: center;
+    font-size: 64px;
+    margin: 20px 0px;
+    width: 100%;
+    height: 116px;
+
+}
+
+
+.form__input__code::placeholder
+{
+    text-align: center;
+    font-size: 16px;
+}
+
+.form__input__viewport
+{
+    font-family: 'Outfit';
+    color: black;
+    border: 1px solid #CBC8DE;
+    border-radius: 9px;
+    font-weight: 500;
+    font-size: 20px;
+    width: 27.65vw;
+    height: 7.22vh;
+    padding: 0 0 0 20px;
+}
+
+.form__input__viewport::placeholder
+{
+    font-size: 16px;
+}
+
+.form__input__searchbar
+{       
+        padding: 0 0 0 20px;
+        height: 50px;
+        font-size: 16px;
+        width: 15%;
+}
+
+/* files handlers*/
+.drop_file {
+    margin: 20px 0px;
+    outline: dashed #D6D6D6 2px;
+    border-radius: 10px;
+    height: 50px;
+    width: 92%;
+    padding: 15px;
+    background-color: #F5F4FF;
+}
+
+
+.drop_file:hover {
+    background-color: #d3d1e7;
+    cursor: pointer;
+}
+
+.drop_file::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.drop_file::before {
+
+    content: 'Drag and drop your files here.';
+    display:
+        flex;
+    flex-direction: column-reverse;
+    text-align: center;
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+
+
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 19px;
+
+    color: #949494;
+    outline: none;
+    border: none;
+}

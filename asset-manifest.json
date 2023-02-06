@@ -1,19 +1,23 @@
 {
   "files": {
-    "main.css": "/homework-project/static/css/main.a02de531.css",
-    "main.js": "/homework-project/static/js/main.a6b6c0b7.js",
+    "main.css": "/homework-project/static/css/main.387974e4.css",
+    "main.js": "/homework-project/static/js/main.62c1708f.js",
     "static/media/student_image.png": "/homework-project/static/media/student_image.6d80cf90a4e012521716.png",
-    "static/media/landing_right.png": "/homework-project/static/media/landing_right.24113dee1027925011a3.png",
+    "static/media/Landing_Ilustration.svg": "/homework-project/static/media/Landing_Ilustration.3586e69d6a776552805059d05d32cddb.svg",
     "static/media/Login__rightSide.png": "/homework-project/static/media/Login__rightSide.a1ed7d9b9c7db2659479.png",
+    "static/media/pattern-purple.png": "/homework-project/static/media/pattern-purple.0e07e9e20b1dbbbbe817.png",
+    "static/media/pattern-orange.png": "/homework-project/static/media/pattern-orange.8b98156179d740e42e82.png",
     "static/media/Login__leftSide.png": "/homework-project/static/media/Login__leftSide.4a917f80feb67f1fa2e3.png",
     "static/media/dots.png": "/homework-project/static/media/dots.b80e462b8d405a4c72cd.png",
+    "static/media/logo.svg": "/homework-project/static/media/logo.201a58d9553a82cbd13fe51ed0d113c8.svg",
     "index.html": "/homework-project/index.html",
-    "static/media/Swoosh.svg": "/homework-project/static/media/Swoosh.46395b92994642f4b19610ea8077523a.svg",
-    "main.a02de531.css.map": "/homework-project/static/css/main.a02de531.css.map",
-    "main.a6b6c0b7.js.map": "/homework-project/static/js/main.a6b6c0b7.js.map"
+    "static/media/Underline.svg": "/homework-project/static/media/Underline.13b0d69f99f744c3cb263ba2d6c505c5.svg",
+    "static/media/icon_google.svg": "/homework-project/static/media/icon_google.330a2dc7f18d7502647dc5d6f93812ec.svg",
+    "main.387974e4.css.map": "/homework-project/static/css/main.387974e4.css.map",
+    "main.62c1708f.js.map": "/homework-project/static/js/main.62c1708f.js.map"
   },
   "entrypoints": [
-    "static/css/main.a02de531.css",
-    "static/js/main.a6b6c0b7.js"
+    "static/css/main.387974e4.css",
+    "static/js/main.62c1708f.js"
   ]
 }

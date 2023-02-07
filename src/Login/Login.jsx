@@ -6,14 +6,17 @@ import { Link } from "react-router-dom";
 import styles from "./Login.module.css";
 import buttons from "../buttons.module.css";
 import inputs from "../inputs.module.css";
-
-
-import loginLeft from "./img/Login__leftSide.png";
-import loginRight from "./img/Login__rightSide.png";
+import Inputfield from "../Inputfield/Inputfield"
+import Heading from "../Heading/Heading";
+// import loginLeft from "./img/Login__leftSide.png";
+// import loginRight from "./img/Login__rightSide.png";
 import Logo from "../Logo/Logo";
+import Button from "../Button/Button";
 
+import logo from "../logo.svg";
 
-
+import pattern_purple from "./img/pattern_purple_thin.svg";
+import pattern_orange from "./img/pattern_orange_thin.svg";
 const Login=()=>
 {
     const [email, setEmail] = useState("");
@@ -46,64 +49,25 @@ const Login=()=>
     }
 
 return (
-  <div className={styles.login_container}>
-    <div className={styles.login_left}>
-      <div className={styles.logo_pos}>
-        <Logo />
-      </div>
-      <img
-        className={styles.img_left}
-        draggable="false"
-        src={loginLeft}
-        alt="graphics-left"
-      ></img>
-    </div>
 
-    <div className={styles.login_center}>
-      <form className={styles.form_container}>
-        <div className={styles.welcome}>Welcome back!</div>
-        <div className={styles.new_here}>
-          New Here?{" "}
-          <Link to="/registration" className={styles.createAccount}>
-            Create an account.
-          </Link>
+  
+
+    <div className={styles.login_container}>
+            <img className={styles.pattern_left} src={pattern_purple}></img>
+            <img className={styles.pattern_right} src={pattern_orange}></img>
+        <div className={styles.logo}>
+           <img src={logo}></img>
         </div>
-        <input
-          required
-          className={`${inputs.form__input} ${inputs.form__input__big}`}
-          onChange={emailChangeHandler}
-          value={email}
-          type="email"
-          placeholder="Email address"
-        />
-        <input
-          required
-          className={`${inputs.form__input} ${inputs.form__input__big}`}
-          onChange={passwordChangeHandler}
-          value={password}
-          type="password"
-          placeholder="Password"
-        />
+      <form className={styles.form_container}>
 
-        <button
-          className={`${buttons.btn_large} ${buttons.btn_orange} ${styles.btn_margin}`}
-          type="submit"
-          onClick={VerifyUser}
-        >
-          Sign In
-        </button>
+        <Heading Heading={"Welcome back!  👋"} Subheading={"Don’t  have an account?"} LinkText={"Register"} LinkTo={"/Registration"} state={"TEACHER"}></Heading>
+        <Inputfield required value={email} type="email" onChange={emailChangeHandler} label={"Email address"}></Inputfield>
+        <Inputfield sublabel LinkTo="#" LinkText="Forgot password?" value={password} type="password" onChange={passwordChangeHandler} label={"Password"}></Inputfield>
+        <Button   linkTo="#" type="submit" color="black" text="Sign In" onClick={VerifyUser} />
       </form>
     </div>
 
-    <div className={styles.login_right}>
-      <img
-        className={styles.img_right}
-        draggable="false"
-        src={loginRight}
-        alt="graphics-right"
-      ></img>
-    </div>
-  </div>
+
 );
 }
 

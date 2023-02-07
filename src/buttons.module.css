@@ -44,7 +44,7 @@
     background: #FF9B35;
     border-bottom: 6px solid #FF8100;
     
-    font-weight: 700;
+    font-weight: 500;
     font-size: 15px;
     line-height: 18px;
     text-align: center;
@@ -58,7 +58,7 @@
     background: #393939;
     border-bottom: 6px solid #000000;
     
-    font-weight: 700;
+    font-weight: 500;
     font-size: 15px;
     line-height: 18px;
     text-align: center;
@@ -77,7 +77,7 @@
     background: #8F8AD9;
 border-bottom: 6px solid #807CBF;
 color: white;
-font-weight: 700;
+font-weight: 500;
 font-size: 15px;
 line-height: 18px;
 align-items: center;
@@ -91,7 +91,7 @@ transition: all 0.5s;
     background: #FFFFFF;
     border: 2px solid #C8C8C8;
 color: #1D1D1F;
-font-weight: 700;
+font-weight: 500;
 font-size: 15px;
 line-height: 18px;
 align-items: center;
@@ -110,12 +110,16 @@ transition: all 0.5s;
     transform: scale(1);
     transition: transform 0.5s;
 }
-.button_container:hover {
+.button_container:has(.btn_ghost):hover {
+    outline:none;
+    box-shadow: none;
+    
+  }
+  .button_container:hover {
     transition: transform 0.5s;
     transform: scale(1.05);
     box-shadow: 0px 0px 10px #b9b9b9;
     outline: 1px solid black;
-    
   }
 
 .button_icon_prepend
@@ -132,6 +136,7 @@ transition: all 0.5s;
     font-weight: bolder;
     transition: all 0.5s;
     box-shadow: none;
+    outline: none;
 }
 
 

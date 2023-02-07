@@ -9,7 +9,7 @@ function Heading(props) {
   return (
     <div className={Headings.Heading_container}>
            <span className={Headings.Heading_text}>{props.Heading}</span>
-           <div className={Headings.Subheading_container}><span className={Headings.Subheading_text}>{props.Subheading}</span><Link to={props.LinkTo} className={"link"}>{props.LinkText}</Link></div>
+           <div className={Headings.Subheading_container}><span className={Headings.Subheading_text}>{props.Subheading}</span><Link to={props.LinkTo} className={"link"} state={props.state}>{props.LinkText}</Link></div>
     </div>
   );
 }

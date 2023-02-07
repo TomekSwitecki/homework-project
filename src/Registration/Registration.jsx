@@ -13,10 +13,6 @@ import RadioButton from "../RadioButton/RadioButton";
 import Inputfield from "../Inputfield/Inputfield"
 import Heading from "../Heading/Heading";
 
-import student_image from "./img/student_image.png"
-import dots from "./img/dots.png"
-import arch from "./img/arch.png"
-import Logo from "../Logo/Logo";
 import pattern_purple from "./img/pattern-purple.png";
 import pattern_orange from "./img/pattern-orange.png";
 import Divider from "../Divider/Divider";
@@ -186,7 +182,7 @@ return (
           >
             Incorrect email
           </span>
-        <Inputfield sublabel LinkTo="/Landing" LinkText="Forgot Password?" value={password} type="password" onChange={passwordChangeHandler} label={"Password"}></Inputfield>
+        <Inputfield sublabel LinkTo="#" LinkText="Forgot password?" value={password} type="password" onChange={passwordChangeHandler} label={"Password"}></Inputfield>
         
         
 

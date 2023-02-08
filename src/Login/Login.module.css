@@ -59,5 +59,6 @@
     grid-row-end: 6;
     grid-column-start: 10;
     grid-column-end: 13;
+    transform: scaleX(-1);
 
 }

@@ -7,7 +7,6 @@ import Registration from "./Registration/Registration";
 import { getDatabase, ref, child, get,push, set } from "firebase/database";
 
 
-import Navbar from "./Navbar/Navbar";
 import Logo from "./Logo/Logo";
 
 
@@ -30,7 +29,7 @@ import StudentItem from "./Students/StudentItem";
 import { getAuth, signOut } from "firebase/auth";
 import TaskDescription from "./Task/TaskDescription";
 
-
+import Navbar from "./Navbar/Navbar"
 const logout = () => {
   const auth = getAuth();
   signOut(auth)
@@ -361,7 +360,7 @@ console.log(selectedTask);
 
   return (
     <div className="App">
-      <Navbar />
+
       {SubjectPopUpVisible ? (
         <SubjectPopUp
           onCancel={SubjectPopUpVisibility}
@@ -384,12 +383,10 @@ console.log(selectedTask);
       <div className="Container">
         <div className="SubjectListContainer">
           {/* <Logo></Logo> */}
-
-          <h1 className="Container_titles">Subjects</h1>
-          <h1>{props.rola}</h1>
-
-          {filteredSubjects.map((e, index) => (
-            <SubjectItem
+          {/* <h1 className="Container_titles">Subjects</h1>
+          <h1>{props.rola}</h1> */}
+          {/* {filteredSubjects.map((e, index) => (
+            <NavbarButton
               key={e.index}
               id={index}
               name={e.Subject_name}
@@ -397,7 +394,10 @@ console.log(selectedTask);
               description={e.Subject_description}
               onSubjectSelected={onSubjectSelectedDataHandler}
             />
-          ))}
+          ))} */}
+
+          <Navbar subjects={filteredSubjects} onSubjectSelectedDataHandler={onSubjectSelectedDataHandler} logout={logout}></Navbar>
+
 
           {props.rola === "TEACHER" ? (
             <SubjectCreate onClick={SubjectPopUpVisibility} />
@@ -446,7 +446,7 @@ console.log(selectedTask);
             selectedTask={selectedTask}
           />
         )}
-        <button onClick={logout}>LOG OUT</button>
+        {/* <button onClick={logout}>LOG OUT</button> */}
       </div>
     </div>
   );

@@ -1,7 +1,14 @@
 import React from "react";
 import styles from "./Navbar.module.css";
 import inputs from "../inputs.module.css";
-const Navbar=()=>
+import NavbarButton from "./NavbarButton";
+import Button from "../Button/Button";
+import logo from "../logo2.svg";
+import Controls from "../Controls.svg";
+import Divider from "../Divider/Divider";
+
+import logout_icon from "../icons/icon_logout.svg";
+const Navbar=(props)=>
 {
     var days = [
       "Sunday",
@@ -14,43 +21,45 @@ const Navbar=()=>
     ];
 
     var day=(days[new Date().getDay()]);
-  // console.log(new Date().toLocaleDateString());
-  // console.log(props.deadline);
-  //const  = new Date().toLocaleDateString();
-  var today = new Date();
-//   var options = { weekday: "long" };
-//   console.log(today.toLocaleDateString("en-US", options));
-  // const deadline = props.deadline;
-  // // To calculate the time difference of two dates
-  // var Difference_In_Time = firstDate.getTime() - deadline.getTime();
-  // var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+    var today = new Date();
+
 
   return (
     <React.Fragment>
-      <div className={styles.navbar}>
-        <span className={styles.logo}>
-          homework<span className={styles.orange_dot}>.</span>com
-        </span>
-        <span className={styles.date}>
+      <div className={styles.navbar_container}>
+           <img src={Controls} className={styles.controls} ></img>
+           <img src={logo} className={styles.logo} ></img>
+
+        {/* <span className={styles.date}>
           <span className={styles.calendarIcon}>
             <box-icon name="calendar" type="solid" color="#000000"></box-icon>
           </span>
           {day + ". " + new Date().toLocaleDateString()}
-        </span>
+        </span> */}
+        <div className={styles.button_container}>
+        {props.subjects.map((e, index) => (
+            <NavbarButton
+              key={e.index}
+              id={index}
+              name={e.Subject_name}
+              addedStudents={e.addedStudents}
+              description={e.Subject_description}
+              onSubjectSelected={props.onSubjectSelectedDataHandler}
+            />
+          ))}
+        </div>
+        <div className={styles.lower_container}>
+          <div>
+        <hr className={styles.navbar_divider}></hr>
+        <Button   linkTo="#" type="submit" color="purple" text="Create Class +"  />
+        </div>
+        <div>
+        <hr className={styles.navbar_divider}></hr>
+        <NavbarButton icon={logout_icon} name={"Log Out"} logout={props.logout}></NavbarButton>
+        </div>
+        </div>
 
-        <input
-          required
-          className={`${inputs.form__input} ${inputs.form__input__searchbar} ${styles.form_input_searchbar}`}
-          type="text"
-          placeholder="Search anything here..."
-        />
-        <img
-        draggable="false"
-          className={styles.user_profile_picture}
-          src="https://cdn-icons-png.flaticon.com/512/147/147144.png"
-        ></img>
       </div>
-      <hr className={styles.horizontal_line}></hr>
     </React.Fragment>
   );
 }

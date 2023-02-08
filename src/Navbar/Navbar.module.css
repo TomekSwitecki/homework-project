@@ -1,66 +1,50 @@
-.navbar
+.navbar_container
 {
-    padding: 20px;
-    /* background-color: #28383D; */
-    background-color: #ffffff;
-   
+    background-color: #1D1D1F;
+    padding-left: 24px;
+    height: 100%;
+    min-width: 225px;
+    padding-bottom: 16px;
 }
 
-
-.logo {
-    font-family: 'Outfit';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 28px;
-    line-height: 40px;
-    text-transform: lowercase;
-    background-color: white;
-    color: #000000;
-}
-
-.orange_dot {
-    color: #FF6B00;
-}
-
-.horizontal_line
+.logo
 {
-    margin: 0;
-border-top: 1px solid #eeeeee;
+    width: 156px;
+    display: block;
+    padding-bottom: 50px;
+
 }
 
-.date
-{
-font-family: 'Outfit';
-font-style: normal;
-font-weight: 600;
-font-size: 18px;
-line-height: 25px;
-
-color: #000000;
-
-margin-left: 100px;
-}
-
-.calendarIcon
+.controls
 {
     position: relative;
-    top: 4px;
-    left: -10px;
+    padding:24px 0 28px 0;
 }
 
-.form_input_searchbar
+.button_container
 {
-    /* margin-left: 50px; */
-    position: relative;
-    left: 45%;
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+
+    
 }
 
-.user_profile_picture
-{   
-    position: relative;
-    top: 15px;
-    left: 900px;
-    border-radius: 999px;
-    height:45px;
-    width: 45px;
+.navbar_divider
+{
+    color: #3A3A3A;
+    outline: none;
+    box-shadow: none;
+    border: 1px solid #3A3A3A;
+    margin-top: 8px;
+    margin-bottom: 16px;
+}
+
+.lower_container
+{
+    align-self: center;
+    padding-right: 32px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }

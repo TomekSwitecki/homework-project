@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/homework-project/static/css/main.27f308a7.css",
-    "main.js": "/homework-project/static/js/main.19afb049.js",
+    "main.css": "/homework-project/static/css/main.6f9c6b37.css",
+    "main.js": "/homework-project/static/js/main.91eaf2c4.js",
     "static/media/Landing_Ilustration.svg": "/homework-project/static/media/Landing_Ilustration.3586e69d6a776552805059d05d32cddb.svg",
     "static/media/pattern-purple.png": "/homework-project/static/media/pattern-purple.0e07e9e20b1dbbbbe817.png",
     "static/media/pattern-orange.png": "/homework-project/static/media/pattern-orange.8b98156179d740e42e82.png",
@@ -13,12 +13,14 @@
     "static/media/Underline.svg": "/homework-project/static/media/Underline.13b0d69f99f744c3cb263ba2d6c505c5.svg",
     "static/media/icon_google.svg": "/homework-project/static/media/icon_google.330a2dc7f18d7502647dc5d6f93812ec.svg",
     "static/media/Controls.svg": "/homework-project/static/media/Controls.ee602af6273191cf401071b99e5bd6d4.svg",
+    "static/media/icon_inprogress.svg": "/homework-project/static/media/icon_inprogress.48247c673278bd886a150a62ee670477.svg",
     "static/media/icon_logout.svg": "/homework-project/static/media/icon_logout.f448efc6bd2c603a5ca3ac98914d2134.svg",
-    "main.27f308a7.css.map": "/homework-project/static/css/main.27f308a7.css.map",
-    "main.19afb049.js.map": "/homework-project/static/js/main.19afb049.js.map"
+    "static/media/icon_completed.svg": "/homework-project/static/media/icon_completed.175cc800ab742afe30cdba0bf1233845.svg",
+    "main.6f9c6b37.css.map": "/homework-project/static/css/main.6f9c6b37.css.map",
+    "main.91eaf2c4.js.map": "/homework-project/static/js/main.91eaf2c4.js.map"
   },
   "entrypoints": [
-    "static/css/main.27f308a7.css",
-    "static/js/main.19afb049.js"
+    "static/css/main.6f9c6b37.css",
+    "static/js/main.91eaf2c4.js"
   ]
 }

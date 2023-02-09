@@ -1,18 +1,31 @@
 .actionBar_container
 {
     display: flex;
-    justify-content: space-around;
-    padding: 10px;
-font-family: 'Outfit';
-font-style: normal;
-font-weight: 600;
-font-size: 16px;
-line-height: 20px;
-color: white;
-    background: #28383D;
-    border-radius: 4px;
-}
-.title_container
-{
-    width: 235px;
+    text-align: left;
+    align-items: center;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: space-between;
+    padding: 16px 32px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 15px;
+
+    width: 100%;
+    box-sizing: border-box;
+    
+    
+
+    
+    color: #EFEFEF;
+    background: #1D1D1F;
+
+    text-align: left;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 30px;
+    width: 100%;
+
 }

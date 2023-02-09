@@ -1,9 +1,33 @@
+
+
+.TaskDescriptionContainer
+{
+
+  width: 100%;
+  flex-direction: column;
+  display: flex;
+  gap: 15px;
+
+}
+
+
 .description
 {
-    
-    padding: 50px 50px;
-    background: #F5F5F5;
-    border-radius: 12px;
+    padding: 16px 16px;
+    background: #F8F8F8;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.05);
+
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 142%;
+    /* or 20px */
+
+    text-align: justify;
+
+    /* Light Black */
+
+    color: #484848;
 }
 .title
 {

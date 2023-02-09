@@ -4,6 +4,15 @@
     display: flex;
     justify-content: row;
 }
+
+.btn-subject:hover
+{
+    margin-left: 8px;
+    font-weight: 400;
+    transition: all 0.5s;
+}
+
+
 .btn-subject {
 
 align-items: center;
@@ -25,6 +34,7 @@ background: none;
 
 border-right:none;
 color:#ffffff;
+transition: all 0.5s;
 }
 
 .btn-subject-active
@@ -49,5 +59,6 @@ background: #8f8ad915;
 
 border-right: 4px solid #8F8AD9;
 color:#8F8AD9;
+transition: all 0.5s;
 
 }

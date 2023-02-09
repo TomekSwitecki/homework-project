@@ -7,6 +7,43 @@ h1 {
   line-height: 40px;
   
 }
+
+.GridContainer
+{
+  display: grid;
+  grid-template-columns: repeat(12, 70px);
+padding-left: 36px;
+  grid-column-gap: 36px;
+  grid-row-gap: 8px;
+
+  margin-top: 64px;
+  margin-bottom: 50px;
+  height: 100%;
+}
+
+.App_Container
+{
+  height: 100%;
+  background-color: #F8F8F8;
+
+  /* display: grid;
+  grid-template-columns: repeat(12, 76px);
+
+  grid-column-gap: 36px;
+  grid-row-gap: 8px;
+
+
+  vertical-align: middle;
+  max-height: 100%;
+
+  background-color: white; */
+
+}
+
+#root
+{
+  height: 100%;
+}
 img
 {
 
@@ -49,9 +86,10 @@ body,
 html {
   user-select: none;
   overflow: hidden;
-  margin:0px;
-  padding:0px;
+  margin:0;
+  padding:0;
   height:100%;
+  width: 100%;
   min-height: 100vh;
 }
 body {
@@ -89,22 +127,12 @@ button:hover {
 
 
 
-.Container {
+.HomePage_Container{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: flex-start;
   align-self: center;
 
-}
-.SubjectListContainer {
-  background-color: #ffffff;
-  /* width: 20%; */
-  width: 229px;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  /* height: 881px; */
   height: 100%;
 }
 
@@ -114,13 +142,11 @@ button:hover {
 
 
 .TaskContainer {
-  flex-direction: column;
-  display: flex;
-  gap: 15px;
-  /* width: 40%; */
-  width: 500px;
-  padding: 50px;
-  margin-top: 70px;
+  padding: 32px 32px;
+  grid-column-start: 1;
+  grid-column-end: 7;
+  background-color: rgb(255, 255, 255);
+  margin-bottom: 175px;
 }
 
 
@@ -130,27 +156,15 @@ button:hover {
 
 .StudentListContainer
 {
-  width: 640px;
     flex-direction: column;
     display: flex;
     gap: 15px;
     background-color: rgb(255, 255, 255);
-    padding: 50px;
-    margin-top: 70px;
-    margin-right: 50px;
+    grid-column-start: 7;
+    grid-column-end: 12;
+
 }
 
-.TaskDescriptionContainer 
-{
-  width: 640px;
-  flex-direction: column;
-  display: flex;
-  gap: 15px;
-  background-color: rgb(255, 255, 255);
-  padding: 50px;
-  margin-top: 70px;
-  margin-right: 50px;
-}
 
 
 .orange_accent

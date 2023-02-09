@@ -1,43 +1,50 @@
 .TaskName
 {
-font-family: 'Outfit';
-font-style: normal;
-font-weight: 500;
-font-size: 16px;
-line-height: 20px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  color: #1D1D1F;
+  text-transform: capitalize;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-
 .TaskItem__active {
-  color:#000000;
   width: 100%;
-  /* filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); */
-  
-  box-shadow: 0px 7px 3px 0px rgba(172, 172, 172, 0.4);
-  background: #f5f5f5;
-  border-radius: 12px;
-  /* width: 567px; */
-  width: 100%;
-  height: 81px;
-
-  padding: 10px 25px;
+  /* display: flex; */
+  flex-direction: row;
+  align-items: center;
+  padding: 16px 32px;
+  gap: 16px;
+  background: rgba(143, 138, 217, 0.1);
+  border-left: 7px solid #8F8AD9;
+  transition: all 0.2s;
+  border-bottom: 1px solid #F2F2F2;
 }
 .TaskItem {
-  color:#000000;
   width: 100%;
-
-  background: #ffffff;
-  border-radius: 12px;
-  /* width: 567px; */
-  width: 100%;
-  height: 81px;
+  /* display: flex; */
+  flex-direction: row;
+  align-items: center;
+  padding: 16px 32px;
+  gap: 16px;
+  
 
   
-  padding: 10px 25px;
+  background: #ffffff;
+  border-bottom: 1px solid #F2F2F2;
+  transition: all 0.2s;
 }
-
+.TaskItem:nth-child(2n)
+{
+background-color: #FCFCFC;
+}
 .TaskItem:hover
 {
-  box-shadow: 0px 2px 3px 0px rgba(172, 172, 172, 0.4);
+  border-bottom: 1px solid #F2F2F2;
+  padding-left: 40px;
+  transition: all 0.2s;
 }
 
 .TaskSubject
@@ -51,13 +58,15 @@ color: #959595;
 
 }
 
-.TaskItemContainer
+.TaskItemWrapper
 {
   text-align: left;
  display: flex; 
+ align-items: center;
  flex-direction: row;
  justify-content: space-between;
  gap:30px;
+ width: 100%;
 }
 
 .TaskItemTitleContainer
@@ -65,7 +74,7 @@ color: #959595;
   text-align: left;
   display: flex; 
   flex-direction: column;
-  width: 65%;
+  width: 35%;
 }
 
 .TaskItemDateContainer
@@ -73,15 +82,17 @@ color: #959595;
   text-align: left;
   display: flex; 
   flex-direction: column;
+  
 }
 
 .TaskDeadlineDate
 {
-font-family: 'Outfit';
-font-style: normal;
-font-weight: 500;
-font-size: 12px;
-line-height: 15px;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 13px;
+  background: none;
+  color: #71747D;
+  white-space: nowrap;
 }
 
 .TaskDaysRemaining

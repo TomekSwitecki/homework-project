@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import Tag from "../Tag/Tag";
 import styles from "./TaskItem.module.css";
-
+import inprogress_icon from "../icons/icon_inprogress.svg";
+import completed_icon from "../icons/icon_completed.svg";
 let ChosenTask = "";
 
 const TaskItem = (props) => {
@@ -26,7 +28,7 @@ const TaskItem = (props) => {
   const month = String(date.getMonth() + 1).padStart(2, "0");
   const day = String(date.getDate()).padStart(2, "0");
   const date_YYMMDD = [year, month, day].join(".");
-  console.log(date_YYMMDD);
+  //console.log(date_YYMMDD);
 
   const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
   const firstDate = new Date();
@@ -44,7 +46,7 @@ const TaskItem = (props) => {
 
 
   return (
-    <div>
+    <React.Fragment>
       <button
         onClick={SelectTask}
         className={
@@ -55,19 +57,13 @@ const TaskItem = (props) => {
         // className={styles.TaskItem__active}
       >
         {/* {props.id + " "} */}
-        <div className={styles.TaskItemContainer}>
-          <div>
-            <box-icon name="file" type="solid" color="#b7b3b3"></box-icon>
-          </div>
+        <div className={styles.TaskItemWrapper}>
           <div className={styles.TaskItemTitleContainer}>
             <span className={styles.TaskName}>
               {" "}
               {props.Task_title + " "}
             </span>
-            <span className={styles.TaskSubject}>
-              {" "}
-              {props.Task_subject + " "}{" "}
-            </span>
+
           </div>
 
           <div className={styles.TaskItemDateContainer}>
@@ -86,15 +82,18 @@ const TaskItem = (props) => {
             </span>
           </div>
           {diffDays > 0 ? (
-            <box-icon name="time" type="solid" color="#F69400"></box-icon>
+            <Tag icon={inprogress_icon}  text={"In progress"} color="blue"></Tag>
+            // <box-icon name="time" type="solid" color="#F69400"></box-icon>
           ) : diffDays < 0 ? (
-            <box-icon
-              name="check-square"
-              type="solid"
-              color="#7FE789"
-            ></box-icon>
+            <Tag icon={completed_icon} text={"Completed"} color="green"></Tag>
+            // <box-icon
+            //   name="check-square"
+            //   type="solid"
+            //   color="#7FE789"
+            // ></box-icon>
           ) : diffDays == 0 ? (
-            <box-icon name="time-five" type="solid" color="#FF6635"></box-icon>
+            <Tag icon={inprogress_icon} text={"Completed"} color="blue"></Tag>
+            // <box-icon name="time-five" type="solid" color="#FF6635"></box-icon>
           ) : (
             ""
           )}
@@ -102,7 +101,7 @@ const TaskItem = (props) => {
 
         {/* {props.description + " "} */}
       </button>
-    </div>
+    </React.Fragment>
   );
 };
 

@@ -7,7 +7,7 @@ import { useState } from "react";
 import fire from "../config/fire";
 import { getAuth, onAuthStateChanged, auth } from "firebase/auth";
 import { getDatabase, ref as dRef, child, get, push, set } from "firebase/database";
-
+import Heading from "../Heading/Heading";
 
 import {
   ref,
@@ -158,9 +158,8 @@ const TaskDescription = (props) =>
     {
       return (
         <React.Fragment>
-          <div className="TaskDescriptionContainer">
-            <h1 className="Container_titles">Task Description</h1>
-
+          <div className={styles.TaskDescriptionContainer}>
+            <Heading small Heading="View Task" Subheading="Explore content of existing task"></Heading>
             <h1 className={styles.title}> Task :</h1>
             <TaskItem
               Created_by={props.selectedTask.Created_by}
@@ -205,9 +204,9 @@ const TaskDescription = (props) =>
     else
     {      return (
       <React.Fragment>
-        <div className="TaskDescriptionContainer">
-          <h1 className="Container_titles">Task Description</h1>
-        </div>
+          <div className={styles.TaskDescriptionContainer}>
+            <Heading small Heading="View Task" Subheading="Explore content of existing task"></Heading>
+            </div>
       </React.Fragment>
     );
         

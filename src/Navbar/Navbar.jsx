@@ -50,13 +50,13 @@ const Navbar=(props)=>
         </div>
         <div className={styles.lower_container}>
           <div>
-        <hr className={styles.navbar_divider}></hr>
-        <Button   linkTo="#" type="submit" color="purple" text="Create Class +"  />
-        </div>
-        <div>
-        <hr className={styles.navbar_divider}></hr>
-        <NavbarButton icon={logout_icon} name={"Log Out"} logout={props.logout}></NavbarButton>
-        </div>
+            <hr className={styles.navbar_divider}></hr>
+            <Button   linkTo="#" type="submit" color="purple" text="Create Class +"  />
+            </div>
+            <div>
+            <hr className={styles.navbar_divider}></hr>
+            <NavbarButton icon={logout_icon} name={"Log Out"} logout={props.logout}></NavbarButton>
+          </div>
         </div>
 
       </div>

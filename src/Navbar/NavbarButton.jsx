@@ -16,7 +16,7 @@ const NavbarButton = (props) => {
 
     ChosenSubject = props.name;
     props.onSubjectSelected(ChosenSubjectData);
-    console.log(ChosenSubjectData);
+   // console.log(ChosenSubjectData);
 
   };
 

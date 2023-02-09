@@ -3,13 +3,7 @@
 width: 100%;
 }
 
-.Heading_text
-{
-font-weight: 500;
-font-size: 40px;
-line-height: 50px;
-color: #1D1D1F;
-}
+
 
 .Subheading_container
 {
@@ -17,11 +11,34 @@ color: #1D1D1F;
     flex-direction: row;
     gap: 8px;
 }
-
+.Heading_text
+{
+font-weight: 500;
+font-size: 40px;
+line-height: 50px;
+color: #1D1D1F;
+}
 .Subheading_text
 {
 font-weight: 500;
 font-size: 16px;
 line-height: 20px;
 color: #1D1D1F;
+}
+
+.Heading_text__small
+{
+font-weight: 500;
+font-size: 24px;
+line-height: 50px;
+color: #1D1D1F;
+
+line-height: normal;
+}
+.Subheading_text__small
+{
+font-weight: 400;
+font-size: 14px;
+line-height: 20px;
+color: #BEBEBE;
 }

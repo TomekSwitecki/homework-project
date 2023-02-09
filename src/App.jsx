@@ -30,6 +30,7 @@ import { getAuth, signOut } from "firebase/auth";
 import TaskDescription from "./Task/TaskDescription";
 
 import Navbar from "./Navbar/Navbar"
+import TaskContainer from "./TaskContainer/TaskContainer";
 const logout = () => {
   const auth = getAuth();
   signOut(auth)
@@ -48,7 +49,7 @@ const App=(props)=> {
 
 
   const [GeneratedSubjectCode, setGenereatedSubjectCode] = useState();
-  console.log(props);
+  //console.log(props);
   const [SubjectPopUpVisible, setSubjectPopUpVisibility] = useState(false);
   function SubjectPopUpVisibility() {
     setGenereatedSubjectCode(CodeGenerator());
@@ -116,12 +117,12 @@ const App=(props)=> {
         ObjectHelper = e.addedStudents.includes(
           getAuth(fire).currentUser.email
         );
-        console.log("Array");
+       // console.log("Array");
       } else {
         ObjectHelper = Object.values(e.addedStudents).includes(
           getAuth(fire).currentUser.email
         );
-        console.log("Object");
+       // console.log("Object");
       }
       return e.Created_by === getAuth(fire).currentUser.email || ObjectHelper;
     });
@@ -129,7 +130,7 @@ const App=(props)=> {
   async function fetchSubjecttDatabase(subject_data) {
     console.log("Fetching created subject data to database");
     const database = getDatabase();
-    console.log(subject_data);
+    //console.log(subject_data);
     push(ref(database, "subjects/"), subject_data);
   }
 
@@ -178,10 +179,10 @@ async function getTaskData() {
     .then((snapshot) => {
       if (snapshot.exists()) {
         setTaskData([]);
-        console.log(snapshot.val());
+       // console.log(snapshot.val());
         Object.entries(snapshot.val()).forEach(([key, value]) => {
-          console.log(key, value);
-                      console.log(value);
+          //console.log(key, value);
+                    //  console.log(value);
                       setTaskData((oldArray) => [...oldArray, value]);
         });
        // console.log(taskData);
@@ -232,17 +233,17 @@ async function getTaskData() {
       .then((snapshot) => {
         if (snapshot.exists()) {
           setStudentData([]);
-          console.log(snapshot.val());
+         // console.log(snapshot.val());
           Object.entries(snapshot.val()).forEach(([key, value]) => {
-            console.log(key, value);
-            console.log(value);
+           // console.log(key, value);
+            //console.log(value);
             if(value.role=="STUDENT")
             {
             setStudentData((oldArray) => [...oldArray, value]);
             }
             
           });
-          console.log(studentData);
+          //console.log(studentData);
 
           //setSubjectData(snapshot.val());
         } else {
@@ -269,7 +270,7 @@ async function getTaskData() {
   const [selectedSubject, setSelectedSubject] = useState({});
   const onSubjectSelectedDataHandler = (selectedSubjectData) => {
     let loading=false;
-    console.log(selectedSubjectData);
+   // console.log(selectedSubjectData);
          getTaskData();
          setSelectedSubject(selectedSubjectData);
          setSelectedTask({});
@@ -277,17 +278,17 @@ async function getTaskData() {
 
 
   };
-  console.log("SELECTED SUBJECT: " + selectedSubject.name);
-console.log("SELECTED SUBJECT STUDENTS: " + selectedSubject.addedStudents);
+  //console.log("SELECTED SUBJECT: " + selectedSubject.name);
+//console.log("SELECTED SUBJECT STUDENTS: " + selectedSubject.addedStudents);
   
 
 const [selectedTask, setSelectedTask] = useState({});
   const onTaskSelectedDataHandler = (selectedTaskData) => {
     setSelectedTask(selectedTaskData);
-    console.log(selectedTaskData);
+    //console.log(selectedTaskData);
   };
-  console.log(taskData);
-console.log(selectedTask);
+  //console.log(taskData);
+  //console.log(selectedTask);
   const onSubjectJoinedHandler = () => {
     getSubjectData();
     SubjectPopUpVisibility();
@@ -302,8 +303,8 @@ console.log(selectedTask);
     getSubjectData();
     SubjectPopUpVisibility();
   };
-  console.log(Object.values(subjectData));
-  console.log(subjectData);
+  //console.log(Object.values(subjectData));
+  //console.log(subjectData);
 
   const onTaskCreatedDataHandler = (createdTaskData) => {
     console.log(createdTaskData);
@@ -322,7 +323,7 @@ console.log(selectedTask);
 
 
     const filteredStudents = studentData.filter((e) => {
-      console.log(selectedSubject);
+      //console.log(selectedSubject);
       //console.log(Object.keys(selectedSubject).length !== 0);
       if (Object.keys(selectedSubject).length !== 0) 
       {
@@ -359,7 +360,7 @@ console.log(selectedTask);
 
 
   return (
-    <div className="App">
+    <div className="App_Container">
 
       {SubjectPopUpVisible ? (
         <SubjectPopUp
@@ -380,8 +381,8 @@ console.log(selectedTask);
         />
       ) : null}
 
-      <div className="Container">
-        <div className="SubjectListContainer">
+      <div className="HomePage_Container">
+
           {/* <Logo></Logo> */}
           {/* <h1 className="Container_titles">Subjects</h1>
           <h1>{props.rola}</h1> */}
@@ -398,16 +399,23 @@ console.log(selectedTask);
 
           <Navbar subjects={filteredSubjects} onSubjectSelectedDataHandler={onSubjectSelectedDataHandler} logout={logout}></Navbar>
 
-
+{/* 
           {props.rola === "TEACHER" ? (
             <SubjectCreate onClick={SubjectPopUpVisibility} />
           ) : (
             <SubjectAdd onClick={SubjectPopUpVisibility} />
-          )}
-        </div>
+          )} */}
+
+        <div className="GridContainer">
+
 
         <div className="TaskContainer">
-          <h1 className="Container_titles">Tasks </h1>
+          <TaskContainer filteredTasks={filteredTasks} selectedSubject={selectedSubject.name} TaskPopUpVisibility={TaskPopUpVisibility} onTaskSelectedDataHandler={onTaskSelectedDataHandler}></TaskContainer>
+          <TaskDescription
+            userEmail={getAuth(fire).currentUser.email}
+            selectedTask={selectedTask}
+          />
+          {/* <h1 className="Container_titles">Tasks </h1>
           <TaskActionBar />
           {filteredTasks.map((e, index) => (
             <TaskItem
@@ -423,8 +431,11 @@ console.log(selectedTask);
           ))}
           {props.rola === "TEACHER" ? (
             <TaskAdd onClick={TaskPopUpVisibility} />
-          ) : null}
+          ) : null} */}
         </div>
+
+
+
         {props.rola === "TEACHER" ? (
           <div className="StudentListContainer">
             <h1 className="Container_titles">Student List</h1>
@@ -447,6 +458,7 @@ console.log(selectedTask);
           />
         )}
         {/* <button onClick={logout}>LOG OUT</button> */}
+        </div>
       </div>
     </div>
   );

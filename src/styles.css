@@ -1,24 +1,54 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: #ffffff00;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
 h1 {
   margin: 0px;
   font-family: 'Outfit';
   font-style: normal;
   font-weight: 500;
-  font-size: 32px;
+  font-size: 18px;
   line-height: 40px;
+  color: #BEBEBE;
   
 }
 
 .GridContainer
 {
   display: grid;
-  grid-template-columns: repeat(12, 70px);
-padding-left: 36px;
-  grid-column-gap: 36px;
+  grid-template-columns: repeat(12, 64px);
+padding-left: 32px;
+padding-right: 32px;
+  grid-column-gap: 32px;
   grid-row-gap: 8px;
 
   margin-top: 64px;
-  margin-bottom: 50px;
-  height: 100%;
+  margin-bottom: 64px;
+  /* 2x64 margin top,bottom= 128 */
+  height: calc(100% - 128px);
 }
 
 .App_Container
@@ -54,7 +84,7 @@ img
   -ms-user-select: none;
 }
 
-.expander
+.expander__full
 {
   width: 100%;
 }
@@ -62,6 +92,11 @@ img
 .expander__medium
 {
   width: 75%;
+}
+
+.expander__small
+{
+  width: 50%;
 }
 
 .link
@@ -142,11 +177,13 @@ button:hover {
 
 
 .TaskContainer {
+  display: grid;
+  grid-template-rows: 60% 40%;
   padding: 32px 32px;
   grid-column-start: 1;
   grid-column-end: 7;
   background-color: rgb(255, 255, 255);
-  margin-bottom: 175px;
+
 }
 
 
@@ -156,12 +193,11 @@ button:hover {
 
 .StudentListContainer
 {
-    flex-direction: column;
-    display: flex;
-    gap: 15px;
-    background-color: rgb(255, 255, 255);
-    grid-column-start: 7;
-    grid-column-end: 12;
+  display: grid;
+  padding: 32px 32px;
+  grid-column-start: 7;
+  grid-column-end: 13;
+  background-color: rgb(255, 255, 255);
 
 }
 

@@ -49,11 +49,11 @@ const Navbar=(props)=>
           ))}
         </div>
         <div className={styles.lower_container}>
-          <div>
+          <div className="expander__full">
             <hr className={styles.navbar_divider}></hr>
-            <Button   linkTo="#" type="submit" color="purple" text="Create Class +"  />
+            <Button size="full" linkTo="#" type="submit" color="purple" text="+ Create Class"  />
             </div>
-            <div>
+            <div className="expander__medium">
             <hr className={styles.navbar_divider}></hr>
             <NavbarButton icon={logout_icon} name={"Log Out"} logout={props.logout}></NavbarButton>
           </div>

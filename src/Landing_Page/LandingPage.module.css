@@ -31,7 +31,7 @@
 grid-gap: 32px;
 display: grid;
 grid-auto-flow: column;
-grid-template-columns: 100px 100px 100px 167px;
+grid-template-columns: 100px 100px 100px auto;
 align-items: baseline;
 }
 

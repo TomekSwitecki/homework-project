@@ -14,11 +14,13 @@ const TaskContainer=(props)=>
   return (
     <div className={styles.TaskContainer_Wrapper}>
         <div className={styles.Heading_container}>
-            <Heading small Heading="Manage Tasks" Subheading="Manage all of you existing task or create new"  ></Heading>
-            <Button  medium linkTo="#" type="submit" color="green" text="+ Add New Task "  />
+            <Heading small Heading="Manage Tasks" Subheading="Manage your existing tasks or create new."  ></Heading>
+            <Button size="small" linkTo="#" type="submit" color="green" text="+ Add New Task "  />
         </div>
-        <TaskActionBar />
+       
         <div className={styles.TaskItem__Container}>
+        <table className={styles.TaskItem__Table}>
+        <TaskActionBar />
         {props.filteredTasks.map((e, index) => (
         <TaskItem
             Created_by={e.Created_by}
@@ -31,6 +33,7 @@ const TaskContainer=(props)=>
             onTaskSelected={props.onTaskSelectedDataHandler}
         />
         ))}
+      </table>
         </div>
         {props.rola === "TEACHER" ? (
         <TaskAdd onClick={props.TaskPopUpVisibility} />

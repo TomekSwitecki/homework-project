@@ -1,31 +1,27 @@
 .actionBar_container
 {
-    display: flex;
-    text-align: left;
-    align-items: center;
-    flex-direction: row;
-    gap: 30px;
-    justify-content: space-between;
+    width: 100%;
+
+    
     padding: 16px 32px;
     font-weight: 500;
     font-size: 14px;
     line-height: 15px;
 
-    width: 100%;
-    box-sizing: border-box;
-    
-    
 
+    box-sizing: border-box;
     
     color: #EFEFEF;
     background: #1D1D1F;
 
-    text-align: left;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 30px;
-    width: 100%;
+    position: sticky;
+  top: 0; /* Don't forget this, required for the stickiness */
 
+}
+
+.actionBar_header
+{
+    font-size: 14px;
+    font-weight: 500;
+    padding: 16px 16px;
 }

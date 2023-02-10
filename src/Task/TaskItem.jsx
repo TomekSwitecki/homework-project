@@ -47,60 +47,31 @@ const TaskItem = (props) => {
 
   return (
     <React.Fragment>
-      <button
-        onClick={SelectTask}
-        className={
+      <tr onClick={SelectTask}         
+      className={
           props.Task_title === ChosenTask
             ? styles["TaskItem__active"]
             : styles["TaskItem"]
-        }
-        // className={styles.TaskItem__active}
-      >
-        {/* {props.id + " "} */}
-        <div className={styles.TaskItemWrapper}>
-          <div className={styles.TaskItemTitleContainer}>
-            <span className={styles.TaskName}>
-              {" "}
-              {props.Task_title + " "}
-            </span>
-
-          </div>
-
-          <div className={styles.TaskItemDateContainer}>
-            <span className={styles.TaskDeadlineDate}>
-              {props.Task_date + " "}
-            </span>
-            <span className={styles.TaskDaysRemaining}>
-              {/* condition1 ? result1 : condition2 ? result3 : result4 */}
-              {diffDays > 0
-                ? diffDays + " days remaining"
-                : diffDays < 0
-                ? null
-                : diffDays == 0
-                ? "Today"
-                : ""}
-            </span>
-          </div>
-          {diffDays > 0 ? (
+        }>
+      <td className={styles.title_cell}>
+        {props.Task_title}
+      </td>
+      <td className={styles.deadline_cell}>    
+        <span className={styles.TaskDeadlineDate}>
+            {props.Task_date + " "}
+          </span></td>
+      <td className={styles.tag_cell}>          
+        {diffDays > 0 ? (
             <Tag icon={inprogress_icon}  text={"In progress"} color="blue"></Tag>
-            // <box-icon name="time" type="solid" color="#F69400"></box-icon>
           ) : diffDays < 0 ? (
             <Tag icon={completed_icon} text={"Completed"} color="green"></Tag>
-            // <box-icon
-            //   name="check-square"
-            //   type="solid"
-            //   color="#7FE789"
-            // ></box-icon>
           ) : diffDays == 0 ? (
             <Tag icon={inprogress_icon} text={"Completed"} color="blue"></Tag>
-            // <box-icon name="time-five" type="solid" color="#FF6635"></box-icon>
           ) : (
             ""
           )}
-        </div>
-
-        {/* {props.description + " "} */}
-      </button>
+          </td>
+      </tr>
     </React.Fragment>
   );
 };

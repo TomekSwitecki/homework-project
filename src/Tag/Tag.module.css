@@ -6,7 +6,7 @@
     align-items: center;
     padding: 6px 8px;
     gap: 6px;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 14px;
     line-height: 10px;
     /* identical to box height */
@@ -21,6 +21,8 @@
     background: #EDF6FE;
     border: 1px solid #D7E9FF;
     border-radius: 3px;
+
+    width: fit-content;
 }
 
 .tag_container__green
@@ -31,7 +33,7 @@
     align-items: center;
     padding: 6px 8px;
     gap: 6px;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 14px;
     line-height: 10px;
     /* identical to box height */
@@ -46,4 +48,5 @@
     background: #EDFEF1;
     border: 1px solid #D7FFD9;
     border-radius: 3px;
+    width: fit-content;
 }

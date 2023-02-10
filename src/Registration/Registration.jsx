@@ -190,9 +190,9 @@ return (
           
 
         <div className={styles.form_buttons}>
-        <Button medium  linkTo="#" type="submit" color="black" text="Create account" onClick={(event) => submitHandler(Role, event)} />
-        <Divider text="or" type="text"></Divider>
-        <Button icon={google_icon} medium linkTo="#" type="submit" color="white" text="Log in with Google" onClick={(event) => submitHandler(Role, event)} />   
+        <Button size="medium"  linkTo="#" type="submit" color="black" text="Create account" onClick={(event) => submitHandler(Role, event)} />
+        <Divider size="medium" text="or" type="text"></Divider>
+        <Button size="medium" icon={google_icon}  linkTo="#" type="submit" color="white" text="Log in with Google" onClick={(event) => submitHandler(Role, event)} />   
         </div>
       </form>
 

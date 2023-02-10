@@ -22,20 +22,22 @@ const NavbarButton = (props) => {
 
 
   return (
-    <div className={styles.NavbarButton_container}>
-    <img src={props.icon}></img>
-    <button
-      title={"Subject Description : " + props.description}
-      className={
-        props.name === ChosenSubject
-          ? styles["btn-subject-active"]
-          : styles["btn-subject"]
-      }
-      onClick={!props.logout ? SelectSubject : props.logout}
-    >
-      {props.name + " "}
-    </button>
-    </div>
+
+      <div className={styles.NavbarButton_container}>
+      <img src={props.icon}></img>
+      <button
+        title={"Subject Description : " + props.description}
+        className={
+          props.name === ChosenSubject
+            ? styles["btn-subject-active"]
+            : styles["btn-subject"]
+        }
+        onClick={!props.logout ? SelectSubject : props.logout}
+      >
+        {props.name + " "}
+      </button>
+      </div>
+
   );
 };
 

@@ -20,10 +20,10 @@ function LandingPage() {
           {/* <Logo /> */}
         </div>
         <div className={styles.buttons_navbar}>
-          <Button active color="ghost" linkTo="/#" text="Product"/>
-          <Button color="ghost" linkTo="/#" text="Pricing"/>
-          <Button color="ghost" linkTo="/#" text="Contact"/>
-          <Button linkTo="/login" color="black" text="Login"  />
+          <Button size="full" active color="ghost" linkTo="/#" text="Product"/>
+          <Button size="full" color="ghost" linkTo="/#" text="Pricing"/>
+          <Button size="full" color="ghost" linkTo="/#" text="Contact"/>
+          <Button size="full" linkTo="/login" color="black" text="Login"  />
         </div>
 
         <div className={styles.hero_container}>
@@ -40,8 +40,8 @@ function LandingPage() {
           {/* <Link to="/registration"></Link> */}
           <div className={styles.hero_buttons_grid_container}>
 
-          <Button linkTo="/registration" color="orange" text="Start learning" state={"STUDENT"} />
-          <Button linkTo="/registration" color="purple" text="Start teaching" state={"TEACHER"} />
+          <Button size="full" linkTo="/registration" color="orange" text="Start learning" state={"STUDENT"} />
+          <Button size="full" linkTo="/registration" color="purple" text="Start teaching" state={"TEACHER"} />
 
           </div>
 

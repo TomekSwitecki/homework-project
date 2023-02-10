@@ -3,11 +3,13 @@ import styles from "./TaskActionBar.module.css";
 const TaskActionBar=()=>
 {
 return (
-  <div className={styles.actionBar_container}>
-    <div className={styles.title_container}>Task Title </div>
-    <div>Date</div>
-    <div>Status</div>
-  </div>
+
+  <tr className={styles.actionBar_container}>
+  <th className={styles.actionBar_header}>Task Title</th>
+  <th className={styles.actionBar_header}>Date</th>
+  <th className={styles.actionBar_header}>Status</th>
+</tr>
+
 );
 
 }

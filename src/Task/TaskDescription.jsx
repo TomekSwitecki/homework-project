@@ -160,7 +160,6 @@ const TaskDescription = (props) =>
         <React.Fragment>
           <div className={styles.TaskDescriptionContainer}>
             <Heading small Heading="View Task" Subheading="Explore content of existing task"></Heading>
-            <h1 className={styles.title}> Task :</h1>
             <TaskItem
               Created_by={props.selectedTask.Created_by}
               Task_date={props.selectedTask.Task_date}
@@ -175,10 +174,10 @@ const TaskDescription = (props) =>
             </div>
             <h1 className={styles.title}> File Attachements :</h1>
             <a target="_blank" href={props.selectedTask.Task_file_URL}>
-              {props.selectedTask.Task_file_URL}
+              "Download attached files"
             </a>
 
-            <h1 className={styles.title}> File Upload :</h1>
+            {/* <h1 className={styles.title}> File Upload :</h1>
             <input
             required
               onChange={fileHandler}
@@ -196,7 +195,7 @@ const TaskDescription = (props) =>
               >
                 Submit
               </button>
-            </div>
+            </div> */}
           </div>
         </React.Fragment>
       );

@@ -7,16 +7,32 @@
 
 .TaskContainer_Wrapper
 {
-    height: 50%;
-    max-height: 50%;
+    height: 90%;
+    max-height: 90%;
     margin-bottom: 36px;
+    width: 100%;
+
+    min-width: 100%;
+    max-width: 100%;
+
 }
 
+.TaskItem__Table
+{
 
+    width: 100%;
+    table-layout: fixed;
+    width: 100%;
+    border-spacing: 0px;
+    text-align: initial;
+}
 .TaskItem__Container
 {
-    overflow: auto;
+    overflow-y:auto;
+    overflow-x: hidden;
     line-height: normal;
-    height: 75%;
+    height: 70%;
+    max-height: 70%;
+    min-height: 70%;
     box-sizing: border-box;
 }

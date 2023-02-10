@@ -1,5 +1,6 @@
 import React from "react";
 import buttons from "../buttons.module.css";
+
 import { Link } from "react-router-dom";
 
 import active_indicator from './Underline.svg';
@@ -8,7 +9,7 @@ import active_indicator from './Underline.svg';
 function Button(props) {
 
   return (
-    <div className={!props.medium ? "expander" : "expander__medium"}>
+    <div className={`${[`expander__${props.size}`]}`}>
       <div className={buttons.button_container}>
       {props.icon!=null ? <img className={buttons.button_icon_prepend} src={props.icon}></img> : null}
       <Link to={props.linkTo} state={props.state}>

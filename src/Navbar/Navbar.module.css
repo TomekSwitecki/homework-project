@@ -3,11 +3,15 @@
     background-color: #1D1D1F;
     padding-left: 24px;
     height: 100%;
-    min-width: 225px;
+
+    width: clamp(256px,256px,256px);
+    min-width: 256px;
     padding-bottom: 16px;
 
     display: flex;
     flex-direction: column;
+
+    box-sizing: border-box;
 
 }
 
@@ -15,7 +19,7 @@
 {
     width: 156px;
     display: block;
-    padding-bottom: 50px;
+    padding-bottom: 32px;
 
 }
 
@@ -32,7 +36,8 @@
     gap: 8px;
     flex-direction: column;
 
-    
+    overflow: auto;
+    height: 80%;
 }
 
 .navbar_divider
@@ -47,12 +52,15 @@
 
 .lower_container
 {
+    flex-grow: 1;
+    align-items: center;
+    box-sizing: border-box;
     align-self: center;
-    padding-right: 32px;
+    padding-right: 24px;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     height: 100%;
-    
+    width: 100%;
     padding-bottom: 50px;
 }

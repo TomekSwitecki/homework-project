@@ -1,8 +1,12 @@
 import React from "react";
-import styles from "./StudentItem.module.css";
+// import styles from "./StudentItem.module.css";
+import styles from "../Task/TaskItem.module.css"
 import { getDatabase, ref, child, get, push, set } from "firebase/database";
 import { getAuth, signOut } from "firebase/auth";
 import fire from "../config/fire";
+import Tag from "../Tag/Tag";
+import inprogress_icon from "../icons/icon_inprogress.svg";
+import completed_icon from "../icons/icon_completed.svg";
 
 const StudentItem = (props) => {
 
@@ -59,26 +63,44 @@ async function downloadStudentWork() {
 
 
 
-  return (
-    <div className={styles.student_item} onClick={downloadStudentWork}>
-      {/* <div>
-        <input type="checkbox" id="selected" className="checkbox" />
-      </div> */}
-      <div>
-        <img
-          draggable="false"
-          className={styles.user_profile_picture}
-          src="https://cdn-icons-png.flaticon.com/512/147/147144.png"
-        ></img>
-      </div>
-      <div>{props.f_name + " " + props.l_name}</div>
-      <div>{props.mail}</div>
-      <div>{props.date}</div>
-      <div className={styles.statusbar}>
-        {/* <box-icon className={styles.statusbar} name="polygon" type="solid" color="#08f70d"></box-icon> */}
-      </div>
-    </div>
+  return ( 
+  <React.Fragment>
+    <tr onClick={downloadStudentWork}         
+    className={styles["TaskItem"] }>
+    <td className={styles.title_cell}>
+    {props.f_name + " " + props.l_name}
+    </td>
+    <td className={styles.deadline_cell}>    
+      <span className={styles.TaskDeadlineDate}>
+          {props.mail}
+        </span></td>
+    <td className={styles.tag_cell}>          
+          <Tag icon={inprogress_icon}  text={"In progress"} color="blue"></Tag>
+        </td>
+    </tr>
+
+    </React.Fragment>
   );
 };
 
 export default StudentItem;
+
+
+// <div className={styles.student_item} onClick={downloadStudentWork}>
+// {/* <div>
+//   <input type="checkbox" id="selected" className="checkbox" />
+// </div> */}
+// <div>
+//   <img
+//     draggable="false"
+//     className={styles.user_profile_picture}
+//     src="https://cdn-icons-png.flaticon.com/512/147/147144.png"
+//   ></img>
+// </div>
+// <div>{props.f_name + " " + props.l_name}</div>
+// <div>{props.mail}</div>
+// <div>{props.date}</div>
+// <div className={styles.statusbar}>
+//   {/* <box-icon className={styles.statusbar} name="polygon" type="solid" color="#08f70d"></box-icon> */}
+// </div>
+// </div>

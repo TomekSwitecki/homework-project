@@ -31,6 +31,9 @@ import TaskDescription from "./Task/TaskDescription";
 
 import Navbar from "./Navbar/Navbar"
 import TaskContainer from "./TaskContainer/TaskContainer";
+import StudentListContainer from "./StudentListContainer/StudentListContainer";
+import Divider from "./Divider/Divider";
+import Heading from "./Heading/Heading";
 const logout = () => {
   const auth = getAuth();
   signOut(auth)
@@ -438,8 +441,13 @@ const [selectedTask, setSelectedTask] = useState({});
 
         {props.rola === "TEACHER" ? (
           <div className="StudentListContainer">
-            <h1 className="Container_titles">Student List</h1>
-            {filteredStudents.map((e, index) => (
+            <StudentListContainer                 
+            selectedTask={selectedTask}
+            filteredStudents={filteredStudents}>
+
+            </StudentListContainer>
+
+            {/* {filteredStudents.map((e, index) => (
               <StudentItem
                 //id={e.index}
                 selectedTask={selectedTask}
@@ -449,7 +457,7 @@ const [selectedTask, setSelectedTask] = useState({});
                 // date={e.Date}
                 // status={e.Status}
               />
-            ))}
+            ))} */}
           </div>
         ) : (
           <TaskDescription

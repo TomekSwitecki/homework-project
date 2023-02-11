@@ -20,7 +20,7 @@ const TaskContainer=(props)=>
        
         <div className={styles.TaskItem__Container}>
         <table className={styles.TaskItem__Table}>
-        <TaskActionBar />
+        <TaskActionBar a={"Task Title"} b={"Date"} c={"Status"}/>
         {props.filteredTasks.map((e, index) => (
         <TaskItem
             Created_by={e.Created_by}

@@ -15,6 +15,8 @@ import {
   uploadBytesResumable,
   getDownloadURL,
 } from "firebase/storage";
+import DownloadContent from "../DownloadContent/DownloadContent";
+import Divider from "../Divider/Divider";
 const _ = require("lodash"); 
 // import {
 //   getStorage,
@@ -159,7 +161,16 @@ const TaskDescription = (props) =>
       return (
         <React.Fragment>
           <div className={styles.TaskDescriptionContainer}>
-            <Heading small Heading="View Task" Subheading="Explore content of existing task"></Heading>
+            <div className={styles.TaskDescriptionHeading}>
+            <Heading small Heading="Task Details" Subheading="Explore content of selected task."></Heading>
+            </div>
+            <div>
+            <table className={styles.TableContainer}>
+              <tr>
+                <thead></thead>
+                <thead></thead>
+                <thead></thead>
+              </tr>
             <TaskItem
               Created_by={props.selectedTask.Created_by}
               Task_date={props.selectedTask.Task_date}
@@ -168,15 +179,22 @@ const TaskDescription = (props) =>
               Task_subject={props.selectedTask.Task_subject}
               Task_title={props.selectedTask.Task_title}
             />
+            </table>
+            </div>
+            <div className={styles.DescriptionContainer}>
             <h1 className={styles.title}> Description :</h1>
+
             <div className={styles.description}>
               {props.selectedTask.Task_description}
             </div>
-            <h1 className={styles.title}> File Attachements :</h1>
-            <a target="_blank" href={props.selectedTask.Task_file_URL}>
-              "Download attached files"
-            </a>
-
+            </div>
+            <div>
+              <h1 className={styles.title}> File Attachements :</h1>
+              <DownloadContent size="full" href={props.selectedTask.Task_file_URL}></DownloadContent>
+              {/* <a target="_blank" href={props.selectedTask.Task_file_URL}>
+                "Download attached files"
+              </a> */}
+            </div>
             {/* <h1 className={styles.title}> File Upload :</h1>
             <input
             required
@@ -203,7 +221,7 @@ const TaskDescription = (props) =>
     else
     {      return (
       <React.Fragment>
-          <div className={styles.TaskDescriptionContainer}>
+          <div className={styles.TaskDescriptionContainer__empty}>
             <Heading small Heading="View Task" Subheading="Explore content of existing task"></Heading>
             </div>
       </React.Fragment>

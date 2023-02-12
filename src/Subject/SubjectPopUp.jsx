@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import styles from "./SubjectPopUp.module.css";
-import popup from "../popup.module.css";
 import buttons from "../buttons.module.css"
 import inputs from "../inputs.module.css";
 import fire from "../config/fire";
 import { getAuth, onAuthStateChanged, auth } from "firebase/auth";
 import { getDatabase, ref, child, get, update, push, set } from "firebase/database";
-
-
+import Inputfield from "../Inputfield/Inputfield";
+import Divider from "../Divider/Divider";
+import Heading from "../Heading/Heading";
+import Button from "../Button/Button";
+import FlexContainer from "../FlexContainer/FlexContainer";
+import Modal from "../Modal/Modal";
+import modal from "../Modal/Modal.module.css";
 function SubjectPopUp(props) {
   const [enteredSubjectName, setEnteredSubjectName] = useState("");
   const [enteredSubjectDescription, setEnteredSubjectDescription] =
@@ -119,67 +123,47 @@ function SubjectPopUp(props) {
 
   if (props.role === "TEACHER") {
     return (
-      <div className={popup.popUp}>
+      <Modal>
         <form onSubmit={submitHandler}>
-          <div className={popup.popUpTitle}>Create class</div>
-          <hr />
-          <div className={popup.sectionTitles}>Subject name</div>
+          <FlexContainer props={{ gap: "16", direction:"column", height:"auto" }}>
+          <FlexContainer props={{ gap: "16" }}>
+            <FlexContainer props={{ gap: "16" }}>
+              <Heading small Heading="Create Class" Subheading="Generate unique code and provide class details." ></Heading>
+              <Divider type="normal" size="full"></Divider>
+            </FlexContainer>
+            <FlexContainer props={{ gap: "16" }}>
+              <Inputfield required value={enteredSubjectName} type="text" onChange={subjectNameChangeHandler} label={"Subject Name"}></Inputfield>
+              <Inputfield required value={enteredSubjectDescription} type="text" onChange={subjectDescriptionHandler} label={"Subject Description"}></Inputfield>
+            </FlexContainer>
+          </FlexContainer>
 
-          <input
-            required
-            onChange={subjectNameChangeHandler}
-            value={enteredSubjectName}
-            type="text"
-            placeholder="Enter subject name..."
-            className={`${inputs.form__input} ${inputs.form__input__normal}`}
-          />
-
-          <div className={popup.sectionTitles}>Subject Description</div>
-
-          <input
-            required
-            onChange={subjectDescriptionHandler}
-            value={enteredSubjectDescription}
-            type="text"
-            placeholder="Enter subject description..."
-            className={`${inputs.form__input} ${inputs.form__input__normal}`}
-          />
-          <div className={popup.sectionTitles}>
-            Your class code has been generated!
-          </div>
-          <span className={styles.text_small}>Click to copy to clipborad.</span>
-          <button disabled className={styles.code_display}>
-            {props.subjectCode}
-          </button>
-
-          <div className={popup.button_container}>
-            <button
-              className={`${buttons.btn_normal} ${buttons.btn_cancel}`}
+          <Divider type="normal" size="full"></Divider>
+          <FlexContainer props={{ gap:"16", direction:"column" }}>
+            <Heading small Heading="Your class code" Subheading="This code is used to join your class." ></Heading>
+            <button type="button" className={styles.code_display} onClick={() => {navigator.clipboard.writeText(props.subjectCode)}}>
+              {props.subjectCode}
+            </button>
+            <Divider type="normal"></Divider>
+            <div className={modal.button_container}>
+            <Button size="small"  color="white" text="Cancel"              
               onClick={() => {
-                console.log("Cancel");
-                props.onCancel();
-              }}
-            >
-              Cancel
-            </button>
-
-            <button
-              type="submit"
-              className={`${buttons.btn_long} ${buttons.btn_orange}`}
-            >
-              Create class
-            </button>
-          </div>
+                    console.log("Cancel");
+                    props.onCancel();
+                  }} />  
+                <Button size="full"  type="submit" color="orange" text="Create Class"></Button>
+            </div>
+          </FlexContainer>
+          </FlexContainer>
         </form>
-      </div>
+      </Modal>
     );
   } else {
     return (
-      <div className={popup.popUp}>
+      <div className={modal.popUp}>
         <form onSubmit={submitHandler}>
-          <div className={popup.popUpTitle}>Join class</div>
+          <div className={modal.popUpTitle}>Join class</div>
           <hr />
-          <div className={popup.sectionTitles}>Subject code</div>
+          <div className={modal.sectionTitles}>Subject code</div>
 
           <input
             required
@@ -190,9 +174,9 @@ function SubjectPopUp(props) {
             className={`${inputs.form__input} ${inputs.form__input__code}`}
           />
 
-          <div className={popup.button_container}>
+          <div className={modal.button_container}>
             <button
-              className={`${buttons.btn_normal} ${buttons.btn_cancel}`}
+              className={`${buttons.btn_wrapper} ${buttons.btn_cancel}`}
               onClick={() => {
                 console.log("Cancel");
                 props.onCancel();
@@ -203,7 +187,7 @@ function SubjectPopUp(props) {
 
             <button
               type="submit"
-              className={`${buttons.btn_long} ${buttons.btn_orange}`}
+              className={`${buttons.btn_wrapper} ${buttons.btn_orange}`}
             >
               Join Class
             </button>

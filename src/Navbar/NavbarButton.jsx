@@ -24,8 +24,8 @@ const NavbarButton = (props) => {
   return (
 
       <div className={styles.NavbarButton_container}>
-      <img src={props.icon}></img>
       <button
+      id={props.id}
         title={"Subject Description : " + props.description}
         className={
           props.name === ChosenSubject

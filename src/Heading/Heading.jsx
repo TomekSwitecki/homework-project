@@ -11,7 +11,7 @@ function Heading(props) {
     return (
       <div className={Headings.Heading_container}>
              <span className={Headings.Heading_text}>{props.Heading}</span>
-             <div className={Headings.Subheading_container}><span className={Headings.Subheading_text}>{props.Subheading} </span>{props.link ?<Link to={props.LinkTo} className={"link"} state={props.state}>{props.LinkText}</Link>: null}</div>
+             <div className={Headings.Subheading_container}><span className={Headings.Subheading_text}>{props.Subheading} </span>{props.LinkTo ?<Link to={props.LinkTo} className={"link"} state={props.state}>{props.LinkText}</Link>: null}</div>
       </div>
     );
   }

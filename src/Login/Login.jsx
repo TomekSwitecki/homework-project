@@ -62,8 +62,8 @@ return (
 
         <Heading link Heading={"Welcome back!  👋"} Subheading={"Not registered yet?"} LinkText={"Create an account"} LinkTo={"/Registration"} state={"TEACHER"}></Heading>
         <Inputfield required value={email} type="email" onChange={emailChangeHandler} label={"Email address"}></Inputfield>
-        <Inputfield sublabel LinkTo="#" LinkText="Forgot password?" value={password} type="password" onChange={passwordChangeHandler} label={"Password"}></Inputfield>
-        <Button size="full"  linkTo="#" type="submit" color="black" text="Sign In" onClick={VerifyUser} />
+        <Inputfield sublabel  LinkText="Forgot password?" LinkTo="#" value={password} type="password" onChange={passwordChangeHandler} label={"Password"}></Inputfield>
+        <Button size="full" type="submit" color="black" text="Sign In" onClick={VerifyUser} />
       </form>
     </div>
 

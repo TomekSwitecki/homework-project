@@ -19,7 +19,7 @@ import SubjectPopUp from "./Subject/SubjectPopUp";
 
 import SubjectAdd from "./Subject/SubjectAdd";
 
-import TaskActionBar from "./Task/TaskActionBar";
+import TaskActionBar from "./Task/ActionBar";
 import TaskItem from "./Task/TaskItem";
 import TaskAdd from "./Task/TaskAdd";
 import TaskPopUp from "./Task/TaskPopUp";
@@ -301,6 +301,7 @@ const [selectedTask, setSelectedTask] = useState({});
     // setSubjectData((prevSubjectItems) => {
     //   return [...prevSubjectItems, createdSubjectData];
     // });
+    console.log(createdSubjectData);
     fetchSubjecttDatabase(createdSubjectData);
     setSubjectData([]);
     getSubjectData();
@@ -400,10 +401,10 @@ const [selectedTask, setSelectedTask] = useState({});
             />
           ))} */}
 
-          <Navbar subjects={filteredSubjects} onSubjectSelectedDataHandler={onSubjectSelectedDataHandler} logout={logout}></Navbar>
+          <Navbar subjects={filteredSubjects} onSubjectSelectedDataHandler={onSubjectSelectedDataHandler} logout={logout} onClick={SubjectPopUpVisibility}></Navbar>
 
-{/* 
-          {props.rola === "TEACHER" ? (
+
+          {/* {props.rola === "TEACHER" ? (
             <SubjectCreate onClick={SubjectPopUpVisibility} />
           ) : (
             <SubjectAdd onClick={SubjectPopUpVisibility} />

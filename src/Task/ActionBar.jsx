@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./TaskActionBar.module.css";
-const TaskActionBar=(props)=>
+import styles from "./ActionBar.module.css";
+const ActionBar=(props)=>
 {
 return (
 
@@ -14,4 +14,4 @@ return (
 
 }
 
-export default TaskActionBar;
+export default ActionBar;

@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../Button/Button";
-import TaskActionBar from "../Task/TaskActionBar";
+import ActionBar from "../Task/ActionBar";
 import TaskItem from "../Task/TaskItem";
 import TaskAdd from "../Task/TaskAdd";
 import Heading from "../Heading/Heading";
@@ -15,12 +15,12 @@ const TaskContainer=(props)=>
     <div className={styles.TaskContainer_Wrapper}>
         <div className={styles.Heading_container}>
             <Heading small Heading="Manage Tasks" Subheading="Manage your existing tasks or create new."  ></Heading>
-            <Button size="small" linkTo="#" type="submit" color="green" text="+ Add New Task "  />
+            <Button onClick={props.TaskPopUpVisibility} size="small"  type="submit" color="green" text="+ Add New Task "  />
         </div>
        
         <div className={styles.TaskItem__Container}>
         <table className={styles.TaskItem__Table}>
-        <TaskActionBar a={"Task Title"} b={"Date"} c={"Status"}/>
+        <ActionBar a={"Task Title"} b={"Date"} c={"Status"}/>
         {props.filteredTasks.map((e, index) => (
         <TaskItem
             Created_by={e.Created_by}
@@ -35,10 +35,10 @@ const TaskContainer=(props)=>
         ))}
       </table>
         </div>
-        {props.rola === "TEACHER" ? (
+        {/* {props.rola === "TEACHER" ? (
         <TaskAdd onClick={props.TaskPopUpVisibility} />
-        ) : null}
-  </div>
+        ) : null} */}
+      </div>
   );
 }
 

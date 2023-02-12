@@ -1,8 +1,15 @@
 import React, { useState } from "react";
-import popup from "../popup.module.css";
+
 import buttons from "../buttons.module.css";
 import inputs from "../inputs.module.css";
 import fire from "../config/fire";
+import Button from "../Button/Button";
+import FlexContainer from "../FlexContainer/FlexContainer";
+import Divider from "../Divider/Divider";
+import Inputfield from "../Inputfield/Inputfield";
+import Modal from "../Modal/Modal";
+import modal from "../Modal/Modal.module.css";
+import Heading from "../Heading/Heading";
 import { getAuth, onAuthStateChanged, auth } from "firebase/auth";
 import {
   getDatabase,
@@ -149,77 +156,34 @@ function TaskPopUp(props) {
 
 
 
-  return (
-    <div className={popup.popUp}>
-      <form onSubmit={submitHandler}>
-        <div className={popup.popUpTitle}>Create task</div>
-        <hr />
-        <div className={popup.sectionTitles}>Task title</div>
-
-        <input
-          required
-          onChange={taskNameChangeHandler}
-          value={enteredTaskTitle}
-          type="text"
-          placeholder="Enter task name..."
-          className={`${inputs.form__input} ${inputs.form__input__normal}`}
-        />
-
-        <div className={popup.sectionTitles}>Completition Date</div>
-
-        <div className={popup.date_input_container}>
-          <input
-            value={enteredDate}
-            onChange={dateHandler}
-            className={popup.date_input}
-            type="date"
-            min={date_prepared}
-            max="2025-12-31"
-            required
-          />
+  return (      
+  <Modal>
+    <form className={modal.form_container} onSubmit={submitHandler}>
+      <FlexContainer props={{ gap: "16", direction:"column", height:"full" }}>
+      <FlexContainer props={{ gap: "16", margin: "16" }}>
+        <FlexContainer props={{ gap: "16" }}>
+          <Heading small Heading="Create Task" Subheading="Create task assigned to currently selected class." ></Heading>
+          <Divider type="normal" size="full"></Divider>
+        </FlexContainer>
+        <FlexContainer props={{ gap: "16" }}>
+          <Inputfield required value={enteredTaskTitle} type="text" onChange={taskNameChangeHandler} label={"Task Title"}></Inputfield>
+          <Inputfield required value={enteredDate} type="date" onChange={dateHandler} label={"Task Deadline"} min={date_prepared} max="2100-12-31"></Inputfield>
+          <Inputfield required value={enteredTaskDescription} type="text" onChange={taskDescriptionHandler} label={"Task Description"}></Inputfield>
+          <Inputfield id="file_input"   name="file" required  type="file" onChange={fileHandler} label={"Task Description"}></Inputfield>
+        <Divider type="normal"></Divider>
+        <div className={modal.button_container}>
+        <Button size="small"  color="white" text="Cancel"              
+          onClick={() => {
+                console.log("Cancel");
+                props.onCancel();
+              }} />  
+            <Button size="full"  type="submit" color="orange" text="Create Class" disabled={submitionDisabled}></Button>
         </div>
-
-        <div className={popup.sectionTitles}>Subject Description</div>
-        <input
-          required
-          onChange={taskDescriptionHandler}
-          value={enteredTaskDescription}
-          type="text"
-          placeholder="Enter subject description..."
-          className={`${inputs.form__input} ${inputs.form__input__normal}`}
-        />
-
-        <div className={popup.sectionTitles}>File attachments</div>
-
-        <input
-          onChange={fileHandler}
-          type="file"
-          className={inputs.drop_file}
-          id="file_input"
-          name="file"
-        ></input>
-
-        <div className={popup.button_container}>
-          <button
-            className={`${buttons.btn_normal} ${buttons.btn_cancel}`}
-            onClick={() => {
-              console.log("Cancel");
-              props.onCancel();
-            }}
-          >
-            Cancel
-          </button>
-
-          <button
-            type="submit"
-            className={`${buttons.btn_long} ${buttons.btn_green}`}
-            disabled={submitionDisabled}
-          >
-            Create task
-          </button>
-        </div>
-      </form>
-    </div>
+        </FlexContainer>
+      </FlexContainer>
+      </FlexContainer> 
+    </form>
+     </Modal>
   );
 }
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState , useEffect, useCallback } from "react";
 // import styles from "./StudentItem.module.css";
 import styles from "../Task/TaskItem.module.css"
 import { getDatabase, ref, child, get, push, set } from "firebase/database";
@@ -7,8 +7,88 @@ import fire from "../config/fire";
 import Tag from "../Tag/Tag";
 import inprogress_icon from "../icons/icon_inprogress.svg";
 import completed_icon from "../icons/icon_completed.svg";
+import negative_icon from "../icons/icon_x.svg";
+import late_icon from "../icons/icon_late.svg";
 
 const StudentItem = (props) => {
+  const [SubmitionDate, setSubmitionDate] = useState("-");
+  let tag;
+  if(JSON.stringify(props.selectedTask) === '{}')
+  {
+    tag=<span>{"-"}</span>
+  }
+  else
+  {
+    if(props.selectedTask.Task_date>SubmitionDate && SubmitionDate!="-")
+    {
+      tag=<Tag icon={completed_icon}  text={"Submited"} color="green"></Tag>
+    }
+    else if(props.selectedTask.Task_date<SubmitionDate && SubmitionDate!="-" )
+    {
+      tag=<Tag icon={late_icon}  text={"Overdue"} color="yellow"></Tag>
+    }  
+    else if(SubmitionDate==="-")
+    {
+      tag=<Tag icon={negative_icon}  text={"Not submited"} color="red"></Tag>
+    }
+  }
+
+  useEffect(() => {
+    console.log(props.selectedTask);
+    if (Object.keys(props.selectedTask).length != 0) {
+      const dbRef = ref(getDatabase());
+      get(child(dbRef, `task/`))
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            Object.entries(snapshot.val()).forEach(([key, value]) => {
+              if (
+                value.Task_subject == props.selectedTask.Task_subject &&
+                value.Task_description == props.selectedTask.Task_description
+              ) {
+                console.log(value);
+                if(value.answers)
+                {
+                Object.entries(value.answers).forEach(([key1, value1]) => {
+                  console.log(value1);
+                  Object.entries(value1).forEach(([key2, value2]) => {
+                    console.log(value2);
+                    if (
+                      value2.Task_file_URL &&
+                      props.mail == value2.Student_Email
+                    ) {
+                      console.log(value2.Task_Submition_Date);
+                      if(value2.Task_Submition_Date && value.answers)
+                      {console.log(value2.Task_Submition_Date);
+                        setSubmitionDate(value2.Task_Submition_Date);
+                      }
+                      else
+                      {console.log(value2.Task_Submition_Date);
+                        setSubmitionDate("-");
+                      }
+                      
+                    }
+                  });
+                });
+              }
+              else
+              {
+                setSubmitionDate("-");
+                console.log("No answers");
+              }
+              }
+            });
+          } else {
+            console.log("No data available");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+
+ }
+);
+
 
 async function downloadStudentWork() {
   console.log(props.selectedTask);
@@ -30,7 +110,7 @@ async function downloadStudentWork() {
                 Object.entries(value1).forEach(([key2, value2]) => {
                   console.log(value2);
                   if (
-                    value2.Task_file_URL != "" &&
+                    value2.Task_file_URL &&
                     props.mail == value2.Student_Email
                   ) {
                     var element = document.createElement("a");
@@ -59,6 +139,8 @@ async function downloadStudentWork() {
   } else {
     alert("Select task first");
   }
+
+
 }
 
 
@@ -72,10 +154,11 @@ async function downloadStudentWork() {
     </td>
     <td className={styles.deadline_cell}>    
       <span className={styles.TaskDeadlineDate}>
-          {props.mail}
+          {SubmitionDate} 
+          {/* {props.mail}                     */}
         </span></td>
-    <td className={styles.tag_cell}>          
-          <Tag icon={inprogress_icon}  text={"In progress"} color="blue"></Tag>
+    <td className={styles.tag_cell}>     
+          {tag}
         </td>
     </tr>
 

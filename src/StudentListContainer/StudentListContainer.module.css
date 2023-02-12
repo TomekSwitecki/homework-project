@@ -1,0 +1,39 @@
+.Heading_container
+{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 16px;
+}
+
+.StudentContainer_Wrapper
+{
+
+    height: 100%;
+    max-height: 100%;
+    /* margin-bottom: 36px; */
+    width: 100%;
+
+    min-width: 100%;
+    max-width: 100%;
+
+}
+
+.StudentItem__Table
+{
+
+    width: 100%;
+    table-layout: fixed;
+    width: 100%;
+    border-spacing: 0px;
+    text-align: initial;
+}
+.StudentItem__Container
+{
+    overflow-y:auto;
+    overflow-x: hidden;
+    line-height: normal;
+    height: 80%;
+    max-height: 80%;
+    min-height: 80%;
+    box-sizing: border-box;
+}

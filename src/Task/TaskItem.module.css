@@ -97,7 +97,7 @@ color: #959595;
   background: rgba(143, 138, 217, 0.1);
   border-left: 7px solid #8F8AD9;
   transition: all 0.2s;
-  border-bottom: 1px solid #F2F2F2;
+
 }
 .TaskItem {
   width: 100%;
@@ -106,7 +106,7 @@ color: #959595;
 
 
   background: #ffffff;
-  border-bottom: 1px solid #F2F2F2;
+
   transition: all 0.2s;
 }
 .TaskItem:nth-child(2n)
@@ -138,7 +138,7 @@ background-color: #FCFCFC;
 
   font-weight: 400;
   font-size: 16px;
-  line-height: 18px;
+  padding: 16px 32px;
   color: #1D1D1F;
   text-transform: capitalize;
 

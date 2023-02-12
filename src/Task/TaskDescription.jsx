@@ -36,6 +36,7 @@ const TaskDescription = (props) =>
                   Student_Email:props.userEmail,
                   Task_file_URL: file_url,
                   Task_Status: "unreviewed",
+                  Task_Submition_Date:new Date().toISOString().split('T')[0]
                 },
               };
     console.log(props.selectedTask);

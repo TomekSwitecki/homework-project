@@ -5,7 +5,7 @@ function TaskAdd(props)
 {
 return (
   <button
-    className={`${styles.btn_task} ${buttons.btn_normal} ${buttons.btn_green}  `}
+    className={`${styles.btn_task} ${buttons.btn_wrapper} ${buttons.btn_green}  `}
     onClick={props.onClick}
   >
     Create Task

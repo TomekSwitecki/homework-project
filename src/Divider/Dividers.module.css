@@ -11,6 +11,7 @@ font-size: 16px;
 line-height: 20px;
 text-align: center;
 color: #bebebe;
+align-items: center;
 }
 
 .divider
@@ -19,4 +20,6 @@ color: #bebebe;
     outline: none;
 height: 2px;
 background: #EDEDED;
+
+margin: 1px 0;
 }

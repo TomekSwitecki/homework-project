@@ -71,6 +71,7 @@ onAuthStateChanged(auth, (user) => {
 //console.log(role);
   if(user)
   {
+    console.log("user");
 return (
   <Routes>
     <Route path="/" element={<Navigate to="/home" />} />
@@ -84,6 +85,7 @@ return (
   }
   else
   {
+    console.log("!user");
     return (
       <Routes>
         <Route path="/" element={<Navigate to="/landing" />} />

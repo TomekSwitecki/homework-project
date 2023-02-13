@@ -15,7 +15,7 @@ function LandingPage() {
     <div className={styles.LandingPage_container}>
 
         <div className={styles.logo}>
-          <img src={logo}></img>
+          <img src={logo} alt="logo"></img>
 
           {/* <Logo /> */}
         </div>

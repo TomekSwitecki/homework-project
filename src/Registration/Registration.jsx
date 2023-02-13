@@ -160,7 +160,7 @@ return (
   <div className={styles.registration_container}>
 
       <div className={styles.logo}>
-           <img src={logo}></img>
+           <img src={logo} alt="logo"></img>
         </div>
 
       <form className={styles.register_form_container}>

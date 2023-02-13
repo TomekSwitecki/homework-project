@@ -159,41 +159,32 @@ function SubjectPopUp(props) {
     );
   } else {
     return (
-      <div className={modal.popUp}>
-        <form onSubmit={submitHandler}>
-          <div className={modal.popUpTitle}>Join class</div>
-          <hr />
-          <div className={modal.sectionTitles}>Subject code</div>
-
-          <input
-            required
-            onChange={subjectCodeHandler}
-            value={enteredSubjectCode}
-            type="text"
-            placeholder="Enter subject code..."
-            className={`${inputs.form__input} ${inputs.form__input__code}`}
-          />
-
+      <Modal>
+      <form onSubmit={submitHandler}>
+        <FlexContainer props={{ gap: "16", direction:"column", height:"auto" }}>
+        <FlexContainer props={{ gap: "16" }}>
+          <FlexContainer props={{ gap: "16" }}>
+            <Heading small Heading="Join Class" Subheading="Insert class code to join and access tasks." ></Heading>
+          </FlexContainer>
+        </FlexContainer>
+        <FlexContainer props={{ margin: "16" }}>
+        <Inputfield type="code" maxLength="4" required onChange={subjectCodeHandler}  value={enteredSubjectCode}></Inputfield>
+        </FlexContainer>
+        <FlexContainer props={{ gap:"16", direction:"column" }}>
+        <Divider type="normal" size="full"></Divider>
           <div className={modal.button_container}>
-            <button
-              className={`${buttons.btn_wrapper} ${buttons.btn_cancel}`}
-              onClick={() => {
-                console.log("Cancel");
-                props.onCancel();
-              }}
-            >
-              Cancel
-            </button>
-
-            <button
-              type="submit"
-              className={`${buttons.btn_wrapper} ${buttons.btn_orange}`}
-            >
-              Join Class
-            </button>
+          <Button size="small"  color="white" text="Cancel"              
+            onClick={() => {
+                  console.log("Cancel");
+                  props.onCancel();
+                }} />  
+                
+              <Button size="full"  type="submit" color="orange" text="Join Class"></Button>
           </div>
+        </FlexContainer>
+        </FlexContainer>
         </form>
-      </div>
+        </Modal>
     );
   }
 }

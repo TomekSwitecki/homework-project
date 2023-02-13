@@ -27,8 +27,8 @@ const Navbar=(props)=>
   return (
     <React.Fragment>
       <div className={styles.navbar_container}>
-           <img src={Controls} className={styles.controls} ></img>
-           <img src={logo} className={styles.logo} ></img>
+           <img src={Controls} className={styles.controls} alt="controls" ></img>
+           <img src={logo} className={styles.logo} alt="logo"></img>
 
         {/* <span className={styles.date}>
           <span className={styles.calendarIcon}>
@@ -51,7 +51,7 @@ const Navbar=(props)=>
         <div className={styles.lower_container}>
           <div className="expander__full">
             <hr className={styles.navbar_divider}></hr>
-            <Button size="full"  type="submit" color="purple" text="Create Class" onClick={props.onClick}  />
+            <Button size="full"  type="submit" color={props.role=="TEACHER" ? "purple" : "orange"} text={props.role=="TEACHER" ? "Create Class" : "Add Class"}  onClick={props.onClick}  />
             </div>
             <div className="expander__medium">
             <hr className={styles.navbar_divider}></hr>

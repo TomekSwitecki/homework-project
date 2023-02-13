@@ -6,12 +6,15 @@ import TaskAdd from "../Task/TaskAdd";
 import Heading from "../Heading/Heading";
 import styles from "../StudentListContainer/StudentListContainer.module.css"
 import StudentItem from "../Students/StudentItem";
+import Placeholder from "../Placeholder/Placeholder";
+import students_placeholder from "../Ilustrations/placeholder_students.svg";
 const StudentListContainer=(props)=>
 {
 
 
 
-
+  if(props.filteredStudents.length!=0)
+  {
   return (
     <div className={styles.StudentContainer_Wrapper}>
         <div className={styles.Heading_container}>
@@ -35,7 +38,11 @@ const StudentListContainer=(props)=>
       </table>
         </div>
   </div>
-  );
+  );}
+  else
+  {
+    return (<Placeholder Heading="No students added yet. " Subheading="No student has joined this class yet. Once they join, they will be listed here!" img={students_placeholder}></Placeholder>)
+  }
 }
 
 export default StudentListContainer;

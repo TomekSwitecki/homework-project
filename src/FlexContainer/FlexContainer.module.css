@@ -5,6 +5,10 @@
     /* height: 100%; */
 }
 
+.align_center
+{
+    align-items: center;
+}
 .direction_column
 {
     flex-direction:column;

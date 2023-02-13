@@ -21,7 +21,7 @@ const StudentItem = (props) => {
   {
     if(props.selectedTask.Task_date>SubmitionDate && SubmitionDate!="-")
     {
-      tag=<Tag icon={completed_icon}  text={"Submited"} color="green"></Tag>
+      tag=<Tag icon={completed_icon}  text={"Submitted"} color="green"></Tag>
     }
     else if(props.selectedTask.Task_date<SubmitionDate && SubmitionDate!="-" )
     {
@@ -29,12 +29,12 @@ const StudentItem = (props) => {
     }  
     else if(SubmitionDate==="-")
     {
-      tag=<Tag icon={negative_icon}  text={"Not submited"} color="red"></Tag>
+      tag=<Tag icon={negative_icon}  text={"Not submitted"} color="red"></Tag>
     }
   }
 
   useEffect(() => {
-    console.log(props.selectedTask);
+    // console.log(props.selectedTask);
     if (Object.keys(props.selectedTask).length != 0) {
       const dbRef = ref(getDatabase());
       get(child(dbRef, `task/`))

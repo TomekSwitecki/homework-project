@@ -8,9 +8,25 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content:space-evenly;
+    justify-content:space-between;
+    height: fit-content;
+    gap: 16px;
+}
+
+.TaskDescriptionContainer__teacher
+{
+
+    min-width: 100%;
+    max-width: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
     gap: 8px;
 }
+
+
+
 .TaskDescriptionContainer__empty
 {
     justify-content:start;
@@ -34,7 +50,7 @@
     text-align: justify;
     overflow: auto;
     color: #000000;
-
+    overflow-wrap: break-word;
 
 
     overflow-y: auto;

@@ -53,8 +53,8 @@ return (
   
 
     <div className={styles.login_container}>
-            <img className={styles.pattern_left} src={pattern_purple}></img>
-            <img className={styles.pattern_right} src={pattern_orange}></img>
+            <img className={styles.pattern_left} src={pattern_purple} alt="pattern_purple"></img>
+            <img className={styles.pattern_right} src={pattern_orange} alt="pattern_orange"></img>
         <div className={styles.logo}>
            <img src={logo}></img>
         </div>

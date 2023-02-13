@@ -7,24 +7,30 @@ import buttons from "../buttons.module.css";
 function Inputfield(props) {
   let input_className=inputs.form__input;
   let container_className=inputs.Inputfield_container;
-  if(props.type!="file" )
+  if(props.type=="code" )
   {
-    input_className=inputs.form__input;
-    container_className=inputs.Inputfield_container;
+    input_className=inputs.code_input;
+    container_className=inputs.Inputfield_container__code;
   }
-  else
+  else if( props.type=="file")
   {
     input_className=inputs.file_input;
     container_className=inputs.Inputfield_container__file;
   }
+  else
+  {
+    input_className=inputs.form__input;
+    container_className=inputs.Inputfield_container;
+  }
 
   return (
     <div className={container_className}>
-    <div className={inputs.Inputfield_labels_container}>
+     <div className={props.label ? inputs.Inputfield_labels_container : inputs.Inputfield_labels_container__empty}>
         <span className={inputs.Inputfield_label}>{props.label}</span>
         {props.sublabel ? <Link to={props.LinkTo} className={"link"}>{props.LinkText}</Link> : null}
-    </div>
+    </div> 
     <input
+    maxlength={props.maxLength}
     type={props.type}
     className={input_className}
     onChange={props.onChange}
@@ -40,3 +46,4 @@ function Inputfield(props) {
 }
 
 export default Inputfield;
+// className={`${inputs.form__input} ${inputs.form__input__code}`}

@@ -162,14 +162,14 @@ function TaskPopUp(props) {
       <FlexContainer props={{ gap: "16", direction:"column", height:"full" }}>
       <FlexContainer props={{ gap: "16", margin: "16" }}>
         <FlexContainer props={{ gap: "16" }}>
-          <Heading small Heading="Create Task" Subheading="Create task assigned to currently selected class." ></Heading>
+          <Heading small Heading="Create Task" Subheading="Create task assigned to the currently selected class." ></Heading>
           <Divider type="normal" size="full"></Divider>
         </FlexContainer>
         <FlexContainer props={{ gap: "16" }}>
           <Inputfield required value={enteredTaskTitle} type="text" onChange={taskNameChangeHandler} label={"Task Title"}></Inputfield>
           <Inputfield required value={enteredDate} type="date" onChange={dateHandler} label={"Task Deadline"} min={date_prepared} max="2100-12-31"></Inputfield>
           <Inputfield required value={enteredTaskDescription} type="text" onChange={taskDescriptionHandler} label={"Task Description"}></Inputfield>
-          <Inputfield id="file_input"   name="file" required  type="file" onChange={fileHandler} label={"Task Description"}></Inputfield>
+          <Inputfield id="file_input"   name="file" required  type="file" onChange={fileHandler} label={"File Upload"}></Inputfield>
         <Divider type="normal"></Divider>
         <div className={modal.button_container}>
         <Button size="small"  color="white" text="Cancel"              

@@ -18,8 +18,10 @@ const TaskItem = (props) => {
   };
 
   const SelectTask = () => {
+    console.log(ChosenTask);
     ChosenTask = props.Task_title;
     props.onTaskSelected(ChosenSubjectData);
+    console.log(ChosenTask);
   };
 
 

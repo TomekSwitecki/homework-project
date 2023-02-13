@@ -8,7 +8,7 @@ import fire from "../config/fire";
 import { getAuth, onAuthStateChanged, auth } from "firebase/auth";
 import { getDatabase, ref as dRef, child, get, push, set } from "firebase/database";
 import Heading from "../Heading/Heading";
-
+import Inputfield from "../Inputfield/Inputfield";
 import {
   ref,
   getStorage,
@@ -17,6 +17,9 @@ import {
 } from "firebase/storage";
 import DownloadContent from "../DownloadContent/DownloadContent";
 import Divider from "../Divider/Divider";
+import FlexContainer from "../FlexContainer/FlexContainer";
+import Button from "../Button/Button";
+import Placeholder from "../Placeholder/Placeholder";
 const _ = require("lodash"); 
 // import {
 //   getStorage,
@@ -161,7 +164,7 @@ const TaskDescription = (props) =>
     {
       return (
         <React.Fragment>
-          <div className={styles.TaskDescriptionContainer}>
+          <div className={props.role=="STUDENT" ? styles.TaskDescriptionContainer : styles.TaskDescriptionContainer__teacher }>
             <div className={styles.TaskDescriptionHeading}>
             <Heading small Heading="Task Details" Subheading="Explore content of selected task."></Heading>
             </div>
@@ -190,31 +193,23 @@ const TaskDescription = (props) =>
             </div>
             </div>
             <div>
-              <h1 className={styles.title}> File Attachements :</h1>
+              <h1 className={styles.title}> File Attachements </h1>
               <DownloadContent size="full" href={props.selectedTask.Task_file_URL}></DownloadContent>
-              {/* <a target="_blank" href={props.selectedTask.Task_file_URL}>
-                "Download attached files"
-              </a> */}
             </div>
-            {/* <h1 className={styles.title}> File Upload :</h1>
-            <input
-            required
-              onChange={fileHandler}
-              type="file"
-              className={inputs.drop_file}
-              id="file_input"
-              name="file"
-            ></input>
-            <div className={styles.center}>
-              <button
+            {props.role=="STUDENT" ? 
+            <FlexContainer props={{ gap: "16", direction:"column", height:"auto", align:"center" }}>
+            <Inputfield id="file_input"   name="file" required  type="file" onChange={fileHandler} label={"File Upload"}></Inputfield>
+            <Button size="small" disabled={submitionDisabled} onClick={submitHandler} type="submit" color="green" text="Submit"></Button>
+              {/* <button
                 disabled={submitionDisabled}
                 onClick={submitHandler}
                 type="submit"
                 className={` ${buttons.btn_long} ${buttons.btn_green} ${buttons.btn_submition}`}
               >
                 Submit
-              </button>
-            </div> */}
+              </button> */}
+
+            </FlexContainer> : null}
           </div>
         </React.Fragment>
       );
@@ -223,7 +218,8 @@ const TaskDescription = (props) =>
     {      return (
       <React.Fragment>
           <div className={styles.TaskDescriptionContainer__empty}>
-            <Heading small Heading="View Task" Subheading="Explore content of existing task"></Heading>
+            <Heading small Heading="No Task Selected" Subheading="Select task from list above to view task details."></Heading>
+            {/* <Placeholder Heading="No task selected" Subheading="Select task from list above to view details" ></Placeholder> */}
             </div>
       </React.Fragment>
     );

@@ -2,38 +2,20 @@ import "./styles.css";
 import React, { useState , useEffect, useCallback } from "react";
 import { Routes, Route } from "react-router-dom";
 import fire from "./config/fire";
-
-import Registration from "./Registration/Registration";
 import { getDatabase, ref, child, get,push, set } from "firebase/database";
-
-
-import Logo from "./Logo/Logo";
-
-
 import CodeGenerator from "./CodeGenerator";
-import InitialSubjectData from "./Subject/InitialSubjectData";
-import SubjectItem from "./Subject/SubjectItem";
-
-import SubjectCreate from "./Subject/SubjectCreate";
 import SubjectPopUp from "./Subject/SubjectPopUp";
-
-import SubjectAdd from "./Subject/SubjectAdd";
-
-import TaskActionBar from "./Task/ActionBar";
-import TaskItem from "./Task/TaskItem";
-import TaskAdd from "./Task/TaskAdd";
 import TaskPopUp from "./Task/TaskPopUp";
-
-import StudentItem from "./Students/StudentItem";
-
 import { getAuth, signOut } from "firebase/auth";
 import TaskDescription from "./Task/TaskDescription";
-
 import Navbar from "./Navbar/Navbar"
 import TaskContainer from "./TaskContainer/TaskContainer";
 import StudentListContainer from "./StudentListContainer/StudentListContainer";
-import Divider from "./Divider/Divider";
-import Heading from "./Heading/Heading";
+import Placeholder from "./Placeholder/Placeholder";
+
+import subject_placeholder from "./Ilustrations/placeholder_subject.svg";
+
+
 const logout = () => {
   const auth = getAuth();
   signOut(auth)
@@ -95,14 +77,14 @@ const App=(props)=> {
       .then((snapshot) => {
         if (snapshot.exists()) {
            setSubjectData([]);
-          console.log(snapshot.val());
+          // console.log(snapshot.val());
           Object.entries(snapshot.val()).forEach(([key, value]) => {
-            console.log(key, value);
-            console.log(value.addedStudents);
-              console.log(value);
+           // console.log(key, value);
+           // console.log(value.addedStudents);
+             // console.log(value);
               setSubjectData((oldArray) => [...oldArray, value]);
           });
-          console.log(subjectData);
+          // console.log(subjectData);
           //setSubjectData(snapshot.val());
         } else {
           console.log("No data available");
@@ -385,90 +367,37 @@ const [selectedTask, setSelectedTask] = useState({});
         />
       ) : null}
 
+        
       <div className="HomePage_Container">
-
-          {/* <Logo></Logo> */}
-          {/* <h1 className="Container_titles">Subjects</h1>
-          <h1>{props.rola}</h1> */}
-          {/* {filteredSubjects.map((e, index) => (
-            <NavbarButton
-              key={e.index}
-              id={index}
-              name={e.Subject_name}
-              addedStudents={e.addedStudents}
-              description={e.Subject_description}
-              onSubjectSelected={onSubjectSelectedDataHandler}
-            />
-          ))} */}
-
-          <Navbar subjects={filteredSubjects} onSubjectSelectedDataHandler={onSubjectSelectedDataHandler} logout={logout} onClick={SubjectPopUpVisibility}></Navbar>
-
-
-          {/* {props.rola === "TEACHER" ? (
-            <SubjectCreate onClick={SubjectPopUpVisibility} />
-          ) : (
-            <SubjectAdd onClick={SubjectPopUpVisibility} />
-          )} */}
-
+        <Navbar role={props.rola} subjects={filteredSubjects} onSubjectSelectedDataHandler={onSubjectSelectedDataHandler} logout={logout} onClick={SubjectPopUpVisibility}></Navbar>
+        {selectedSubject.name !== undefined ? 
         <div className="GridContainer">
-
-
-        <div className="TaskContainer">
-          <TaskContainer filteredTasks={filteredTasks} selectedSubject={selectedSubject.name} TaskPopUpVisibility={TaskPopUpVisibility} onTaskSelectedDataHandler={onTaskSelectedDataHandler}></TaskContainer>
-          <TaskDescription
-            userEmail={getAuth(fire).currentUser.email}
-            selectedTask={selectedTask}
-          />
-          {/* <h1 className="Container_titles">Tasks </h1>
-          <TaskActionBar />
-          {filteredTasks.map((e, index) => (
-            <TaskItem
-              Created_by={e.Created_by}
-              Task_date={e.Task_date}
-              Task_description={e.Task_description}
-              Task_file_URL={e.Task_file_URL}
-              Task_subject={e.Task_subject}
-              Task_title={e.Task_title}
-              chosenSubject={selectedSubject.name}
-              onTaskSelected={onTaskSelectedDataHandler}
-            />
-          ))}
-          {props.rola === "TEACHER" ? (
-            <TaskAdd onClick={TaskPopUpVisibility} />
-          ) : null} */}
-        </div>
-
-
-
-        {props.rola === "TEACHER" ? (
-          <div className="StudentListContainer">
-            <StudentListContainer                 
-            selectedTask={selectedTask}
-            filteredStudents={filteredStudents}>
-
-            </StudentListContainer>
-
-            {/* {filteredStudents.map((e, index) => (
-              <StudentItem
-                //id={e.index}
-                selectedTask={selectedTask}
-                f_name={e.f_name}
-                l_name={e.l_name}
-                mail={e.email}
-                // date={e.Date}
-                // status={e.Status}
-              />
-            ))} */}
+        
+          <div className="TaskContainer">
+            <TaskContainer role={props.rola} filteredTasks={filteredTasks} selectedSubject={selectedSubject.name} TaskPopUpVisibility={TaskPopUpVisibility} onTaskSelectedDataHandler={onTaskSelectedDataHandler}></TaskContainer>
+            {props.rola === "TEACHER" ? <TaskDescription userEmail={getAuth(fire).currentUser.email}  selectedTask={selectedTask}/> : null }
           </div>
-        ) : (
-          <TaskDescription
-            userEmail={getAuth(fire).currentUser.email}
-            selectedTask={selectedTask}
-          />
-        )}
-        {/* <button onClick={logout}>LOG OUT</button> */}
-        </div>
-      </div>
+
+          {props.rola === "TEACHER" ? (
+            <div className="StudentListContainer">
+              <StudentListContainer                 
+              selectedTask={selectedTask}
+              filteredStudents={filteredStudents}>
+              </StudentListContainer>
+            </div>
+          ) : (
+            <div className="StudentListContainer__auto">
+            <TaskDescription
+              role={props.rola}
+              userEmail={getAuth(fire).currentUser.email}
+              selectedTask={selectedTask}
+            />
+            </div>
+          )}
+
+        
+        </div>: <Placeholder img={subject_placeholder} Heading={"No class selected."} Subheading={"Select existing class from list or create new one."}></Placeholder>}
+      </div> 
     </div>
   );
 }

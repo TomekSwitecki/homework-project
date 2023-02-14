@@ -1,10 +1,13 @@
 {
   "files": {
-    "main.css": "/homework-project/static/css/main.5c47370d.css",
-    "main.js": "/homework-project/static/js/main.eb6c3ea6.js",
+    "main.css": "/homework-project/static/css/main.9ca51f5c.css",
+    "main.js": "/homework-project/static/js/main.65d188c9.js",
+    "static/media/placeholder_subject.svg": "/homework-project/static/media/placeholder_subject.dd1c76951385f1bde3a9c1945935c44a.svg",
+    "static/media/placeholder_task.svg": "/homework-project/static/media/placeholder_task.0009c172f32cf58cdd9d438870098070.svg",
     "static/media/Landing_Ilustration.svg": "/homework-project/static/media/Landing_Ilustration.3586e69d6a776552805059d05d32cddb.svg",
     "static/media/pattern-purple.png": "/homework-project/static/media/pattern-purple.0e07e9e20b1dbbbbe817.png",
     "static/media/pattern-orange.png": "/homework-project/static/media/pattern-orange.8b98156179d740e42e82.png",
+    "static/media/placeholder_students.svg": "/homework-project/static/media/placeholder_students.c86cdfc9342a3cc164c420dae0bfe706.svg",
     "static/media/pattern_orange_thin.svg": "/homework-project/static/media/pattern_orange_thin.963393358f07b8d97ebd91d6f18b22a4.svg",
     "static/media/pattern_purple_thin.svg": "/homework-project/static/media/pattern_purple_thin.2c2dbc14448830695a90fc4e0144ab15.svg",
     "static/media/logo2.svg": "/homework-project/static/media/logo2.a6b19a1d4a9ee651825d57065fde3a15.svg",
@@ -19,11 +22,11 @@
     "static/media/icon_logout.svg": "/homework-project/static/media/icon_logout.f448efc6bd2c603a5ca3ac98914d2134.svg",
     "static/media/icon_completed.svg": "/homework-project/static/media/icon_completed.175cc800ab742afe30cdba0bf1233845.svg",
     "static/media/bx-download.svg": "/homework-project/static/media/bx-download.ee8fbe1cbe5b1450cada.svg",
-    "main.5c47370d.css.map": "/homework-project/static/css/main.5c47370d.css.map",
-    "main.eb6c3ea6.js.map": "/homework-project/static/js/main.eb6c3ea6.js.map"
+    "main.9ca51f5c.css.map": "/homework-project/static/css/main.9ca51f5c.css.map",
+    "main.65d188c9.js.map": "/homework-project/static/js/main.65d188c9.js.map"
   },
   "entrypoints": [
-    "static/css/main.5c47370d.css",
-    "static/js/main.eb6c3ea6.js"
+    "static/css/main.9ca51f5c.css",
+    "static/js/main.65d188c9.js"
   ]
 }

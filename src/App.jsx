@@ -375,9 +375,8 @@ const [selectedTask, setSelectedTask] = useState({});
         
           <div className="TaskContainer">
             <TaskContainer role={props.rola} filteredTasks={filteredTasks} selectedSubject={selectedSubject.name} TaskPopUpVisibility={TaskPopUpVisibility} onTaskSelectedDataHandler={onTaskSelectedDataHandler}></TaskContainer>
-            {props.rola === "TEACHER" ? <TaskDescription userEmail={getAuth(fire).currentUser.email}  selectedTask={selectedTask}/> : null }
+            {props.rola === "TEACHER" ? <TaskDescription userEmail={getAuth(fire).currentUser.email}  selectedTask={selectedTask} TaskNumber={filteredTasks}/> : null }
           </div>
-
           {props.rola === "TEACHER" ? (
             <div className="StudentListContainer">
               <StudentListContainer                 
@@ -386,17 +385,19 @@ const [selectedTask, setSelectedTask] = useState({});
               </StudentListContainer>
             </div>
           ) : (
-            <div className="StudentListContainer__auto">
+            
+            <div className={`${"StudentListContainer"} ${[`StudentListContainer__auto`]}`}>
             <TaskDescription
               role={props.rola}
               userEmail={getAuth(fire).currentUser.email}
               selectedTask={selectedTask}
+              TaskNumber={filteredTasks}
             />
             </div>
           )}
 
         
-        </div>: <Placeholder img={subject_placeholder} Heading={"No class selected."} Subheading={"Select existing class from list or create new one."}></Placeholder>}
+        </div>: <Placeholder img={subject_placeholder} Heading={"No class selected"} Subheading={"Select existing class from list or create a new one."}></Placeholder>}
       </div> 
     </div>
   );

@@ -41,7 +41,29 @@ const StudentListContainer=(props)=>
   );}
   else
   {
-    return (<Placeholder Heading="No students added yet. " Subheading="No student has joined this class yet. Once they join, they will be listed here!" img={students_placeholder}></Placeholder>)
+    return (
+
+      <div className={styles.StudentItem__Container}>
+        <div className={styles.Heading_container}>
+        <Heading small Heading="Student List" Subheading="View your student list."></Heading>
+        </div>
+      <table className={styles.StudentItem__Table}>
+      <ActionBar a={"Name"} b={"Submition Date"} c={"Status"} />
+      {props.filteredStudents.map((e, index) => (
+            <StudentItem
+              //id={e.index}
+              selectedTask={props.selectedTask}
+              f_name={e.f_name}
+              l_name={e.l_name}
+              mail={e.email}
+              // date={e.Date}
+              // status={e.Status}
+            />
+      ))}
+    </table>
+     
+    <Placeholder Heading="No students added yet" Subheading="No student has joined this class yet. Once they join, they will be listed here!" img={students_placeholder}></Placeholder>
+    </div>);
   }
 }
 

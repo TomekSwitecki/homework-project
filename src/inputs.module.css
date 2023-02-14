@@ -1,6 +1,6 @@
 .form__input {
     font-family: 'Outfit';
-    color: black;
+    color: #1D1D1D;
 
     border: 1px solid #CBC8DE;
     border-radius: 9px;
@@ -14,7 +14,6 @@
     font-style: normal;
     font-weight: 500;
     
-    color: #7D797E;
 
 }
 
@@ -47,52 +46,22 @@ padding: 0 0 0 55px;
 }
 
 
-.form__input__code::placeholder
-{
-    text-align: center;
-    font-size: 16px;
-}
-
-.form__input__viewport
-{
-    font-family: 'Outfit';
-    color: black;
-    border: 1px solid #CBC8DE;
-    border-radius: 9px;
-    font-weight: 500;
-    font-size: 20px;
-    width: 27.65vw;
-    height: 7.22vh;
-    padding: 0 0 0 20px;
-}
-
-.form__input__viewport::placeholder
-{
-    font-size: 16px;
-}
-
-.form__input__searchbar
-{       
-        padding: 0 0 0 20px;
-        height: 50px;
-        font-size: 16px;
-        width: 15%;
-}
 
 /* files handlers*/
 .drop_file {
     margin: 20px 0px;
-    outline: dashed #D6D6D6 2px;
+    outline: dashed #BEBEBE 2px;
     border-radius: 10px;
     height: 50px;
     width: 92%;
     padding: 15px;
-    background-color: #F5F4FF;
+    background-color: #FBFBFB;
 }
 
 
 .drop_file:hover {
-    background-color: #d3d1e7;
+    /* hex purple primary opacity 10% */
+    background-color: #8f8ad91a;
     cursor: pointer;
 }
 
@@ -123,7 +92,7 @@ padding: 0 0 0 55px;
     font-size: 15px;
     line-height: 19px;
 
-    color: #949494;
+    color: #BEBEBE;
     outline: none;
     border: none;
 }

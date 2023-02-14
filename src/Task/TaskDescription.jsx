@@ -20,6 +20,8 @@ import Divider from "../Divider/Divider";
 import FlexContainer from "../FlexContainer/FlexContainer";
 import Button from "../Button/Button";
 import Placeholder from "../Placeholder/Placeholder";
+import students_placeholder from "../Ilustrations/placeholder_students.svg";
+import task_placeholder from "../Ilustrations/placeholder_task.svg";
 const _ = require("lodash"); 
 // import {
 //   getStorage,
@@ -30,7 +32,6 @@ const _ = require("lodash");
 
 const TaskDescription = (props) => 
 {
-
 
 
   async function fetchTaskAnswer(file_url) {
@@ -165,6 +166,7 @@ const TaskDescription = (props) =>
       return (
         <React.Fragment>
           <div className={props.role=="STUDENT" ? styles.TaskDescriptionContainer : styles.TaskDescriptionContainer__teacher }>
+          {/* <div className={styles.TaskDescriptionContainer}> */}
             <div className={styles.TaskDescriptionHeading}>
             <Heading small Heading="Task Details" Subheading="Explore content of selected task."></Heading>
             </div>
@@ -192,38 +194,35 @@ const TaskDescription = (props) =>
               {props.selectedTask.Task_description}
             </div>
             </div>
+            {props.role!="TEACHER" ? 
             <div>
               <h1 className={styles.title}> File Attachements </h1>
               <DownloadContent size="full" href={props.selectedTask.Task_file_URL}></DownloadContent>
-            </div>
+            </div> : null }
             {props.role=="STUDENT" ? 
             <FlexContainer props={{ gap: "16", direction:"column", height:"auto", align:"center" }}>
             <Inputfield id="file_input"   name="file" required  type="file" onChange={fileHandler} label={"File Upload"}></Inputfield>
             <Button size="small" disabled={submitionDisabled} onClick={submitHandler} type="submit" color="green" text="Submit"></Button>
-              {/* <button
-                disabled={submitionDisabled}
-                onClick={submitHandler}
-                type="submit"
-                className={` ${buttons.btn_long} ${buttons.btn_green} ${buttons.btn_submition}`}
-              >
-                Submit
-              </button> */}
-
             </FlexContainer> : null}
           </div>
         </React.Fragment>
       );
     }
-    else
+    else if (Object.keys(props.selectedTask).length == 0 && props.TaskNumber.length != 0)
     {      return (
       <React.Fragment>
           <div className={styles.TaskDescriptionContainer__empty}>
             <Heading small Heading="No Task Selected" Subheading="Select task from list above to view task details."></Heading>
-            {/* <Placeholder Heading="No task selected" Subheading="Select task from list above to view details" ></Placeholder> */}
+            {props.role=="STUDENT" ? <Placeholder Heading="No task selected" Subheading="Select task from list above to view details" img={task_placeholder} ></Placeholder>: null}
+           
             </div>
       </React.Fragment>
     );
         
+    }
+    else if (Object.keys(props.selectedTask).length == 0 && props.TaskNumber.length == 0 )
+    {
+      return(null);
     }
 }
 

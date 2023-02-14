@@ -169,7 +169,7 @@ function TaskPopUp(props) {
           <Inputfield required value={enteredTaskTitle} type="text" onChange={taskNameChangeHandler} label={"Task Title"}></Inputfield>
           <Inputfield required value={enteredDate} type="date" onChange={dateHandler} label={"Task Deadline"} min={date_prepared} max="2100-12-31"></Inputfield>
           <Inputfield required value={enteredTaskDescription} type="text" onChange={taskDescriptionHandler} label={"Task Description"}></Inputfield>
-          <Inputfield id="file_input"   name="file" required  type="file" onChange={fileHandler} label={"File Upload"}></Inputfield>
+          <Inputfield id="file_input" name="file" required  type="file" onChange={fileHandler} label={"File Upload"}></Inputfield>
         <Divider type="normal"></Divider>
         <div className={modal.button_container}>
         <Button size="small"  color="white" text="Cancel"              
@@ -177,7 +177,7 @@ function TaskPopUp(props) {
                 console.log("Cancel");
                 props.onCancel();
               }} />  
-            <Button size="full"  type="submit" color="orange" text="Create Class" disabled={submitionDisabled}></Button>
+            <Button size="full"  type="submit" color="orange" text="Create Task" disabled={submitionDisabled}></Button>
         </div>
         </FlexContainer>
       </FlexContainer>

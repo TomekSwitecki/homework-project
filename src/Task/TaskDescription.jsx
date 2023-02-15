@@ -1,7 +1,5 @@
 import React from "react";
 import TaskItem from "./TaskItem";
-import inputs from "../inputs.module.css";
-import buttons from "../buttons.module.css";
 import styles from "./TaskDescription.module.css";
 import { useState } from "react";
 import fire from "../config/fire";

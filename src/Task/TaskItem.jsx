@@ -9,6 +9,7 @@ const TaskItem = (props) => {
 
 
   let ChosenSubjectData = {
+    id: props.id,
     Created_by:props.Created_by,
     Task_date:props.Task_date,
     Task_description:props.Task_description,
@@ -21,6 +22,7 @@ const TaskItem = (props) => {
     console.log(ChosenTask);
     ChosenTask = props.Task_title;
     props.onTaskSelected(ChosenSubjectData);
+    console.log(props.id);
     console.log(ChosenTask);
   };
 

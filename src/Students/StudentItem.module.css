@@ -1,16 +1,16 @@
-.student_item:nth-child(2n)
-{
+.student_item:nth-child(2n) {
     display: flex;
     justify-content: space-between;
     background-color: #F7F7F7;
     padding: 2px 15px;
 }
+
 .student_item {
     display: flex;
     align-items: center;
 
     justify-content: space-between;
-    background-color: #ffffff;
+    background-color: white;
     padding: 2px 15px;
 
     font-family: 'Outfit';
@@ -18,22 +18,21 @@
     font-weight: 300;
     font-size: 16px;
     line-height: 20px;
-    
+
     color: #555555;
 }
-.student_item:hover
-{
+
+.student_item:hover {
     cursor: pointer;
     background-color: #e8f7ea;
 }
 
-.user_profile_picture
-{
+.user_profile_picture {
     width: 25px;
     height: 25px;
 }
-.statusbar
-{
+
+.statusbar {
     width: 53px;
     height: 10px;
     background: #7FE789;

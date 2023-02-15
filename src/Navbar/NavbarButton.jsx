@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import styles  from "../Navbar/NavbarButtons.module.css"
+import navbarButton from "../Navbar/NavbarButton.module.css"
 let ChosenSubject = "";
 const NavbarButton = (props) => {
   //Data danego przedmiotu z App.jsx przekazywana przez propsy.
@@ -8,35 +8,33 @@ const NavbarButton = (props) => {
     id: props.id,
     name: props.name,
     description: props.description,
-    addedStudents:props.addedStudents
+    addedStudents: props.addedStudents
   };
 
- 
-  const SelectSubject = (event) => {
 
+  const SelectSubject = (event) => {
     ChosenSubject = props.name;
     props.onSubjectSelected(ChosenSubjectData);
-   // console.log(ChosenSubjectData);
-
+    console.log(props.key);
   };
 
 
   return (
 
-      <div className={styles.NavbarButton_container}>
+    <div className={navbarButton.NavbarButton_container}>
       <button
-      id={props.id}
+        id={props.id}
         title={"Subject Description : " + props.description}
         className={
-          props.name === ChosenSubject
-            ? styles["btn-subject-active"]
-            : styles["btn-subject"]
+          props.name === ChosenSubject 
+            ? navbarButton["btn-subject-active"]
+            : navbarButton["btn-subject"]
         }
         onClick={!props.logout ? SelectSubject : props.logout}
       >
         {props.name + " "}
       </button>
-      </div>
+    </div>
 
   );
 };

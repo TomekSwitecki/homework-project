@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-
-import buttons from "../buttons.module.css";
-import inputs from "../inputs.module.css";
 import fire from "../config/fire";
 import Button from "../Button/Button";
 import FlexContainer from "../FlexContainer/FlexContainer";
@@ -106,7 +103,7 @@ function TaskPopUp(props) {
           setURL(downloadURL);
           console.log(enteredDate);
           const CreatedTaskData = {
-            //id: props.subjectArraySize,
+            id: props.subjectArraySize,
             Task_subject: props.selectedSubject,
             Task_title: enteredTaskTitle,
             Task_description: enteredTaskDescription,

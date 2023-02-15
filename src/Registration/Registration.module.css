@@ -1,6 +1,4 @@
-
-    .logo
-{
+.logo {
     display: grid;
     grid-column-start: 1;
     grid-column-end: 3;
@@ -9,14 +7,13 @@
     width: 144px;
 }
 
-.registration_container
-{   
+.registration_container {
     min-height: 100vh;
     grid-row-start: 2;
     max-width: 1120px;
     display: grid;
     grid-template-columns: repeat(12, 64px);
-    grid-template-rows: repeat(5,auto);
+    grid-template-rows: repeat(5, auto);
     grid-column-gap: 32px;
     grid-row-gap: 8px;
     margin: 64px auto;
@@ -28,8 +25,7 @@
     background-color: white;
 }
 
-.register_form_container
-{
+.register_form_container {
     display: grid;
     grid-row-start: 2;
     grid-column-start: 3;
@@ -40,65 +36,60 @@
 }
 
 
-.register_form_double__input
-{
+.register_form_double__input {
     width: 100%;
     display: flex;
     flex-direction: row;
-    gap:32px;
-    
+    gap: 32px;
+
 }
 
-.register_form_double__radio
-{
+.register_form_double__radio {
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    gap:32px;
+    gap: 32px;
     flex: 2 1;
-    
+
 }
 
 
-.pattern_container__orange
-{
-        grid-row-start: 1;
-            display: inline-grid;
-            grid-row-end: 12;
-            grid-column-start: 10;
-            grid-column-end: 12;
-            background-size: cover;
-            width: 40vw;
-            height: 110%;
-            overflow: visible;
-            transform: translateY(-8%);       
-background-image: url("./img/pattern-orange.png");
+.pattern_container__orange {
+    grid-row-start: 1;
+    display: inline-grid;
+    grid-row-end: 12;
+    grid-column-start: 10;
+    grid-column-end: 12;
+    background-size: cover;
+    width: 40vw;
+    height: 110%;
+    overflow: visible;
+    transform: translateY(-8%);
+    background-image: url("./img/pattern-orange.png");
 }
 
-.pattern_container__purple
-{
-        grid-row-start: 1;
-            display: inline-grid;
-            grid-row-end: 12;
-            grid-column-start: 10;
-            grid-column-end: 12;
-            background-size: cover;
-            width: 40vw;
-            height: 110%;
-            overflow: visible;
-            transform: translateY(-8%);       
-background-image: url("./img/pattern-purple.png");
+.pattern_container__purple {
+    grid-row-start: 1;
+    display: inline-grid;
+    grid-row-end: 12;
+    grid-column-start: 10;
+    grid-column-end: 12;
+    background-size: cover;
+    width: 40vw;
+    height: 110%;
+    overflow: visible;
+    transform: translateY(-8%);
+    background-image: url("./img/pattern-purple.png");
 }
-.pattern_img
-{
+
+.pattern_img {
     height: auto;
-    width:45%;
+    width: 45%;
 }
 
 
-.form_buttons
-{
+.form_buttons {
     display: flex;
     flex-direction: column;
     gap: 32px;
@@ -106,10 +97,9 @@ background-image: url("./img/pattern-purple.png");
 }
 
 
-.invalid__email
-{   
+.invalid__email {
     margin: -5% 52% 0 0;
     color: red;
-    
+
 
 }

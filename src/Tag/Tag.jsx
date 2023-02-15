@@ -6,8 +6,8 @@ function Tag(props) {
 
   return (
     <div className={`${style.tag_container} ${style[`tag_${props.color}`]}`}>
-        <img src={props.icon} alt="tag_icon"></img>
-        {props.text}
+      <img src={props.icon} alt="tag_icon"></img>
+      {props.text}
     </div>
   );
 }

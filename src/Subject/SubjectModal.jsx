@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import styles from "./SubjectPopUp.module.css";
-import buttons from "../buttons.module.css"
-import inputs from "../inputs.module.css";
+import subjectModal from "./SubjectModal.module.css";
 import fire from "../config/fire";
-import { getAuth, onAuthStateChanged, auth } from "firebase/auth";
-import { getDatabase, ref, child, get, update, push, set } from "firebase/database";
+import { getAuth} from "firebase/auth";
+import { getDatabase, ref, child, get, push} from "firebase/database";
 import Inputfield from "../Inputfield/Inputfield";
 import Divider from "../Divider/Divider";
 import Heading from "../Heading/Heading";
@@ -140,7 +138,7 @@ function SubjectPopUp(props) {
           <Divider type="normal" size="full"></Divider>
           <FlexContainer props={{ gap:"16", direction:"column" }}>
             <Heading small Heading="Your class code" Subheading="This code is used to join your class." ></Heading>
-            <button type="button" className={styles.code_display} onClick={() => {navigator.clipboard.writeText(props.subjectCode)}}>
+            <button type="button" className={subjectModal.code_display} onClick={() => {navigator.clipboard.writeText(props.subjectCode)}}>
               {props.subjectCode}
             </button>
             <Divider type="normal"></Divider>

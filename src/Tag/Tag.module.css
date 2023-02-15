@@ -1,5 +1,4 @@
-.tag_container
-{
+.tag_container {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -21,18 +20,16 @@
     white-space: nowrap;
 }
 
-.tag_blue
-{
+.tag_blue {
     color: #484848;
 
-    
+
     background: #EDF6FE;
-    border: 1px solid #D7E9FF; 
+    border: 1px solid #D7E9FF;
 }
 
 
-.tag_green
-{
+.tag_green {
     color: #484848;
 
     background: #EDFEF1;
@@ -40,8 +37,7 @@
 }
 
 
-.tag_yellow
-{
+.tag_yellow {
     color: #484848;
 
     background: #FEF9ED;
@@ -49,11 +45,10 @@
 }
 
 
-.tag_red
-{
+.tag_red {
     color: #484848;
 
-    
+
     background: #FEEDED;
     border: 1px solid #FFD7D7;
 }

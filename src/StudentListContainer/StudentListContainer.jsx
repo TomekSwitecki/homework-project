@@ -1,8 +1,5 @@
 import React from "react";
-import Button from "../Button/Button";
 import ActionBar from "../Task/ActionBar";
-import TaskItem from "../Task/TaskItem";
-import TaskAdd from "../Task/TaskAdd";
 import Heading from "../Heading/Heading";
 import styles from "../StudentListContainer/StudentListContainer.module.css"
 import StudentItem from "../Students/StudentItem";
@@ -31,7 +28,7 @@ const StudentListContainer=(props)=>
                 f_name={e.f_name}
                 l_name={e.l_name}
                 mail={e.email}
-                // date={e.Date}
+                date={e.Date}
                 // status={e.Status}
               />
         ))}
@@ -49,19 +46,7 @@ const StudentListContainer=(props)=>
         </div>
       <table className={styles.StudentItem__Table}>
       <ActionBar a={"Name"} b={"Submition Date"} c={"Status"} />
-      {props.filteredStudents.map((e, index) => (
-            <StudentItem
-              //id={e.index}
-              selectedTask={props.selectedTask}
-              f_name={e.f_name}
-              l_name={e.l_name}
-              mail={e.email}
-              // date={e.Date}
-              // status={e.Status}
-            />
-      ))}
     </table>
-     
     <Placeholder Heading="No students added yet" Subheading="No student has joined this class yet. Once they join, they will be listed here!" img={students_placeholder}></Placeholder>
     </div>);
   }

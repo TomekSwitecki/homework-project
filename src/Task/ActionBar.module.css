@@ -1,27 +1,25 @@
-.actionBar_container
-{
-    width: 100%;
-
-    
-    padding: 16px 32px;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 15px;
+.actionBar_container {
+  width: 100%;
 
 
-    box-sizing: border-box;
-    
-    color: #EFEFEF;
-    background: #1D1D1F;
+  padding: 16px 32px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 15px;
 
-    position: sticky;
-  top: 0; /* Don't forget this, required for the stickiness */
+
+  box-sizing: border-box;
+
+  color: #EFEFEF;
+  background: #1D1D1F;
+
+  position: sticky;
+  top: 0;
 
 }
 
-.actionBar_header
-{
-    font-size: 14px;
-    font-weight: 500;
-    padding: 16px 16px;
+.actionBar_header {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 16px 16px;
 }

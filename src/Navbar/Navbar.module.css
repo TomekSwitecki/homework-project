@@ -1,10 +1,9 @@
-.navbar_container
-{
+.navbar_container {
     background-color: #1D1D1F;
     padding-left: 24px;
     height: 100%;
 
-    width: clamp(256px,256px,256px);
+    width: clamp(256px, 256px, 256px);
     min-width: 256px;
     padding-bottom: 16px;
 
@@ -15,23 +14,20 @@
 
 }
 
-.logo
-{
+.logo {
     width: 156px;
     display: block;
     padding-bottom: 32px;
 
 }
 
-.controls
-{
+.controls {
     position: relative;
-    padding:24px 0 28px 0;
+    padding: 24px 0 28px 0;
     width: 52px;
 }
 
-.button_container
-{
+.button_container {
     display: flex;
     gap: 8px;
     flex-direction: column;
@@ -40,8 +36,7 @@
     height: 80%;
 }
 
-.navbar_divider
-{
+.navbar_divider {
     color: #3A3A3A;
     outline: none;
     box-shadow: none;
@@ -50,8 +45,7 @@
     margin-bottom: 16px;
 }
 
-.lower_container
-{
+.lower_container {
     flex-grow: 1;
     align-items: center;
     box-sizing: border-box;
@@ -64,4 +58,3 @@
     width: 100%;
     padding-bottom: 50px;
 }
-

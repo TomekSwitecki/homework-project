@@ -1,16 +1,5 @@
 
 
-.TaskSubject
-{
-font-family: 'Outfit';
-font-style: normal;
-font-weight: 400;
-font-size: 15px;
-line-height: 19px;
-color: #959595;
-
-}
-
 .TaskItemWrapper
 {
   text-align: left;
@@ -61,7 +50,7 @@ color: #959595;
 
 
 .TaskDetailsContainer {
-  background-color: #ffffff;
+  background-color: white;
   width: 60%;
   padding: 20px;
   display: flex;
@@ -102,11 +91,7 @@ color: #959595;
 .TaskItem {
   width: 100%;
   align-items: center;
-
-
-
-  background: #ffffff;
-
+  background: white;
   transition: all 0.2s;
 }
 .TaskItem:nth-child(2n)
@@ -139,7 +124,7 @@ background-color: #FCFCFC;
   font-weight: 400;
   font-size: 14px;
   padding: 16px 16px;
-  color: #1D1D1F;
+  color: #1D1D1D;
   text-transform: capitalize;
 
   white-space: nowrap;

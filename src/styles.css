@@ -1,58 +1,72 @@
-td
-{
-  border-right: 1px solid #F1F1F1;
-  border-bottom: 1px solid #F1F1F1;
+#root {
+  height: 100%;
 }
-td:hover
-{
-  border-right: none;
-}
+
+body,
 html {
+  font-family: "Outfit", sans-serif;
+  user-select: none;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
   box-sizing: border-box;
+  background-color: white;
 }
-*, *:before, *:after {
+
+
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
-/* width */
+
+/* scrollbar */
 ::-webkit-scrollbar {
   width: 5px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   background-color: #ffffff00;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: #EDEDED;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
 
+img {
+
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
 
 h1 {
   font-weight: 500;
   font-size: 24px;
   line-height: 50px;
-  color: #1D1D1F;
-  
+  color: #1D1D1D;
+
   line-height: normal;
   margin-top: 0;
   margin-bottom: 8px;
 }
 
-.GridContainer
-{
+.GridContainer {
   display: grid;
   /* 64px */
   /* grid-template-columns: repeat(12, auto); */
-  grid-template-columns:repeat(12,minmax(auto,50%));
-padding-left: 32px;
-padding-right: 32px;
+  grid-template-columns: repeat(12, minmax(auto, 50%));
+  padding-left: 32px;
+  padding-right: 32px;
   grid-column-gap: 32px;
   grid-row-gap: 8px;
 
@@ -62,94 +76,44 @@ padding-right: 32px;
   height: calc(100% - 128px);
 }
 
-.App_Container
-{
+.App_Container {
   height: 100%;
   background-color: #F8F8F8;
-
-  /* display: grid;
-  grid-template-columns: repeat(12, 76px);
-
-  grid-column-gap: 36px;
-  grid-row-gap: 8px;
-
-
-  vertical-align: middle;
-  max-height: 100%;
-
-  background-color: white; */
-
 }
 
-#root
-{
-  height: 100%;
-}
-img
-{
 
-  -webkit-user-drag: none;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-}
 
-.expander__full
-{
+
+
+.expander__full {
   width: 100%;
 }
 
-.expander__medium
-{
+.expander__medium {
   width: 75%;
 }
 
-.expander__small
-{
+.expander__small {
   width: 50%;
 }
 
-.link
-{
+.link {
   font-family: 'Outfit';
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  
+
   text-decoration: none;
   color: #0075FF;
 }
 
-.link:hover
-{
+.link:hover {
 
   text-decoration: underline;
 }
 
-body,
-html {
-  user-select: none;
-  overflow: hidden;
-  margin:0;
-  padding:0;
-  height:100%;
-  width: 100%;
-  min-height: 100vh;
-}
-body {
-  background-color: white;
-  font-family: "Outfit", sans-serif;
-  margin: 0;
-}
-
-input {
-
-}
-
-form
-{
+form {
   height: 100%;
 }
 
@@ -162,29 +126,56 @@ button {
   border: none;
   outline: none;
 }
+
 button:hover {
   cursor: pointer;
 }
 
-#btn_logout
-{
-    text-align: center;
-    background: url("../src/icons/icon_logout.svg") no-repeat center left;
-    content: "";
-    display: inline-block;
-    position: relative;
-    left:12px;
+#btn_logout {
+  text-align: center;
+  background: url("../src/icons/icon_logout.svg") no-repeat center left;
+  content: "";
+  display: inline-block;
+  position: relative;
+  left: 12px;
 }
 
 
-.Container_titles
-{
+.Container_titles {
   text-align: center;
 }
 
 
 
-.HomePage_Container{
+.orange_accent {
+  color: #FF9B35;
+}
+
+.purple_accent {
+  color: #8F8AD9;
+}
+
+.white {
+  color: white;
+}
+
+
+
+
+
+
+td {
+  border-right: 1px solid #F1F1F1;
+  border-bottom: 1px solid #F1F1F1;
+}
+
+td:hover {
+  border-right: none;
+}
+
+
+
+.HomePage_Container {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -193,19 +184,14 @@ button:hover {
   height: 100%;
 }
 
-
-
-
-
-
-.TaskContainer {
+.LeftContainer {
   display: grid;
   grid-template-rows: calc(50% - 8px) calc(50% - 8px);
   padding: 32px 32px;
   grid-row-gap: 16px;
   grid-column-start: 1;
   grid-column-end: 7;
-  background-color: rgb(255, 255, 255);
+  background-color: white;
 
   max-height: 100%;
   min-height: 100%;
@@ -213,84 +199,35 @@ button:hover {
 
 
   box-shadow:
-  1.2px 1.4px 2.2px rgba(0, 0, 0, 0.006),
-  2.8px 3.4px 5.3px rgba(0, 0, 0, 0.008),
-  5.3px 6.4px 10px rgba(0, 0, 0, 0.01),
-  9.4px 11.4px 17.9px rgba(0, 0, 0, 0.012),
-  17.5px 21.3px 33.4px rgba(0, 0, 0, 0.014),
-  42px 51px 80px rgba(0, 0, 0, 0.02)
-;
+    1.2px 1.4px 2.2px rgba(0, 0, 0, 0.006),
+    2.8px 3.4px 5.3px rgba(0, 0, 0, 0.008),
+    5.3px 6.4px 10px rgba(0, 0, 0, 0.01),
+    9.4px 11.4px 17.9px rgba(0, 0, 0, 0.012),
+    17.5px 21.3px 33.4px rgba(0, 0, 0, 0.014),
+    42px 51px 80px rgba(0, 0, 0, 0.02);
 
 }
 
-.TaskItem__Container__full
-{
-  display: grid;
-  padding: 32px 32px;
-  grid-row-gap: 16px;
-  grid-column-start: 1;
-  grid-column-end: 7;
-  background-color: rgb(255, 255, 255);
 
-  max-height: 100%;
-  min-height: 100%;
-  height: 100%;
-
-
-  box-shadow:
-  1.2px 1.4px 2.2px rgba(0, 0, 0, 0.006),
-  2.8px 3.4px 5.3px rgba(0, 0, 0, 0.008),
-  5.3px 6.4px 10px rgba(0, 0, 0, 0.01),
-  9.4px 11.4px 17.9px rgba(0, 0, 0, 0.012),
-  17.5px 21.3px 33.4px rgba(0, 0, 0, 0.014),
-  42px 51px 80px rgba(0, 0, 0, 0.02)
-}
-
-
-
-
-
-
-
-.StudentListContainer
-{
-  /* overflow: auto; */
+.RightContainer {
   grid-template-rows: 1fr;
   padding: 32px 32px;
   grid-row-gap: 16px;
   grid-column-start: 7;
   grid-column-end: 13;
-  background-color: rgb(255, 255, 255);
+  background-color: white;
   max-height: 100%;
   min-height: 100%;
   height: 100%;
   box-shadow: 1.2px 1.4px 2.2px rgba(0, 0, 0, 0.006),
-2.8px 3.4px 5.3px rgba(0, 0, 0, 0.008),
-5.3px 6.4px 10px rgba(0, 0, 0, 0.01),
-9.4px 11.4px 17.9px rgba(0, 0, 0, 0.012),
-17.5px 21.3px 33.4px rgba(0, 0, 0, 0.014),
-42px 51px 80px rgba(0, 0, 0, 0.02);
+    2.8px 3.4px 5.3px rgba(0, 0, 0, 0.008),
+    5.3px 6.4px 10px rgba(0, 0, 0, 0.01),
+    9.4px 11.4px 17.9px rgba(0, 0, 0, 0.012),
+    17.5px 21.3px 33.4px rgba(0, 0, 0, 0.014),
+    42px 51px 80px rgba(0, 0, 0, 0.02);
 
 }
 
-.StudentListContainer__auto
-{
+.RightContainer__auto {
   overflow: auto;
 }
-
-
-.orange_accent
-{
-  color: #FF9B35;
-}
-
-.purple_accent
-{
-  color: #8F8AD9;
-}
-
-.white
-{
-  color: white;
-}
-

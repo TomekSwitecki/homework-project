@@ -1,10 +1,10 @@
 import "./styles.css";
-import React, { useState , useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Routes, Route } from "react-router-dom";
 import fire from "./config/fire";
-import { getDatabase, ref, child, get,push, set } from "firebase/database";
+import { getDatabase, ref, child, get, push, set } from "firebase/database";
 import CodeGenerator from "./CodeGenerator";
-import SubjectPopUp from "./Subject/SubjectPopUp";
+import SubjectModal from "./Subject/SubjectModal";
 import TaskPopUp from "./Task/TaskPopUp";
 import { getAuth, signOut } from "firebase/auth";
 import TaskDescription from "./Task/TaskDescription";
@@ -29,35 +29,32 @@ const logout = () => {
 };
 
 
-const App=(props)=> {
+const App = (props) => {
   //const [isLoading,setIsLoading]=useState(false);
 
 
   const [GeneratedSubjectCode, setGenereatedSubjectCode] = useState();
   //console.log(props);
-  const [SubjectPopUpVisible, setSubjectPopUpVisibility] = useState(false);
-  function SubjectPopUpVisibility() {
+  const [SubjectModalVisible, setSubjectModalVisibility] = useState(false);
+  function SubjectModalVisibility() {
     setGenereatedSubjectCode(CodeGenerator());
     //console.log(GeneratedSubjectCode);
     if (TaskPopUpVisible !== true)
-      setSubjectPopUpVisibility((prevValue) => {
+      setSubjectModalVisibility((prevValue) => {
         return !prevValue;
       });
   }
 
   const [TaskPopUpVisible, setTaskPopUpVisibility] = useState(false);
   function TaskPopUpVisibility() {
-    if (selectedSubject.name !== undefined)
-    {
-      if(SubjectPopUpVisible !== true)
-      {
-      setTaskPopUpVisibility((prevValue) => {
-        return !prevValue;
-      });
+    if (selectedSubject.name !== undefined) {
+      if (SubjectModalVisible !== true) {
+        setTaskPopUpVisibility((prevValue) => {
+          return !prevValue;
+        });
       }
     }
-    else
-    {
+    else {
       alert("Select subject first");
     }
   }
@@ -66,23 +63,23 @@ const App=(props)=> {
   //moze przeniesc przy rejestracji
   //InitialSubjectData();
 
-  
+
 
 
   const [subjectData, setSubjectData] = useState([]);
-  
+
   async function getSubjectData() {
     const dbRef = ref(getDatabase());
     get(child(dbRef, `subjects/`))
       .then((snapshot) => {
         if (snapshot.exists()) {
-           setSubjectData([]);
+          setSubjectData([]);
           // console.log(snapshot.val());
           Object.entries(snapshot.val()).forEach(([key, value]) => {
-           // console.log(key, value);
-           // console.log(value.addedStudents);
-             // console.log(value);
-              setSubjectData((oldArray) => [...oldArray, value]);
+            // console.log(key, value);
+            // console.log(value.addedStudents);
+            // console.log(value);
+            setSubjectData((oldArray) => [...oldArray, value]);
           });
           // console.log(subjectData);
           //setSubjectData(snapshot.val());
@@ -94,23 +91,30 @@ const App=(props)=> {
         console.error(error);
       });
   }
+  const filteredSubjects = subjectData.filter((e) => {
+    let ObjectHelper;
+    if (Array.isArray(e.addedStudents)) {
+      ObjectHelper = e.addedStudents.includes(
+        getAuth(fire).currentUser.email
+      );
+    } else {
+      ObjectHelper = Object.values(e.addedStudents).includes(
+        getAuth(fire).currentUser.email
+      );
+    }
+    return e.Created_by === getAuth(fire).currentUser.email || ObjectHelper;
+  });
+  
+  const uniqueSubjects = filteredSubjects.reduce((acc, curr) => {
+    const index = acc.findIndex(obj => obj.Subject_name === curr.Subject_name);
+    if (index === -1) {
+      acc.push(curr);
+    } else {
+      acc[index] = curr;
+    }
+    return acc;
+  }, []);
 
-
-    const filteredSubjects = subjectData.filter((e) => {
-      let ObjectHelper;
-      if (Array.isArray(e.addedStudents)) {
-        ObjectHelper = e.addedStudents.includes(
-          getAuth(fire).currentUser.email
-        );
-       // console.log("Array");
-      } else {
-        ObjectHelper = Object.values(e.addedStudents).includes(
-          getAuth(fire).currentUser.email
-        );
-       // console.log("Object");
-      }
-      return e.Created_by === getAuth(fire).currentUser.email || ObjectHelper;
-    });
 
   async function fetchSubjecttDatabase(subject_data) {
     console.log("Fetching created subject data to database");
@@ -155,31 +159,31 @@ const App=(props)=> {
       Task_deadline: new Date(2020, 7, 14).toLocaleDateString(),
     },
   ];
- const [taskData, setTaskData] = useState([]);
+  const [taskData, setTaskData] = useState([]);
 
-async function getTaskData() {
+  async function getTaskData() {
 
-  const dbRef = ref(getDatabase());
-  get(child(dbRef, `task/`))
-    .then((snapshot) => {
-      if (snapshot.exists()) {
-        setTaskData([]);
-       // console.log(snapshot.val());
-        Object.entries(snapshot.val()).forEach(([key, value]) => {
-          //console.log(key, value);
-                    //  console.log(value);
-                      setTaskData((oldArray) => [...oldArray, value]);
-        });
-       // console.log(taskData);
-        //setSubjectData(snapshot.val());
-      } else {
-        console.log("No data available");
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-}
+    const dbRef = ref(getDatabase());
+    get(child(dbRef, `task/`))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          setTaskData([]);
+          // console.log(snapshot.val());
+          Object.entries(snapshot.val()).forEach(([key, value]) => {
+            //console.log(key, value);
+            //  console.log(value);
+            setTaskData((oldArray) => [...oldArray, value]);
+          });
+          // console.log(taskData);
+          //setSubjectData(snapshot.val());
+        } else {
+          console.log("No data available");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
 
   async function fetchTaskDatabase(task_data) {
     console.log("Fetching created task data to database");
@@ -218,15 +222,14 @@ async function getTaskData() {
       .then((snapshot) => {
         if (snapshot.exists()) {
           setStudentData([]);
-         // console.log(snapshot.val());
+          // console.log(snapshot.val());
           Object.entries(snapshot.val()).forEach(([key, value]) => {
-           // console.log(key, value);
+            // console.log(key, value);
             //console.log(value);
-            if(value.role=="STUDENT")
-            {
-            setStudentData((oldArray) => [...oldArray, value]);
+            if (value.role == "STUDENT") {
+              setStudentData((oldArray) => [...oldArray, value]);
             }
-            
+
           });
           //console.log(studentData);
 
@@ -240,34 +243,34 @@ async function getTaskData() {
       });
   }
 
-    useEffect(() => {
-      getStudentData();
-    }, []);
+  useEffect(() => {
+    getStudentData();
+  }, []);
   //------------------------------------------------------------------------------
-    
-  if (
-      filteredSubjects && // 👈 null and undefined check
-      Object.keys(filteredSubjects).length === 0 &&
-      Object.getPrototypeOf(filteredSubjects) === Object.prototype
-    )
-      console.log(filteredSubjects[0].Subject_name);
-//console.log(filteredSubjects[0].Subject_name);
+
+  // if (
+  //   filteredSubjects && // 👈 null and undefined check
+  //   Object.keys(filteredSubjects).length === 0 &&
+  //   Object.getPrototypeOf(filteredSubjects) === Object.prototype
+  // )
+  //   console.log(filteredSubjects);
+  //console.log(filteredSubjects[0].Subject_name);
   const [selectedSubject, setSelectedSubject] = useState({});
   const onSubjectSelectedDataHandler = (selectedSubjectData) => {
-    let loading=false;
-   // console.log(selectedSubjectData);
-         getTaskData();
-         setSelectedSubject(selectedSubjectData);
-         setSelectedTask({});
-         
+    let loading = false;
+    // console.log(selectedSubjectData);
+    getTaskData();
+    setSelectedSubject(selectedSubjectData);
+    setSelectedTask({});
+
 
 
   };
   //console.log("SELECTED SUBJECT: " + selectedSubject.name);
-//console.log("SELECTED SUBJECT STUDENTS: " + selectedSubject.addedStudents);
-  
+  //console.log("SELECTED SUBJECT STUDENTS: " + selectedSubject.addedStudents);
 
-const [selectedTask, setSelectedTask] = useState({});
+
+  const [selectedTask, setSelectedTask] = useState({});
   const onTaskSelectedDataHandler = (selectedTaskData) => {
     setSelectedTask(selectedTaskData);
     //console.log(selectedTaskData);
@@ -276,7 +279,7 @@ const [selectedTask, setSelectedTask] = useState({});
   //console.log(selectedTask);
   const onSubjectJoinedHandler = () => {
     getSubjectData();
-    SubjectPopUpVisibility();
+    SubjectModalVisibility();
   };
 
   const onSubjectCreatedDataHandler = (createdSubjectData) => {
@@ -287,70 +290,54 @@ const [selectedTask, setSelectedTask] = useState({});
     fetchSubjecttDatabase(createdSubjectData);
     setSubjectData([]);
     getSubjectData();
-    SubjectPopUpVisibility();
+    SubjectModalVisibility();
   };
   //console.log(Object.values(subjectData));
   //console.log(subjectData);
 
   const onTaskCreatedDataHandler = (createdTaskData) => {
     console.log(createdTaskData);
-    
+
     fetchTaskDatabase(createdTaskData);
     setTaskData([]);
     getTaskData();
     TaskPopUpVisibility();
   };
 
-  //FILTROWANIE TASKÓW WYBRANEGO PRZEDMIOTU
   const filteredTasks = taskData.filter((e) => {
     return e.Task_subject === selectedSubject.name;
+  });
+  
+  const uniqueTasks = filteredTasks.reduce((acc, curr) => {
+    const index = acc.findIndex(obj => obj.Task_title === curr.Task_title);
+    if (index === -1) {
+      acc.push(curr);
+    } else {
+      acc[index] = curr;
+    }
+    return acc;
+  }, []);
+  
+
+
+  const filteredStudents = studentData.filter((e) => {
+    if (Object.keys(selectedSubject).length !== 0) {
+      return Object.values(selectedSubject.addedStudents).includes(e.email);
+    }
   });
 
 
 
-    const filteredStudents = studentData.filter((e) => {
-      //console.log(selectedSubject);
-      //console.log(Object.keys(selectedSubject).length !== 0);
-      if (Object.keys(selectedSubject).length !== 0) 
-      {
-        // console.log(e.email);
-        // console.log(selectedSubject.addedStudents);
-        // console.log(
-        //   Object.values(selectedSubject.addedStudents).includes(e.email)
-        // );
-        return Object.values(selectedSubject.addedStudents).includes(e.email);
-      }
 
-      
-      // if (
-      //   selectedSubject !== null
-      // ) {
-      //   //console.log(selectedSubject.addedStudents);
-      //   if (Array.isArray(selectedSubject.addedStudents))
-      //   {
-      // return selectedSubject.addedStudents.includes(e.email);
-      //   }
-      //   else
-      //   {
-      // return Object.values(selectedSubject.addedStudents).includes(e.email);
-      //   }
-          
-      // } 
-
-      });
-
-   
-
-    
 
 
 
   return (
     <div className="App_Container">
 
-      {SubjectPopUpVisible ? (
-        <SubjectPopUp
-          onCancel={SubjectPopUpVisibility}
+      {SubjectModalVisible ? (
+        <SubjectModal
+          onCancel={SubjectModalVisibility}
           onCreatedSubject={onSubjectCreatedDataHandler}
           onJoinedSubject={onSubjectJoinedHandler}
           //subjectArraySize={subjectData.length}
@@ -367,38 +354,41 @@ const [selectedTask, setSelectedTask] = useState({});
         />
       ) : null}
 
-        
-      <div className="HomePage_Container">
-        <Navbar role={props.rola} subjects={filteredSubjects} onSubjectSelectedDataHandler={onSubjectSelectedDataHandler} logout={logout} onClick={SubjectPopUpVisibility}></Navbar>
-        {selectedSubject.name !== undefined ? 
-        <div className="GridContainer">
-        
-          <div className="TaskContainer">
-            <TaskContainer role={props.rola} filteredTasks={filteredTasks} selectedSubject={selectedSubject.name} TaskPopUpVisibility={TaskPopUpVisibility} onTaskSelectedDataHandler={onTaskSelectedDataHandler}></TaskContainer>
-            {props.rola === "TEACHER" ? <TaskDescription userEmail={getAuth(fire).currentUser.email}  selectedTask={selectedTask} TaskNumber={filteredTasks}/> : null }
-          </div>
-          {props.rola === "TEACHER" ? (
-            <div className="StudentListContainer">
-              <StudentListContainer                 
-              selectedTask={selectedTask}
-              filteredStudents={filteredStudents}>
-              </StudentListContainer>
-            </div>
-          ) : (
-            
-            <div className={`${"StudentListContainer"} ${[`StudentListContainer__auto`]}`}>
-            <TaskDescription
-              role={props.rola}
-              userEmail={getAuth(fire).currentUser.email}
-              selectedTask={selectedTask}
-              TaskNumber={filteredTasks}
-            />
-            </div>
-          )}
 
-        
-        </div>: <Placeholder img={subject_placeholder} Heading={"No class selected"} Subheading={"Select existing class from list or create a new one."}></Placeholder>}
-      </div> 
+      <div className="HomePage_Container">
+        <Navbar role={props.rola} subjects={uniqueSubjects} onSubjectSelectedDataHandler={onSubjectSelectedDataHandler} logout={logout} onClick={SubjectModalVisibility}></Navbar>
+        {selectedSubject.name !== undefined ?
+          <div className="GridContainer">
+
+            <div className="LeftContainer">
+              <TaskContainer role={props.rola} filteredTasks={uniqueTasks} selectedSubject={selectedSubject.name} TaskPopUpVisibility={TaskPopUpVisibility} onTaskSelectedDataHandler={onTaskSelectedDataHandler}></TaskContainer>
+              {props.rola === "TEACHER" ? <TaskDescription userEmail={getAuth(fire).currentUser.email} selectedTask={selectedTask} TaskNumber={filteredTasks} /> : null}
+            </div>
+
+
+            {props.rola === "TEACHER" ? (
+              <div className="RightContainer">
+                <StudentListContainer
+                  selectedTask={selectedTask}
+                  filteredStudents={filteredStudents}>
+                </StudentListContainer>
+              </div>
+            ) : (
+
+              <div className={`${"RightContainer"} ${[`RightContainer__auto`]}`}>
+                <TaskDescription
+                  role={props.rola}
+                  userEmail={getAuth(fire).currentUser.email}
+                  selectedTask={selectedTask}
+                  TaskNumber={filteredTasks}
+                />
+              </div>
+            )}
+
+
+          </div> 
+          : <Placeholder img={subject_placeholder} Heading={"No class selected"} Subheading={"Select class or create new one in the navbar menu."}></Placeholder>}
+      </div>
     </div>
   );
 }

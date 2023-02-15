@@ -1,5 +1,4 @@
-.Download_Container
-{
+.Download_Container {
     display: inline-block;
     background-color: #F7F6F9;
     padding: 16px 32px;
@@ -14,8 +13,7 @@
     width: 100%;
 }
 
-.Download_Container:hover
-{
+.Download_Container:hover {
     white-space: nowrap;
     /* text-decoration: underline; */
     transition: all 0.1s;
@@ -41,23 +39,22 @@
 }
 
 
-.Link_Container
-{
+.Link_Container {
     width: 100%;
     display: inline-flex;
     flex-direction: column;
-    color: #1d1d1d;
-  
+    color: #1D1D1D;
+
 }
-.label_link_text
-{
+
+.label_link_text {
     width: 100%;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
     font-weight: 300;
     font-size: 14px;
-    color: #bebebe;
+    color: #BEBEBE;
     width: 75%;
     text-decoration: none !important;
 

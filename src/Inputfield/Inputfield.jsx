@@ -1,49 +1,45 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ReactSVG } from "react-svg";
-import inputs from "../Inputfield/inputs.module.css"
-import buttons from "../buttons.module.css";
+import inputfield from "../Inputfield/Inputfield.module.css"
+
 
 function Inputfield(props) {
-  let input_className=inputs.form__input;
-  let container_className=inputs.Inputfield_container;
-  if(props.type=="code" )
-  {
-    input_className=inputs.code_input;
-    container_className=inputs.Inputfield_container__code;
+  let input_className = inputfield.form__input;
+  let container_className = inputfield.Inputfield_container;
+  if (props.type == "code") {
+    input_className = inputfield.code_input;
+    container_className = inputfield.Inputfield_container__code;
   }
-  else if( props.type=="file")
-  {
-    input_className=inputs.file_input;
-    container_className=inputs.Inputfield_container__file;
+  else if (props.type == "file") {
+    input_className = inputfield.file_input;
+    container_className = inputfield.Inputfield_container__file;
   }
-  else
-  {
-    input_className=inputs.form__input;
-    container_className=inputs.Inputfield_container;
+  else {
+    input_className = inputfield.form__input;
+    container_className = inputfield.Inputfield_container;
   }
 
   return (
     <div className={container_className}>
-     <div className={props.label ? inputs.Inputfield_labels_container : inputs.Inputfield_labels_container__empty}>
-        <span className={inputs.Inputfield_label}>{props.label}</span>
+      <div className={props.label ? inputfield.Inputfield_labels_container : inputfield.Inputfield_labels_container__empty}>
+        <span className={inputfield.Inputfield_label}>{props.label}</span>
         {props.sublabel ? <Link to={props.LinkTo} className={"link"}>{props.LinkText}</Link> : null}
-    </div> 
-    <input
-    maxlength={props.maxLength}
-    type={props.type}
-    className={input_className}
-    onChange={props.onChange}
-    value={props.value}
-    placeholder={props.placeholder}
-    min={props.min}
-    max={props.max}
-    id={props.id}
-    name={props.name}
-  />
-  </div>
+      </div>
+      <input
+        maxlength={props.maxLength}
+        type={props.type}
+        className={input_className}
+        onChange={props.onChange}
+        value={props.value}
+        placeholder={props.placeholder}
+        min={props.min}
+        max={props.max}
+        id={props.id}
+        name={props.name}
+      />
+    </div>
   );
 }
 
 export default Inputfield;
-// className={`${inputs.form__input} ${inputs.form__input__code}`}
+// className={`${inputfield.form__input} ${inputfield.form__input__code}`}

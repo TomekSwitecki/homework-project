@@ -1,6 +1,5 @@
-.btn_wrapper
-{
-    padding: 16px 32px ;
+.btn_wrapper {
+    padding: 16px 32px;
     width: 100%;
 
     font-weight: 500;
@@ -9,37 +8,37 @@
     text-align: center;
     text-transform: capitalize;
     text-decoration: none;
-    color: white;  
+    color: white;
     transition: all 0.2s;
-    white-space:nowrap;
+    white-space: nowrap;
 }
 
 
 
-.button_container
-{
+.button_container {
     transform: scale(1);
     transition: transform 0.2s;
 }
-.button_container:has(.btn_ghost):hover,.button_container:has(.btn_white):hover {
-    outline:none;
-    box-shadow: none;
-    
-  }
 
-  
-  .button_container:hover {
+.button_container:has(.btn_ghost):hover,
+.button_container:has(.btn_white):hover {
+    outline: none;
+    box-shadow: none;
+
+}
+
+
+.button_container:hover {
     transition: transform 0.2s;
     transform: scale(1.05);
     box-shadow: 0px 0px 10px #b9b9b93a;
     outline: 1px solid black;
-  }
+}
 
 
 
 
-.btn_ghost
-{
+.btn_ghost {
     color: #1D1D1D;
     background-color: #00000000;
     font-weight: 600;
@@ -48,14 +47,13 @@
 
     align-items: center;
     text-align: center;
-    padding: 8px 16px ;
+    padding: 8px 16px;
 
     transition: all 0.2s;
-    white-space:nowrap;
+    white-space: nowrap;
 }
 
-.btn_ghost:hover
-{
+.btn_ghost:hover {
     font-weight: bolder;
     transition: all 0.2s;
     box-shadow: none;
@@ -63,11 +61,10 @@
 }
 
 
-.button_ghost__active_indicator
-{
+.button_ghost__active_indicator {
     position: relative;
     top: -10px;
-    left:23px
+    left: 23px
 }
 
 .btn_orange {
@@ -86,9 +83,9 @@
 
 
 .btn_purple {
- background: #8F8AD9;
-border-bottom: 6px solid #807CBF;
-color: white;
+    background: #8F8AD9;
+    border-bottom: 6px solid #807CBF;
+    color: white;
 }
 
 .btn_purple:hover {
@@ -98,7 +95,7 @@ color: white;
 /* #ababab */
 .btn_white {
     color: #1D1D1D;
-    background: #FFFFFF;
+    background: white;
     border: 2px solid #C8C8C8;
     box-shadow: 0px 4px 0px #C8C8C8;
 }
@@ -107,7 +104,7 @@ color: white;
 .btn_green {
     background: #78D494;
     border-bottom: 6px solid #66B47D;
-    color: #FFFFFF;  
+    color: white;
 }
 
 .btn_green:hover {
@@ -119,12 +116,10 @@ color: white;
 
 
 
-.button_icon_prepend
-{
+.button_icon_prepend {
     position: absolute;
-    top:17px;
+    top: 17px;
     left: 69px;
     width: 20px;
     z-index: 1;
 }
-

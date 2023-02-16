@@ -10,6 +10,7 @@ import logo from "../logo.svg";
 
 import pattern_purple from "./img/pattern_purple_thin.svg";
 import pattern_orange from "./img/pattern_orange_thin.svg";
+import img_right from "./img/Login_Right.svg";
 const Login = () => {
   const [email, setEmail] = useState("");
   const emailChangeHandler = (event) => {
@@ -45,8 +46,9 @@ const Login = () => {
 
 
     <div className={styles.login_container}>
-      <img className={styles.pattern_left} src={pattern_purple} alt="pattern_purple"></img>
-      <img className={styles.pattern_right} src={pattern_orange} alt="pattern_orange"></img>
+      {/* <img className={styles.pattern_left} src={pattern_purple} alt="pattern_purple"></img> */}
+      <div className={styles.pattern_right}></div>
+      {/* <img className={styles.pattern_right} src={img_right} alt="login ilustration"></img> */}
       <div className={styles.logo}>
         <img src={logo}></img>
       </div>

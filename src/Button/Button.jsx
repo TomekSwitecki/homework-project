@@ -18,10 +18,10 @@ function Button(props) {
             </button>
           </Link>
         </div>
-
+{/* 
         <div className={button.button_ghost__active_indicator}>
           {props.active && props.color == "ghost" ? <img alt="active_indicator" src={active_indicator}></img> : null}
-        </div>
+        </div> */}
 
 
 

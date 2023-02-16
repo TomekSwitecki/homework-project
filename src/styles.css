@@ -25,7 +25,9 @@ html {
 
 /* scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 7px;
+  height: 7px;
+ background-color: #dbdbdb;
 }
 
 ::-webkit-scrollbar-track {
@@ -33,7 +35,8 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #EDEDED;
+  background: #9c9c9c;
+  opacity: 70%
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -231,3 +234,22 @@ td:hover {
 .RightContainer__auto {
   overflow: auto;
 }
+
+
+@media screen and (max-width: 1160px) {
+  .GridContainer {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    min-width: 470px;
+  }
+
+
+}
+
+
+@media screen and (max-width: 600px) {
+.HomePage_Container {
+  overflow-x: auto;
+    }
+  }

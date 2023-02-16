@@ -14,10 +14,10 @@
     grid-column-gap: 32px;
     grid-row-gap: 8px;
     margin: 64px auto;
-    height: 86vh;
+
 
     vertical-align: middle;
-    max-height: 100%;
+
 
 }
 
@@ -151,4 +151,66 @@
 .testimony_container__wrapper {
     display: flex;
     gap: 64px;
+}
+
+
+
+@media screen and (max-width: 1120px) {
+    .LandingPage_container {
+    max-width: 1120px;
+    display: flex;
+    flex-direction: column;
+    margin: 16px 16px;
+    vertical-align: middle;
+    overflow-y: scroll;
+    height: 100%;
+    }
+
+    .hero_ilustration {
+        display: none;
+    }
+
+
+    .buttons_navbar {
+        margin-top: 16px;
+        margin-bottom: 8px;
+    display: flex;
+    width: 100%;
+
+    flex-direction: row;
+    }
+
+    .hero_container {
+        padding-top: 16px;
+    
+    }
+
+    
+    .testimony_container
+    {
+    width: 100%;
+    margin-bottom: 32px;
+    }
+
+}
+
+@media screen and (max-width: 510px) {
+
+    .buttons_navbar {
+    flex-direction: column;
+    }
+
+    .hero_buttons_grid_container {
+        flex-direction: column;
+        gap: 16px;
+        display: flex;
+    }
+    .testimony_container
+    {
+        display: inline;
+    margin-top: 16px;
+    padding-bottom: 64px;
+    
+    }
+
 }

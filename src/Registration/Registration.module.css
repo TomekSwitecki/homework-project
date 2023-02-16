@@ -103,3 +103,35 @@
 
 
 }
+
+@media screen and (max-width: 1120px) {
+    .logo {
+        margin-bottom: 36px;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .registration_container {
+        margin: 16px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    
+.register_form_container {
+    display: grid;
+    height: fit-content;
+    gap: 16px;
+}
+    .pattern_container__orange {
+        display: none;
+    }
+    
+    .pattern_container__purple {
+        display: none;
+  }
+
+}

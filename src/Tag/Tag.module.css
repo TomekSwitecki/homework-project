@@ -18,7 +18,10 @@
 
     width: fit-content;
     white-space: nowrap;
+
 }
+
+
 
 .tag_blue {
     color: #484848;
@@ -51,4 +54,11 @@
 
     background: #FEEDED;
     border: 1px solid #FFD7D7;
+}
+
+@media screen and (max-width: 1300px) {
+    .tag_container {
+        gap: 0;
+        font-size: 0;
+    }
 }

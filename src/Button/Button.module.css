@@ -61,11 +61,11 @@
 }
 
 
-.button_ghost__active_indicator {
+/* .button_ghost__active_indicator {
     position: relative;
     top: -10px;
     left: 23px
-}
+} */
 
 .btn_orange {
     background: #FF9B35;
@@ -117,9 +117,9 @@
 
 
 .button_icon_prepend {
-    position: absolute;
-    top: 17px;
-    left: 69px;
+    position: fixed;
+    top: 30%;
+    left: 15%;
     width: 20px;
     z-index: 1;
 }

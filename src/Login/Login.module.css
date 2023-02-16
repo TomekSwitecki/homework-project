@@ -25,15 +25,22 @@
     max-height: 100%;
 
     background-color: white;
+
+
+    display: grid;
+    grid-row-start: 2;
+    grid-row-end: 6;
+    grid-column-start: 1;
+    grid-column-end: 4;
 }
 
 .form_container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    grid-row-start: 2;
-    grid-column-start: 5;
-    grid-column-end: 9;
+    grid-row-start: 5;
+    grid-column-start: 1;
+    grid-column-end: 5;
     gap: 36px;
     align-self: center;
 }
@@ -47,11 +54,42 @@
 }
 
 .pattern_right {
-    display: grid;
-    grid-row-start: 2;
-    grid-row-end: 6;
-    grid-column-start: 10;
-    grid-column-end: 13;
-    transform: scaleX(-1);
+    grid-row-start: 1;
+    display: inline-grid;
+    grid-row-end: 12;
+    grid-column-start: 8;
+    grid-column-end: 12;
+    background-size: cover;
+    width: 45vw;
+    height: 110%;
+    overflow: visible;
+    transform: translateY(-8%);
+    background-image: url("./img/Login_Right.svg");
+}
+
+
+
+@media screen and (max-width: 1435px) {
+    .logo {
+        margin-bottom: 36px;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .login_container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 128px;
+    }
+
+    .pattern_left {
+        display: none;
+    }
+    
+    .pattern_right {
+        display: none;
+  }
 
 }

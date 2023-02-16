@@ -132,3 +132,14 @@ background-color: #FCFCFC;
   text-overflow: ellipsis;
 
 }
+
+
+@media screen and (max-width: 1200px) {
+  .title_cell,.deadline_cell,.tag_cell
+{
+  padding: 16px 8px;
+}
+  .deadline_cell {
+    text-align: center;
+  }
+}

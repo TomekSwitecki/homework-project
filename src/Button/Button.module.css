@@ -123,3 +123,29 @@
     width: 20px;
     z-index: 1;
 }
+
+
+.button__icon_container
+{
+background: none;
+}
+
+.button__icon
+{   
+    height: fit-content;
+    width: fit-content;
+    max-width: 40px;
+    max-height: 40px;
+    background:none;
+    border-radius: 4px;
+    transition: all 0.2s;
+    border: 0px solid #dfdfdf;
+}
+
+.button__icon:hover
+{   
+    border: 1px solid #dfdfdf;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    transition: all 0.2s;
+}

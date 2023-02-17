@@ -1,80 +1,69 @@
-import React from "react";
-import TaskItem from "./TaskItem";
-import styles from "./TaskDescription.module.css";
-import { useState } from "react";
-import fire from "../config/fire";
-import { getAuth, onAuthStateChanged, auth } from "firebase/auth";
-import { getDatabase, ref as dRef, child, get, push, set } from "firebase/database";
-import Heading from "../Heading/Heading";
-import Inputfield from "../Inputfield/Inputfield";
+import { child, get, getDatabase, push, ref as dRef } from "firebase/database";
 import {
-  ref,
-  getStorage,
-  uploadBytesResumable,
-  getDownloadURL,
+  getDownloadURL, getStorage, ref, uploadBytesResumable
 } from "firebase/storage";
-import DownloadContent from "../DownloadContent/DownloadContent";
-import Divider from "../Divider/Divider";
-import FlexContainer from "../FlexContainer/FlexContainer";
+import React, { useState } from "react";
 import Button from "../Button/Button";
-import Placeholder from "../Placeholder/Placeholder";
-import students_placeholder from "../Ilustrations/placeholder_students.svg";
+import DownloadContent from "../DownloadContent/DownloadContent";
+import FlexContainer from "../FlexContainer/FlexContainer";
+import Heading from "../Heading/Heading";
 import task_placeholder from "../Ilustrations/placeholder_task.svg";
+import Inputfield from "../Inputfield/Inputfield";
+import Placeholder from "../Placeholder/Placeholder";
+import styles from "./TaskDescription.module.css";
+import TaskItem from "./TaskItem";
+import { showSuccessMessage, showErrorMessage, showInfoMessage } from '../utilities/Notifications';
 const _ = require("lodash"); 
-// import {
-//   getStorage,
-//   ref,
-//   uploadBytesResumable,
-//   getDownloadURL,
-// } from "firebase/storage";
+
 
 const TaskDescription = (props) => 
 {
 
 
   async function fetchTaskAnswer(file_url) {
-              const TaskAnswer = {
-                [props.userEmail.split(".")[0]]: {
-                  Student_Email:props.userEmail,
-                  Task_file_URL: file_url,
-                  Task_Status: "unreviewed",
-                  Task_Submition_Date:new Date().toISOString().split('T')[0]
-                },
-              };
-    console.log(props.selectedTask);
-    console.log(props.userEmail);
+    const userEmail = props.userEmail;
+    const selectedTask = props.selectedTask;
+  
+    if (file_url === "") {
+      alert("Please select a file to upload.");
+      return;
+    }
+  
+    const taskAnswer = {
+      [userEmail.split(".")[0]]: {
+        Student_Email: userEmail,
+        Task_file_URL: file_url,
+        Task_Status: "unreviewed",
+        Task_Submition_Date: new Date().toISOString().split('T')[0]
+      },
+    };
+  
+    console.log(selectedTask);
+    console.log(userEmail);
+  
     const dbRef = dRef(getDatabase());
-    get(child(dbRef, `task/`))
-      .then((snapshot) => {
-        if (snapshot.exists()) {
+    get(child(dbRef, `task/`)).then((snapshot) => {
+      if (snapshot.exists()) {
         Object.entries(snapshot.val()).forEach(([key, value]) => {
-          //console.log(_.isEqual(value, props.selectedTask));
-          //rozwiazanie tymczasowe baaardzo kiepskie
           if (
-            value.Task_subject == props.selectedTask.Task_subject &&
-            value.Task_description == props.selectedTask.Task_description
+            value.Task_subject === selectedTask.Task_subject &&
+            value.Task_description === selectedTask.Task_description
           ) {
-            console.log("znalazlem");
+            console.log("Found task");
             console.log("Fetching created subject data to database");
             const database = getDatabase();
-            push(dRef(database, "task/" + key + "/answers"), TaskAnswer);
-                      if (document.querySelector("#file_input").value != "") {
-                        document.querySelector("#file_input").value = "";
-                      }
-                      alert("Succesfully uploaded");
+            push(dRef(database, `task/${key}/answers`), taskAnswer);
+            document.querySelector("#file_input").value = "";
+            setFile(null);
+            showSuccessMessage("Upload successful", "Your file has been succesfully submited.");
           }
-          // console.log(key, value);
-          // console.log(value);
         });
-        } else {
-          console.log("No data available");
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-    
-
+      } else {
+        console.log("No data available");
+      }
+    }).catch((error) => {
+      console.error(error);
+    });
   }
 
 
@@ -136,27 +125,23 @@ const TaskDescription = (props) =>
     };
 
 
-  const [file, setFile] = useState({});
-  const [submitionDisabled, setSubmitionState] = useState(false);
+  const [file, setFile] = useState(null);
 
-  const fileHandler = (event) => {
-    //setFile(event.target.value);
-    setFile(event.target.files[0]);
-  };
 
   const submitHandler = (event) => {
-    event.preventDefault();
-    if (event.disabled) 
-    {
-      return;
-    }
-
-    setSubmitionState({ disabled: true });
     console.log(file);
-    //fetchTaskAnswer();
-    fileUploadHandler();
+    if (!file) {
+      showInfoMessage("No file selected", "Please upload a file before submitting.");
+    } else {
+      fileUploadHandler();
+    }
+    console.log(file);
   };
 
+  const fileHandler = (event) => {
+    setFile(event.target.files[0]);
+    console.log(event.target.files[0]);
+  };
 
 
     if (Object.keys(props.selectedTask).length !== 0)
@@ -199,8 +184,8 @@ const TaskDescription = (props) =>
             </div> : null }
             {props.role=="STUDENT" ? 
             <FlexContainer props={{ gap: "16", direction:"column", height:"auto", align:"center" }}>
-            <Inputfield id="file_input"   name="file" required  type="file" onChange={fileHandler} label={"File Upload"}></Inputfield>
-            <Button size="small" disabled={submitionDisabled} onClick={submitHandler} type="submit" color="green" text="Submit"></Button>
+            <Inputfield required   id="file_input"   name="file" type="file" onChange={fileHandler} label={"File Upload"}></Inputfield>
+            <Button size="small"  onClick={submitHandler} type="submit" color="green" text="Submit"></Button>
             </FlexContainer> : null}
           </div>
         </React.Fragment>

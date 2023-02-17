@@ -1,28 +1,19 @@
+import { getAuth } from "firebase/auth";
 import React, { useState } from "react";
-import fire from "../config/fire";
 import Button from "../Button/Button";
-import FlexContainer from "../FlexContainer/FlexContainer";
+import fire from "../config/fire";
 import Divider from "../Divider/Divider";
+import FlexContainer from "../FlexContainer/FlexContainer";
+import Heading from "../Heading/Heading";
 import Inputfield from "../Inputfield/Inputfield";
 import Modal from "../Modal/Modal";
 import modal from "../Modal/Modal.module.css";
-import Heading from "../Heading/Heading";
-import { getAuth, onAuthStateChanged, auth } from "firebase/auth";
-import {
-  getDatabase,
-  child,
-  get,
-  update,
-  push,
-  set,
-} from "firebase/database";
 
 
 import {
-  getStorage,
+  getDownloadURL, getStorage,
   ref,
-  uploadBytesResumable,
-  getDownloadURL,
+  uploadBytesResumable
 } from "firebase/storage";
 
 
@@ -103,7 +94,6 @@ function TaskPopUp(props) {
           setURL(downloadURL);
           console.log(enteredDate);
           const CreatedTaskData = {
-            id: props.subjectArraySize,
             Task_subject: props.selectedSubject,
             Task_title: enteredTaskTitle,
             Task_description: enteredTaskDescription,

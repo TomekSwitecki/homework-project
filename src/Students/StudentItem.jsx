@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useCallback } from "react";
-import styles from "../Task/TaskItem.module.css"
-import { getDatabase, ref, child, get } from "firebase/database";
-import Tag from "../Tag/Tag";
+import { child, get, getDatabase, ref } from "firebase/database";
+import React, { useEffect, useState } from "react";
 import completed_icon from "../icons/icon_completed.svg";
-import negative_icon from "../icons/icon_x.svg";
 import late_icon from "../icons/icon_late.svg";
+import negative_icon from "../icons/icon_x.svg";
+import Tag from "../Tag/Tag";
+import styles from "../Task/TaskItem.module.css";
 
 const StudentItem = (props) => {
   const [SubmitionDate, setSubmitionDate] = useState("-");

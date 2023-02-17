@@ -1,16 +1,15 @@
-import React from "react";
-import { useState } from "react";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import { getDatabase, push, ref } from "firebase/database";
+import React, { useState } from "react";
 import { useLocation } from 'react-router-dom';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { getDatabase, push, ref, set } from "firebase/database";
-import registration from "./Registration.module.css";
 import Button from "../Button/Button";
-import RadioButton from "../RadioButton/RadioButton";
-import Inputfield from "../Inputfield/Inputfield"
-import Heading from "../Heading/Heading";
 import Divider from "../Divider/Divider";
-import logo from "../logo.svg";
+import Heading from "../Heading/Heading";
 import google_icon from "../icons/icon_google.svg";
+import logo from "../Ilustrations/logo.svg";
+import Inputfield from "../Inputfield/Inputfield";
+import RadioButton from "../RadioButton/RadioButton";
+import registration from "./Registration.module.css";
 
 const Registration = () => {
 
@@ -56,36 +55,6 @@ const Registration = () => {
 
   const [Role, setRole] = useState(role);
   console.log(Role);
-  // const roleChangeHandler = (event) => {
-  //   // console.log(Role);
-  //   // setRole(event.target.value);
-  //   console.log(event.target.value);
-  //   setRole(event.target.value);
-  //   // console.log(Role);
-  //   // console.log(Role);
-  // };
-
-  // if (firstName !== "" && lastName !== "" && email !== "") {
-  //   console.log("Succesfully signed up");
-
-  //   RegistrationData = {
-  //     f_name: firstName,
-  //     l_name: lastName,
-  //     email: email.toLowerCase(),
-  //     password: password,
-  //     role: argument_role,
-  //   };
-
-  //   registerUserdatabase(RegistrationData);
-
-  //   setFirstName("");
-  //   setLastName("");
-  //   setEmail("");
-  //   setPassword("");
-  //   console.log("Registration Succesfull");
-  //   //console.log(auth.uid);
-  // } 
-
   const submitHandler = (argument_role, event) => {
     if (firstName !== "" && lastName !== "") {
       event.preventDefault();

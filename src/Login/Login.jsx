@@ -1,16 +1,12 @@
-import React, { useState } from "react";
-import fire from "../config/fire";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import styles from "./Login.module.css";
-import Inputfield from "../Inputfield/Inputfield"
-import Heading from "../Heading/Heading";
+import React, { useState } from "react";
 import Button from "../Button/Button";
+import Heading from "../Heading/Heading";
+import Inputfield from "../Inputfield/Inputfield";
+import styles from "./Login.module.css";
 
-import logo from "../logo.svg";
+import logo from "../Ilustrations/logo.svg";
 
-import pattern_purple from "./img/pattern_purple_thin.svg";
-import pattern_orange from "./img/pattern_orange_thin.svg";
-import img_right from "./img/Login_Right.svg";
 const Login = () => {
   const [email, setEmail] = useState("");
   const emailChangeHandler = (event) => {

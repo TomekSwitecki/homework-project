@@ -1,10 +1,10 @@
 import React from "react";
-import ActionBar from "../Task/ActionBar";
 import Heading from "../Heading/Heading";
-import styles from "../StudentListContainer/StudentListContainer.module.css"
-import StudentItem from "../Students/StudentItem";
-import Placeholder from "../Placeholder/Placeholder";
 import students_placeholder from "../Ilustrations/placeholder_students.svg";
+import Placeholder from "../Placeholder/Placeholder";
+import styles from "../StudentListContainer/StudentListContainer.module.css";
+import StudentItem from "../Students/StudentItem";
+import ActionBar from "../Task/ActionBar";
 const StudentListContainer=(props)=>
 {
 

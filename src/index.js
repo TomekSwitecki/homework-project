@@ -1,9 +1,8 @@
+import 'boxicons';
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
-import Hub from "./Hub"
-import 'boxicons';
-import { BrowserRouter,HashRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
+import Hub from "./Hub";
 
 ReactDOM.render(
   <HashRouter>

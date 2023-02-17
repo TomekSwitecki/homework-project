@@ -1,15 +1,16 @@
+import { getAuth } from "firebase/auth";
+import { child, get, getDatabase, push, ref } from "firebase/database";
 import React, { useState } from "react";
-import subjectModal from "./SubjectModal.module.css";
-import fire from "../config/fire";
-import { getAuth} from "firebase/auth";
-import { getDatabase, ref, child, get, push} from "firebase/database";
-import Inputfield from "../Inputfield/Inputfield";
-import Divider from "../Divider/Divider";
-import Heading from "../Heading/Heading";
 import Button from "../Button/Button";
+import fire from "../config/fire";
+import Divider from "../Divider/Divider";
 import FlexContainer from "../FlexContainer/FlexContainer";
+import Heading from "../Heading/Heading";
+import Inputfield from "../Inputfield/Inputfield";
 import Modal from "../Modal/Modal";
 import modal from "../Modal/Modal.module.css";
+import subjectModal from "./SubjectModal.module.css";
+
 function SubjectPopUp(props) {
   const [enteredSubjectName, setEnteredSubjectName] = useState("");
   const [enteredSubjectDescription, setEnteredSubjectDescription] =

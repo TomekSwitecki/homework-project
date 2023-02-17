@@ -1,8 +1,8 @@
 import React from "react";
-import styles from "./LandingPage.module.css";
 import Button from "../Button/Button";
+import logo from "../Ilustrations/logo.svg";
 import hero_ilustration from './img/Landing_Ilustration.svg';
-import logo from "../logo.svg";
+import styles from "./LandingPage.module.css";
 
 function LandingPage() {
   return (

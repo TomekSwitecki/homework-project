@@ -8,7 +8,7 @@ const Placeholder=(props)=>
 
   return (
     <div id={props.id} className={placeholder.Placeholder_container} alt="src">
-       {props.img ? <img src={props.img} className={placeholder.Placeholder_image} alt="placeholder_img"/> : null} 
+       {props.img ? <img src={props.img} className={`${placeholder.Placeholder_image} ${placeholder[`Placeholder_image__${props.size}`]}`} alt="placeholder_img"/> : null} 
        <PlaceholdeHeader Heading={props.Heading} Subheading={props.Subheading}></PlaceholdeHeader>
   </div>
   );

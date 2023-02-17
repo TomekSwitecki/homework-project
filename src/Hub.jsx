@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { getDatabase, ref, child, get } from "firebase/database";
+import { child, get, getDatabase, ref } from "firebase/database";
 
 
 
 import App from "./App";
 import LandingPage from "./Landing_Page/LandingPage";
-import Registration from "./Registration/Registration";
 import Login from "./Login/Login";
+import Registration from "./Registration/Registration";
 
 
 

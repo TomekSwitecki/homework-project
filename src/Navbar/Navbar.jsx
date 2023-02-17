@@ -2,8 +2,8 @@ import React from "react";
 import navbar from "./Navbar.module.css";
 import NavbarButton from "./NavbarButton";
 import Button from "../Button/Button";
-import logo from "../logo2.svg";
-import Controls from "../Controls.svg";
+import logo from "../Ilustrations/logo2.svg";
+import Controls from "../Ilustrations/Controls.svg";
 
 
 import logout_icon from "../icons/icon_logout.svg";

@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import { child, get, getDatabase, ref } from "firebase/database";
+import React, { useEffect, useState } from "react";
 import Tag from "../Tag/Tag";
 import styles from "./TaskItem.module.css";
 import inprogress_icon from "../icons/icon_inprogress.svg";
 import completed_icon from "../icons/icon_completed.svg";
+import late_icon from "../icons/icon_late.svg";
+import negative_icon from "../icons/icon_x.svg";
+import { getSubmitionDate } from '../utilities/StudentDatabase';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 let ChosenTask = "";
 
 const TaskItem = (props) => {
-
 
   let ChosenSubjectData = {
     id: props.id,
@@ -19,11 +23,11 @@ const TaskItem = (props) => {
   };
 
   const SelectTask = () => {
-    console.log(ChosenTask);
+    // console.log(ChosenTask);
     ChosenTask = props.Task_title;
     props.onTaskSelected(ChosenSubjectData);
-    console.log(props.id);
-    console.log(ChosenTask);
+    // console.log(props.id);
+    // console.log(ChosenTask);
   };
 
 
@@ -36,16 +40,53 @@ const TaskItem = (props) => {
 
   const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
   const firstDate = new Date();
-  //console.log(firstDate.toLocaleDateString());
+
   const dueDate = new Date(props.Task_date);
-  //console.log(dueDate);
+
   var diffDays = Math.round((firstDate - dueDate) / oneDay) * -1;
-  //console.log(diffDays.toLocaleString());
-  // const diffHours = (diffDays % 1) * 24;
-  //console.log(diffHours);
 
 
+  const [SubmitionDate, setSubmitionDate] = useState("-");
 
+  useEffect(() => {
+    if (ChosenSubjectData && Object.keys(ChosenSubjectData).length !== 0) {
+      getSubmitionDate(ChosenSubjectData, getAuth().currentUser.email).then((date) => {
+        setSubmitionDate(date);
+        
+      });
+    }
+  }, [ChosenSubjectData, getAuth().currentUser.email]);
+
+  let tag;
+
+
+    if(props.role=="STUDENT")
+    {
+      if (props.Task_date > SubmitionDate && SubmitionDate != "-") {
+        tag = <Tag icon={completed_icon} text={"Submitted"} color="green"></Tag>
+      }
+      else if (props.Task_date < SubmitionDate && SubmitionDate != "-") {
+        tag = <Tag icon={late_icon} text={"Overdue"} color="yellow"></Tag>
+      }
+      else if (SubmitionDate === "-") {
+        tag = <Tag icon={negative_icon} text={"Not submitted"} color="red"></Tag>
+      }
+    }
+    else
+    {
+      if(diffDays > 0)
+      {
+        tag= <Tag icon={inprogress_icon}  text={"In progress"} color="blue"></Tag>
+      }
+      else if (diffDays < 0)
+      {
+        tag=<Tag icon={completed_icon} text={"Completed"} color="green"></Tag>
+      }
+      else if (diffDays == 0)
+      {
+        tag= <Tag icon={inprogress_icon} text={"Completed"} color="blue"></Tag>
+      }
+    }
 
 
 
@@ -64,16 +105,15 @@ const TaskItem = (props) => {
         <span className={styles.TaskDeadlineDate}>
             {props.Task_date + " "}
           </span></td>
-      <td className={styles.tag_cell}>          
-        {diffDays > 0 ? (
+      <td className={styles.tag_cell}> 
+      {tag}
+        {/* {diffDays >= 0 ? (
             <Tag icon={inprogress_icon}  text={"In progress"} color="blue"></Tag>
           ) : diffDays < 0 ? (
             <Tag icon={completed_icon} text={"Completed"} color="green"></Tag>
-          ) : diffDays == 0 ? (
-            <Tag icon={inprogress_icon} text={"Completed"} color="blue"></Tag>
           ) : (
             ""
-          )}
+          )} */}
           </td>
       </tr>
     </React.Fragment>

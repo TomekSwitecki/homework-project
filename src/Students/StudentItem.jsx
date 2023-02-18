@@ -5,10 +5,23 @@ import late_icon from "../icons/icon_late.svg";
 import negative_icon from "../icons/icon_x.svg";
 import Tag from "../Tag/Tag";
 import styles from "../Task/TaskItem.module.css";
-
+import { getSubmitionDate } from '../utilities/StudentDatabase';
+import { showSuccessMessage, showErrorMessage, showInfoMessage } from '../utilities/Notifications';
 const StudentItem = (props) => {
+
+
+
+
   const [SubmitionDate, setSubmitionDate] = useState("-");
   let tag;
+  useEffect(() => {
+    if (Object.keys(props.selectedTask).length !== 0) {
+      getSubmitionDate(props.selectedTask, props.mail).then((date) => {
+        setSubmitionDate(date);
+      });
+    }
+  }, [props.selectedTask, props.mail]);
+
   if (JSON.stringify(props.selectedTask) === '{}') {
     tag = <span>{"-"}</span>
   }
@@ -23,60 +36,7 @@ const StudentItem = (props) => {
       tag = <Tag icon={negative_icon} text={"Not submitted"} color="red"></Tag>
     }
   }
-
-  useEffect(() => {
-    // console.log(props.selectedTask);
-    if (Object.keys(props.selectedTask).length != 0) {
-      const dbRef = ref(getDatabase());
-      get(child(dbRef, `task/`))
-        .then((snapshot) => {
-          if (snapshot.exists()) {
-            Object.entries(snapshot.val()).forEach(([key, value]) => {
-              if (
-                value.Task_subject == props.selectedTask.Task_subject &&
-                value.Task_description == props.selectedTask.Task_description
-              ) {
-                console.log(value);
-                if (value.answers) {
-                  Object.entries(value.answers).forEach(([key1, value1]) => {
-                    console.log(value1);
-                    Object.entries(value1).forEach(([key2, value2]) => {
-                      console.log(value2);
-                      if (
-                        value2.Task_file_URL &&
-                        props.mail == value2.Student_Email
-                      ) {
-                        console.log(value2.Task_Submition_Date);
-                        if (value2.Task_Submition_Date && value.answers) {
-                          console.log(value2.Task_Submition_Date);
-                          setSubmitionDate(value2.Task_Submition_Date);
-                        }
-                        else {
-                          console.log(value2.Task_Submition_Date);
-                          setSubmitionDate("-");
-                        }
-
-                      }
-                    });
-                  });
-                }
-                else {
-                  setSubmitionDate("-");
-                  console.log("No answers");
-                }
-              }
-            });
-          } else {
-            console.log("No data available");
-          }
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
-
-  }
-  );
+  
 
 
   async function downloadStudentWork() {
@@ -124,9 +84,10 @@ const StudentItem = (props) => {
         })
         .catch((error) => {
           console.error(error);
+          showInfoMessage("No submition", "User has not uploaded their answer yet.");
         });
     } else {
-      alert("Select task first");
+      showInfoMessage("No task selected", "Please select task first.");
     }
 
 

@@ -2,11 +2,10 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import Button from "../Button/Button";
 import Heading from "../Heading/Heading";
+import logo from "../Ilustrations/logo.svg";
 import Inputfield from "../Inputfield/Inputfield";
 import styles from "./Login.module.css";
-
-import logo from "../Ilustrations/logo.svg";
-
+import { showSuccessMessage, showErrorMessage, showInfoMessage } from '../utilities/Notifications';
 const Login = () => {
   const [email, setEmail] = useState("");
   const emailChangeHandler = (event) => {
@@ -26,14 +25,10 @@ const Login = () => {
         // Signed in
         const user = userCredential.user;
         console.log("Succesfully signed in");
-        alert("Succesfully signed in");
-        // ...
+        showSuccessMessage("Sign in confirmed", "Sign in completed succesfully.");
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        alert(error.toString());
-        console.log(error.toString());
+        showErrorMessage("Invalid credentials", "Invalid email or password.");
       });
   }
 

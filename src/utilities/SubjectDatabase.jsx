@@ -22,14 +22,16 @@ export async function getSubjectData() {
   export const filterSubjectsByUser = (subjectData) => {
     const filteredSubjects = subjectData.filter((e) => {
       let ObjectHelper;
-      if (Array.isArray(e.addedStudents)) {
+      if (Array.isArray(e.addedStudents) && e.addedStudents !== undefined) {
         ObjectHelper = e.addedStudents.includes(
           getAuth(fire).currentUser.email
         );
-      } else {
+      } else if (typeof e.addedStudents === "object" && e.addedStudents !== null) {
         ObjectHelper = Object.values(e.addedStudents).includes(
           getAuth(fire).currentUser.email
         );
+      } else {
+        ObjectHelper = false;
       }
       return e.Created_by === getAuth(fire).currentUser.email || ObjectHelper;
     });

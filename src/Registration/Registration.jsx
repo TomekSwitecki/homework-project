@@ -10,6 +10,7 @@ import logo from "../Ilustrations/logo.svg";
 import Inputfield from "../Inputfield/Inputfield";
 import RadioButton from "../RadioButton/RadioButton";
 import registration from "./Registration.module.css";
+import { showSuccessMessage, showErrorMessage, showInfoMessage } from '../utilities/Notifications';
 
 const Registration = () => {
 
@@ -35,11 +36,6 @@ const Registration = () => {
     setEmail(event.target.value);
   };
 
-  const [invalidEmail, setInvalidEmail] = useState(false);
-  const invalidEmailChangeHandler = () => {
-    setInvalidEmail(invalidEmail ? "" : !invalidEmail)
-    console.log(invalidEmail);
-  }
 
   const [password, setPassword] = useState("");
   const passwordChangeHandler = (event) => {
@@ -50,20 +46,18 @@ const Registration = () => {
 
   const location = useLocation();
   const role = location.state;
-  console.log("location role" + role);
+
 
 
   const [Role, setRole] = useState(role);
-  console.log(Role);
+
   const submitHandler = (argument_role, event) => {
-    if (firstName !== "" && lastName !== "") {
+    if(Role!="")
+    {
+    if (firstName !== "" && lastName !== "" && email!=="" && password!="") {
       event.preventDefault();
-
-      // Email matching 
       let emailRegex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-
       if (email.match(emailRegex) != null) {
-
         const auth = getAuth();
         createUserWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
@@ -80,25 +74,27 @@ const Registration = () => {
             setLastName("");
             setEmail("");
             setPassword("");
-            alert("Succesfully signed up");
+            showSuccessMessage("Sign up completed", "Your account has ben successfully created.");
+
           })
           .catch((error) => {
             console.log(error.toString());
-            alert(error.toString());
+            showErrorMessage("Incorrect password", "Password should be at least 6 characters.");
           });
 
       }
-      //if email is incorrectx
       else {
-        setInvalidEmail(true);
-        //invalidEmailChangeHandler();
-        //alert("Incorrect email");
-        //alert(email);
+        showErrorMessage("Incorrect email", "Incorrect email format.");
       }
     }
     else {
-      alert("No full data entered");
+      showErrorMessage("Empty fields", "All inputfields must be filled.");
     }
+  }
+  else
+  {
+    showErrorMessage("No role selected", "All inputfields must be filled.");
+  }
   };
 
   async function registerUserdatabase(
@@ -130,12 +126,6 @@ const Registration = () => {
           <Inputfield value={lastName} type="text" onChange={lastNameChangeHandler} label={"Last name"}></Inputfield>
         </div>
         <Inputfield value={email} type="email" onChange={emailChangeHandler} label={"Email address"}></Inputfield>
-        <span
-          className={`${registration.invalid__email}`}
-          style={{ display: invalidEmail ? "block" : "none" }}
-        >
-          Incorrect email
-        </span>
         <Inputfield sublabel LinkTo="#" LinkText="Forgot password?" value={password} type="password" onChange={passwordChangeHandler} label={"Password"}></Inputfield>
 
 

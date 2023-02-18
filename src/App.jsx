@@ -17,6 +17,7 @@ import { getFilteredStudents, getStudentData } from "./utilities/StudentDatabase
 import { fetchSubjectDatabase, filterSubjectsByUser, getSubjectData, getUniqueSubjects } from "./utilities/SubjectDatabase";
 import { fetchTaskDatabase, filterTasksBySubject, getTaskData, getUniqueTasks } from "./utilities/TaskDatabase";
 
+import { showSuccessMessage, showErrorMessage, showInfoMessage } from '../src/utilities/Notifications';
 
 
 const App = (props) => {
@@ -42,13 +43,14 @@ const App = (props) => {
       }
     }
     else {
-      alert("Select subject first");
+      showInfoMessage("No subject selected", "PLease select subject first.");
     }
   }
 
   //-----------------------------------------------------------------------------------------------------
 
   const [selectedSubject, setSelectedSubject] = useState({});
+  
   const onSubjectSelectedDataHandler = (selectedSubjectData) => {
     getTaskData();
     setSelectedSubject(selectedSubjectData);
@@ -105,10 +107,16 @@ const App = (props) => {
     setSelectedTask(selectedTaskData);
   };
 
-  const onSubjectJoinedHandler = () => {
-    getSubjectData();
+
+
+  const onSubjectJoinedHandler = async () => {
+    const data = await getSubjectData();
+    if (data) {
+      setSubjectData(data);
+    }
     SubjectModalVisibility();
   };
+  
 
   const onSubjectCreatedDataHandler = async (createdSubjectData) => {
     await fetchSubjectDatabase(createdSubjectData);
@@ -159,7 +167,7 @@ const App = (props) => {
           <div className="GridContainer">
 
             <div className="LeftContainer">
-              <TaskContainer role={props.rola} filteredTasks={uniqueTasks} selectedSubject={selectedSubject.name} TaskPopUpVisibility={TaskPopUpVisibility} onTaskSelectedDataHandler={onTaskSelectedDataHandler}></TaskContainer>
+              <TaskContainer role={props.rola} selectedTask={selectedTask}  filteredTasks={uniqueTasks} selectedSubject={selectedSubject.name} TaskPopUpVisibility={TaskPopUpVisibility} onTaskSelectedDataHandler={onTaskSelectedDataHandler}></TaskContainer>
               {props.rola === "TEACHER" ? <TaskDescription userEmail={getAuth(fire).currentUser.email} selectedTask={selectedTask} TaskNumber={filteredTasks} /> : null}
             </div>
 

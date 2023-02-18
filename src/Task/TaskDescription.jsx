@@ -25,7 +25,7 @@ const TaskDescription = (props) =>
     const selectedTask = props.selectedTask;
   
     if (file_url === "") {
-      alert("Please select a file to upload.");
+      showInfoMessage("No file selected", "Please select file before uploading.");
       return;
     }
   
@@ -134,6 +134,7 @@ const TaskDescription = (props) =>
       showInfoMessage("No file selected", "Please upload a file before submitting.");
     } else {
       fileUploadHandler();
+      props.onSubmit(selectedTask);
     }
     console.log(file);
   };
@@ -161,6 +162,8 @@ const TaskDescription = (props) =>
                 <thead></thead>
               </tr>
             <TaskItem
+              selectedTask={props.selectedTask}
+              role={props.role}
               Created_by={props.selectedTask.Created_by}
               Task_date={props.selectedTask.Task_date}
               Task_description={props.selectedTask.Task_description}

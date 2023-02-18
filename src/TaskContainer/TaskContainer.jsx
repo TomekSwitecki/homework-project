@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../Button/Button";
 import ActionBar from "../Task/ActionBar";
 import TaskItem from "../Task/TaskItem";
@@ -9,6 +9,7 @@ import task_placeholder from "../Ilustrations/placeholder_task.svg";
 
 
 const TaskContainer = (props) => {
+
   let TaskContainer_Teacher_Content =
     <div className={taskContainer.TaskContainer_Wrapper}>
       <div className={taskContainer.Heading_container}>
@@ -19,7 +20,9 @@ const TaskContainer = (props) => {
         <table className={taskContainer.TaskItem__Table}>
           <ActionBar a={"Task Title"} b={"Date"} c={"Status"} />
           {props.filteredTasks.map((e, index) => (
+
             <TaskItem
+              role="TEACHER"
               id={index}
               Created_by={e.Created_by}
               Task_date={e.Task_date}
@@ -46,6 +49,7 @@ const TaskContainer = (props) => {
           <ActionBar a={"Task Title"} b={"Date"} c={"Status"} />
           {props.filteredTasks.map((e, index) => (
             <TaskItem
+            role="TEACHER"
             id={index}
               Created_by={e.Created_by}
               Task_date={e.Task_date}
@@ -72,6 +76,8 @@ const TaskContainer = (props) => {
         <ActionBar a={"Task Title"} b={"Date"} c={"Status"} />
         {props.filteredTasks.map((e, index) => (
           <TaskItem
+            selectedTask={props.selectedTask}
+            role={"STUDENT"}
             id={index}
             Created_by={e.Created_by}
             Task_date={e.Task_date}

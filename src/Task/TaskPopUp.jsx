@@ -8,7 +8,7 @@ import Heading from "../Heading/Heading";
 import Inputfield from "../Inputfield/Inputfield";
 import Modal from "../Modal/Modal";
 import modal from "../Modal/Modal.module.css";
-
+import { showSuccessMessage, showErrorMessage, showInfoMessage } from '../utilities/Notifications';
 
 import {
   getDownloadURL, getStorage,
@@ -43,6 +43,24 @@ function TaskPopUp(props) {
   };
 
   const fileUploadHandler = () => {
+    if (!file || !file.name) {
+      // File is not defined or has an invalid size
+      const CreatedTaskData = {
+        Task_subject: props.selectedSubject,
+        Task_title: enteredTaskTitle,
+        Task_description: enteredTaskDescription,
+        Task_date: enteredDate,
+        Created_by: getAuth(fire).currentUser.email,
+        Task_file_URL: "",
+      };
+
+      console.log(CreatedTaskData);
+      props.onCreatedTask(CreatedTaskData);
+      setEnteredTaskTitle("");
+      setEnteredTaskDescription("");
+      setEnteredDate("");
+      return;
+    }
     const storage = getStorage();
     console.log(file);
     // Create the file metadata
@@ -128,8 +146,10 @@ function TaskPopUp(props) {
       enteredDate !== "" 
     ) {
       fileUploadHandler(file);
+      showSuccessMessage("Task created", "You have successfully created task.");
     } else {
-      console.log("No data inserted");
+      
+      showErrorMessage("Empty fields", "All inputfields must be filled.");
     }
   };
 

@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/homework-project/static/css/main.2730c947.css",
-    "main.js": "/homework-project/static/js/main.b51e0f2e.js",
+    "main.css": "/homework-project/static/css/main.b0ffe4d9.css",
+    "main.js": "/homework-project/static/js/main.372f9032.js",
     "static/media/Login_Right.svg": "/homework-project/static/media/Login_Right.ec876176b0046ca1948a.svg",
     "static/media/placeholder_subject.svg": "/homework-project/static/media/placeholder_subject.dd1c76951385f1bde3a9c1945935c44a.svg",
     "static/media/Landing_Ilustration.svg": "/homework-project/static/media/Landing_Ilustration.3586e69d6a776552805059d05d32cddb.svg",
@@ -14,6 +14,7 @@
     "index.html": "/homework-project/index.html",
     "static/media/Underline.svg": "/homework-project/static/media/Underline.13b0d69f99f744c3cb263ba2d6c505c5.svg",
     "static/media/icon_google.svg": "/homework-project/static/media/icon_google.330a2dc7f18d7502647dc5d6f93812ec.svg",
+    "static/media/error_icon.svg": "/homework-project/static/media/error_icon.72dfae7f48bfe35f30dd.svg",
     "static/media/Controls.svg": "/homework-project/static/media/Controls.ee602af6273191cf401071b99e5bd6d4.svg",
     "static/media/info_icon.svg": "/homework-project/static/media/info_icon.d9b20cbefdba4ff2ad6e.svg",
     "static/media/icon_inprogress.svg": "/homework-project/static/media/icon_inprogress.48247c673278bd886a150a62ee670477.svg",
@@ -24,11 +25,11 @@
     "static/media/icon_logout.svg": "/homework-project/static/media/icon_logout.f448efc6bd2c603a5ca3ac98914d2134.svg",
     "static/media/icon_completed.svg": "/homework-project/static/media/icon_completed.175cc800ab742afe30cdba0bf1233845.svg",
     "static/media/bx-download.svg": "/homework-project/static/media/bx-download.ee8fbe1cbe5b1450cada.svg",
-    "main.2730c947.css.map": "/homework-project/static/css/main.2730c947.css.map",
-    "main.b51e0f2e.js.map": "/homework-project/static/js/main.b51e0f2e.js.map"
+    "main.b0ffe4d9.css.map": "/homework-project/static/css/main.b0ffe4d9.css.map",
+    "main.372f9032.js.map": "/homework-project/static/js/main.372f9032.js.map"
   },
   "entrypoints": [
-    "static/css/main.2730c947.css",
-    "static/js/main.b51e0f2e.js"
+    "static/css/main.b0ffe4d9.css",
+    "static/js/main.372f9032.js"
   ]
 }

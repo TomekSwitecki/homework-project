@@ -134,7 +134,6 @@ const TaskDescription = (props) =>
       showInfoMessage("No file selected", "Please upload a file before submitting.");
     } else {
       fileUploadHandler();
-      props.onSubmit(selectedTask);
     }
     console.log(file);
   };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import Button from "../Button/Button";
 import ActionBar from "../Task/ActionBar";
 import TaskItem from "../Task/TaskItem";
@@ -9,6 +9,8 @@ import task_placeholder from "../Ilustrations/placeholder_task.svg";
 
 
 const TaskContainer = (props) => {
+  console.log(props.selectedTask);
+  console.log(props.filteredTasks)
 
   let TaskContainer_Teacher_Content =
     <div className={taskContainer.TaskContainer_Wrapper}>
@@ -18,11 +20,13 @@ const TaskContainer = (props) => {
       </div>
       <div className={taskContainer.TaskItem__Container}>
         <table className={taskContainer.TaskItem__Table}>
-          <ActionBar a={"Task Title"} b={"Date"} c={"Status"} />
+          <ActionBar a={"Task Title"} b={"Deadline"} c={"Status"} />
           {props.filteredTasks.map((e, index) => (
 
             <TaskItem
+
               role="TEACHER"
+              selectedTask={props.selectedTask}
               id={index}
               Created_by={e.Created_by}
               Task_date={e.Task_date}
@@ -46,7 +50,7 @@ const TaskContainer = (props) => {
       </div>
       <div className={taskContainer.TaskItem__Container__full}>
         <table className={taskContainer.TaskItem__Table}>
-          <ActionBar a={"Task Title"} b={"Date"} c={"Status"} />
+          <ActionBar a={"Task Title"} b={"Deadline"} c={"Status"} />
           {props.filteredTasks.map((e, index) => (
             <TaskItem
             role="TEACHER"
@@ -73,7 +77,7 @@ const TaskContainer = (props) => {
     </div>
     <div className={taskContainer.TaskItem__Container__full}>
       <table className={taskContainer.TaskItem__Table}>
-        <ActionBar a={"Task Title"} b={"Date"} c={"Status"} />
+        <ActionBar a={"Task Title"} b={"Deadline"} c={"Status"} />
         {props.filteredTasks.map((e, index) => (
           <TaskItem
             selectedTask={props.selectedTask}
@@ -101,7 +105,7 @@ const TaskContainer = (props) => {
       </div>
       <div className={taskContainer.TaskItem__Container__full}>
         <table className={taskContainer.TaskItem__Table}>
-          <ActionBar a={"Task Title"} b={"Date"} c={"Status"} />
+          <ActionBar a={"Task Title"} b={"Deadline"} c={"Status"} />
           {props.filteredTasks.map((e, index) => (
             <TaskItem
             id={index}

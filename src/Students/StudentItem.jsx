@@ -29,7 +29,7 @@ const StudentItem = (props) => {
     if (props.selectedTask.Task_date > SubmitionDate && SubmitionDate != "-") {
       tag = <Tag icon={completed_icon} text={"Submitted"} color="green"></Tag>
     }
-    else if (props.selectedTask.Task_date < SubmitionDate && SubmitionDate != "-") {
+    else if (props.selectedTask.Task_date <= SubmitionDate && SubmitionDate != "-") {
       tag = <Tag icon={late_icon} text={"Overdue"} color="yellow"></Tag>
     }
     else if (SubmitionDate === "-") {
@@ -40,57 +40,50 @@ const StudentItem = (props) => {
 
 
   async function downloadStudentWork() {
-    console.log(props.selectedTask);
-    if (Object.keys(props.selectedTask).length != 0) {
-      const dbRef = ref(getDatabase());
-      get(child(dbRef, `task/`))
-        .then((snapshot) => {
-          if (snapshot.exists()) {
-            Object.entries(snapshot.val()).forEach(([key, value]) => {
-              //console.log(key, value);
-
-              if (
-                value.Task_subject == props.selectedTask.Task_subject &&
-                value.Task_description == props.selectedTask.Task_description
-              ) {
-                console.log(value);
-                Object.entries(value.answers).forEach(([key1, value1]) => {
-                  console.log(value1);
-                  Object.entries(value1).forEach(([key2, value2]) => {
-                    console.log(value2);
-                    if (
-                      value2.Task_file_URL &&
-                      props.mail == value2.Student_Email
-                    ) {
-                      var element = document.createElement("a");
-                      element.setAttribute("href", value2.Task_file_URL);
-                      element.setAttribute("target", "_blank");
-                      element.style.display = "none";
-                      document.body.appendChild(element);
-
-                      element.click();
-
-                      document.body.removeChild(element);
-                    }
-                  });
-                });
-              }
-            });
-            // console.log(taskData);
-            //setSubjectData(snapshot.val());
-          } else {
-            console.log("No data available");
-          }
-        })
-        .catch((error) => {
-          console.error(error);
-          showInfoMessage("No submition", "User has not uploaded their answer yet.");
-        });
-    } else {
-      showInfoMessage("No task selected", "Please select task first.");
+    if (Object.keys(props.selectedTask).length === 0) {
+      showInfoMessage("No task selected", "Please select a task first.");
+      return;
     }
-
-
+  
+    const dbRef = ref(getDatabase());
+    const snapshot = await get(child(dbRef, "task"));
+  
+    if (!snapshot.exists()) {
+      showInfoMessage("No submission", "No submissions have been found for this task.");
+      return;
+    }
+  
+    let submissionFound = false;
+  
+    Object.entries(snapshot.val()).forEach(([key, value]) => {
+      if (
+        value.Task_subject === props.selectedTask.Task_subject &&
+        value.Task_description === props.selectedTask.Task_description
+      ) {
+        Object.entries(value.answers).forEach(([key1, value1]) => {
+          Object.entries(value1).forEach(([key2, value2]) => {
+            if (value2.Student_Email === props.mail && value2.Task_file_URL) {
+              const element = document.createElement("a");
+              element.setAttribute("href", value2.Task_file_URL);
+              element.setAttribute("target", "_blank");
+              element.style.display = "none";
+              document.body.appendChild(element);
+              element.click();
+              document.body.removeChild(element);
+              submissionFound = true;
+            }
+          });
+        });
+      }
+    });
+  
+    if (!submissionFound) {
+      showInfoMessage("No submission", "No submissions have been found for this task.");
+    }
+    else
+    {
+      // showSuccessMessage("Submission found", "Submition has been successfully downloaded.");
+    }
   }
 
 

@@ -1,4 +1,5 @@
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
 import React, { useState } from "react";
 import Button from "../Button/Button";
 import Heading from "../Heading/Heading";
@@ -32,6 +33,12 @@ const Login = () => {
       });
   }
 
+  const navigate = useNavigate();
+
+  const returnLanding = () => {
+    navigate('/landing');
+  };
+
   return (
 
 
@@ -40,14 +47,14 @@ const Login = () => {
       {/* <img className={styles.pattern_left} src={pattern_purple} alt="pattern_purple"></img> */}
       <div className={styles.pattern_right}></div>
       {/* <img className={styles.pattern_right} src={img_right} alt="login ilustration"></img> */}
-      <div className={styles.logo}>
-        <img src={logo}></img>
+      <div className={styles.logo}  onClick={returnLanding}>
+        <img id="clickable_logo" src={logo}></img>
       </div>
       <form className={styles.form_container}>
 
-        <Heading link Heading={"Welcome back!  👋"} Subheading={"Not registered yet?"} LinkText={"Create an account"} LinkTo={"/Registration"} state={"TEACHER"}></Heading>
+        <Heading link Heading={"Welcome back!  👋"} Subheading={"Not registered yet?"} LinkText={"Create an account"} LinkTo={"/Registration"} state={"STUDENT"}></Heading>
         <Inputfield required value={email} type="email" onChange={emailChangeHandler} label={"Email address"}></Inputfield>
-        <Inputfield sublabel LinkText="Forgot password?" LinkTo="#" value={password} type="password" onChange={passwordChangeHandler} label={"Password"}></Inputfield>
+        <Inputfield sublabel LinkText="Forgot password?" LinkTo={"/registration"} value={password} type="password" onChange={passwordChangeHandler} label={"Password"} state={"STUDENT"}></Inputfield>
         <Button size="full" type="submit" color="black" text="Sign In" onClick={VerifyUser} />
       </form>
     </div>

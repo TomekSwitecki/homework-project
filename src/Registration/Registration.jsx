@@ -1,4 +1,5 @@
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
 import { getDatabase, push, ref } from "firebase/database";
 import React, { useState } from "react";
 import { useLocation } from 'react-router-dom';
@@ -78,6 +79,10 @@ const Registration = () => {
 
           })
           .catch((error) => {
+            console.log(error);
+            if(error == "FirebaseError: Firebase: Error (auth/email-already-in-use)."){
+              showErrorMessage("Isdadsadsa", "Password shodsaasdt 6 characters.");
+          }
             console.log(error.toString());
             showErrorMessage("Incorrect password", "Password should be at least 6 characters.");
           });
@@ -103,14 +108,18 @@ const Registration = () => {
     const database = getDatabase();
     push(ref(database, "users/"), RegistrationData);
   }
+  const navigate = useNavigate();
 
+  const returnLanding = () => {
+    navigate('/landing');
+  };
 
   return (
 
     <div className={registration.registration_container}>
 
       <div className={registration.logo}>
-        <img src={logo} alt="logo"></img>
+        <img src={logo} id="clickable_logo" alt="logo" onClick={returnLanding}></img>
       </div>
 
       <form className={registration.register_form_container}>
@@ -126,7 +135,7 @@ const Registration = () => {
           <Inputfield value={lastName} type="text" onChange={lastNameChangeHandler} label={"Last name"}></Inputfield>
         </div>
         <Inputfield value={email} type="email" onChange={emailChangeHandler} label={"Email address"}></Inputfield>
-        <Inputfield sublabel LinkTo="#" LinkText="Forgot password?" value={password} type="password" onChange={passwordChangeHandler} label={"Password"}></Inputfield>
+        <Inputfield sublabel LinkTo={"/registration"} LinkText="Forgot password?" value={password} type="password" onChange={passwordChangeHandler} label={"Password"} state={"STUDENT"}></Inputfield>
 
 
 

@@ -8,24 +8,48 @@ import late_icon from "../icons/icon_late.svg";
 import negative_icon from "../icons/icon_x.svg";
 import { getSubmitionDate } from '../utilities/StudentDatabase';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { fetchTaskDatabase, filterTasksBySubject, getTaskData, getUniqueTasks } from "../utilities/TaskDatabase";
 let ChosenTask = "";
 
 const TaskItem = (props) => {
+  // console.log(props.selectedTask)
+
+  const [isSelected, setIsSelected] = useState(false);
+
 
   let ChosenSubjectData = {
     id: props.id,
-    Created_by:props.Created_by,
-    Task_date:props.Task_date,
-    Task_description:props.Task_description,
-    Task_file_URL:props.Task_file_URL,
-    Task_subject:props.Task_subject,
-    Task_title:props.Task_title,
+    Created_by: props.Created_by,
+    Task_date: props.Task_date,
+    Task_description: props.Task_description,
+    Task_file_URL: props.Task_file_URL,
+    Task_subject: props.Task_subject,
+    Task_title: props.Task_title,
   };
 
+  useEffect(() => {
+    if (props.selectedTask.Task_title === ChosenSubjectData.Task_title) {
+      setIsSelected(true);
+      console.log('Selected task is the same as the chosen subject task');
+    } else {
+      setIsSelected(false);
+      console.log('Selected task is not the same as the chosen subject task');
+    }
+  }, [props.selectedTask.Task_title, ChosenSubjectData.Task_title]);
+
+  
+
+
   const SelectTask = () => {
-    // console.log(ChosenTask);
+    console.log(props.SelectTask);
+    setIsSelected(true);
     ChosenTask = props.Task_title;
-    props.onTaskSelected(ChosenSubjectData);
+    props.onTaskSelected(props);
+    // props.onTaskSelected(ChosenSubjectData);
+
+    // console.log(ChosenTask);
+    // ChosenTask = props.Task_title;
+    // props.onTaskSelected(ChosenSubjectData);
     // console.log(props.id);
     // console.log(ChosenTask);
   };
@@ -52,7 +76,7 @@ const TaskItem = (props) => {
     if (ChosenSubjectData && Object.keys(ChosenSubjectData).length !== 0) {
       getSubmitionDate(ChosenSubjectData, getAuth().currentUser.email).then((date) => {
         setSubmitionDate(date);
-        
+
       });
     }
   }, [ChosenSubjectData, getAuth().currentUser.email]);
@@ -60,61 +84,63 @@ const TaskItem = (props) => {
   let tag;
 
 
-    if(props.role=="STUDENT")
-    {
-      if (props.Task_date > SubmitionDate && SubmitionDate != "-") {
-        tag = <Tag icon={completed_icon} text={"Submitted"} color="green"></Tag>
-      }
-      else if (props.Task_date < SubmitionDate && SubmitionDate != "-") {
-        tag = <Tag icon={late_icon} text={"Overdue"} color="yellow"></Tag>
-      }
-      else if (SubmitionDate === "-") {
-        tag = <Tag icon={negative_icon} text={"Not submitted"} color="red"></Tag>
-      }
+  if (props.role == "STUDENT") {
+    if (props.Task_date >= SubmitionDate && SubmitionDate != "-") {
+      tag = <Tag icon={completed_icon} text={"Submitted"} color="green"></Tag>
+    }
+    else if (props.Task_date < SubmitionDate && SubmitionDate != "-") {
+      tag = <Tag icon={late_icon} text={"Overdue"} color="yellow"></Tag>
+    }
+    else if (SubmitionDate == "-") {
+      tag = <Tag icon={negative_icon} text={"Not submitted"} color="red"></Tag>
     }
     else
     {
-      if(diffDays > 0)
-      {
-        tag= <Tag icon={inprogress_icon}  text={"In progress"} color="blue"></Tag>
-      }
-      else if (diffDays < 0)
-      {
-        tag=<Tag icon={completed_icon} text={"Completed"} color="green"></Tag>
-      }
-      else if (diffDays == 0)
-      {
-        tag= <Tag icon={inprogress_icon} text={"Completed"} color="blue"></Tag>
-      }
+      console.log(SubmitionDate)
+      console.log(props.Task_date)
+      tag = <Tag icon={negative_icon} text={"error"} color="red"></Tag>
     }
+    
+  }
+  else {
+    if (diffDays > 0) {
+      tag = <Tag icon={inprogress_icon} text={"In progress"} color="blue"></Tag>
+    }
+    else if (diffDays < 0) {
+      tag = <Tag icon={completed_icon} text={"Completed"} color="green"></Tag>
+    }
+    else if (diffDays == 0) {
+      tag = <Tag icon={inprogress_icon} text={"Completed"} color="blue"></Tag>
+    }
+  }
 
 
 
   return (
     <React.Fragment>
-      <tr onClick={SelectTask}         
-      className={
-          props.Task_title === ChosenTask
+      <tr onClick={SelectTask}
+        className={
+          isSelected
             ? styles["TaskItem__active"]
             : styles["TaskItem"]
         }>
-      <td className={styles.title_cell}>
-        {props.Task_title}
-      </td>
-      <td className={styles.deadline_cell}>    
-        <span className={styles.TaskDeadlineDate}>
+        <td className={styles.title_cell}>
+          {props.Task_title}
+        </td>
+        <td className={styles.deadline_cell}>
+          <span className={styles.TaskDeadlineDate}>
             {props.Task_date + " "}
           </span></td>
-      <td className={styles.tag_cell}> 
-      {tag}
-        {/* {diffDays >= 0 ? (
+        <td className={styles.tag_cell}>
+          {tag}
+          {/* {diffDays >= 0 ? (
             <Tag icon={inprogress_icon}  text={"In progress"} color="blue"></Tag>
           ) : diffDays < 0 ? (
             <Tag icon={completed_icon} text={"Completed"} color="green"></Tag>
           ) : (
             ""
           )} */}
-          </td>
+        </td>
       </tr>
     </React.Fragment>
   );

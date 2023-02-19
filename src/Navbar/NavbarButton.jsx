@@ -26,7 +26,7 @@ const NavbarButton = (props) => {
         id={props.id}
         title={"Subject Description : " + props.description}
         className={
-          props.name === ChosenSubject 
+          props.name === ChosenSubject
             ? navbarButton["btn-subject-active"]
             : navbarButton["btn-subject"]
         }

@@ -54,7 +54,18 @@ const App = (props) => {
   const onSubjectSelectedDataHandler = (selectedSubjectData) => {
     getTaskData();
     setSelectedSubject(selectedSubjectData);
-    setSelectedTask({});
+    
+    const filteredTasks = filterTasksBySubject(taskData, selectedSubjectData.name);
+    const uniqueTasks = getUniqueTasks(filteredTasks);
+
+    
+    if (uniqueTasks.length > 0) {
+      onTaskSelectedDataHandler(uniqueTasks[0])
+    } 
+    else
+    {
+      setSelectedTask({});
+    }
   };
 
   const [subjectData, setSubjectData] = useState([]);

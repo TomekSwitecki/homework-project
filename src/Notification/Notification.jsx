@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
-import notification from "../Snackbar/Notification.module.css";
+import notification from "../Notification/Notification.module.css";
 import ReactDOM from "react-dom";
 import FlexContainer from "../FlexContainer/FlexContainer";
 import IconButton from "../Button/IconButton";
-import IconClose from "../Snackbar/icons/close_icon.svg";
+import IconClose from "../Notification/icons/close_icon.svg";
 
-export default function SnackBar(props) {
+export default function Notification(props) {
   const [closeTimeout, setCloseTimeout] = useState(null);
 
   useEffect(() => {
     beginCloseTimeout();
   }, [props.message]); // add props.message to dependency array
 
-  const closeSnackBar = () => {
+  const closeNotification = () => {
     clearTimeout(closeTimeout);
     ReactDOM.unmountComponentAtNode(
       document.getElementById("notification_container")
@@ -21,7 +21,7 @@ export default function SnackBar(props) {
 
   const beginCloseTimeout = () => {
     if (props.timer) {
-      const timeout = setTimeout(() => closeSnackBar(), props.timer);
+      const timeout = setTimeout(() => closeNotification(), props.timer);
       setCloseTimeout(timeout);
     }
   };
@@ -51,7 +51,7 @@ export default function SnackBar(props) {
         <div>
           <IconButton
             icon={IconClose}
-            onClick={() => closeSnackBar()}
+            onClick={() => closeNotification()}
           ></IconButton>
         </div>
       </div>

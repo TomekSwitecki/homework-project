@@ -1,21 +1,21 @@
 import ReactDOM from "react-dom";
 import React from "react";
-import SnackBar from "../Snackbar/Snackbar";
+import Notification from "../Notification/Notification";
 
-const triggerSnackbar = (title, message, messageType) => {
+const triggerNotification = (title, message, messageType) => {
   const validMessageTypes = ["error", "info", "warning", "success"];
   if (!validMessageTypes.includes(messageType)) {
-    throw Error("Invalid snackbar message type");
+    throw Error("Invalid Notification message type");
   }
-  //This way, whenever the message content changes, a new SnackBar component will be mounted with a new unique key, 
+  //This way, whenever the message content changes, a new Notification component will be mounted with a new unique key, 
   //which will cause React to unmount the old component and mount the new one. 
   //This should reset the timer and display the new message content correctly.
   const key = `${messageType}-${title}-${message}`; // generate unique key
   ReactDOM.render(
-    <SnackBar
+    <Notification
       key={key} // pass key prop
       messageType={messageType}
-      timer={6500}
+      timer={5000}
       title={title}
       message={message}
     />,
@@ -24,17 +24,17 @@ const triggerSnackbar = (title, message, messageType) => {
 };
 
 export const showErrorMessage = (title, message) => {
-  triggerSnackbar(title, message, "error");
+  triggerNotification(title, message, "error");
 };
 
 export const showInfoMessage = (title, message) => {
-  triggerSnackbar(title, message, "info");
+  triggerNotification(title, message, "info");
 };
 
 export const showSuccessMessage = (title, message) => {
-  triggerSnackbar(title, message, "success");
+  triggerNotification(title, message, "success");
 };
 
 export const showWarningMessage = (title, message) => {
-  triggerSnackbar(title, message, "warning");
+  triggerNotification(title, message, "warning");
 };

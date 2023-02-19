@@ -23,7 +23,7 @@ function Inputfield(props) {
     <div className={container_className}>
       <div className={props.label ? inputfield.Inputfield_labels_container : inputfield.Inputfield_labels_container__empty}>
         <span className={inputfield.Inputfield_label}>{props.label}</span>
-        {props.sublabel ? <Link to={props.LinkTo} className={"link"}>{props.LinkText}</Link> : null}
+        {props.sublabel ? <Link state={props.state} to={props.LinkTo} className={"link"}>{props.LinkText}</Link> : null}
       </div>
       <input
         maxlength={props.maxLength}

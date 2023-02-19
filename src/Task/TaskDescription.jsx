@@ -51,6 +51,7 @@ const TaskDescription = (props) =>
           ) {
             console.log("Found task");
             console.log("Fetching created subject data to database");
+            console.log(taskAnswer);
             const database = getDatabase();
             push(dRef(database, `task/${key}/answers`), taskAnswer);
             document.querySelector("#file_input").value = "";
@@ -169,6 +170,8 @@ const TaskDescription = (props) =>
               Task_file_URL={props.selectedTask.Task_file_URL}
               Task_subject={props.selectedTask.Task_subject}
               Task_title={props.selectedTask.Task_title}
+              chosenSubject={props.selectedSubject}
+              onTaskSelected={props.onTaskSelectedDataHandler}
             />
             </table>
             </div>

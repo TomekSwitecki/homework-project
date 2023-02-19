@@ -47,7 +47,7 @@ const StudentListContainer=(props)=>
       <table className={styles.StudentItem__Table}>
       <ActionBar a={"Name"} b={"Submition Date"} c={"Status"} />
     </table>
-    <Placeholder Heading="No students added yet" Subheading="No student has joined this class yet. Once they join, they will be listed here!" img={students_placeholder}></Placeholder>
+    <Placeholder Heading="No students joined" Subheading="No student has joined this class yet. Once they join, they will be listed here!" img={students_placeholder}></Placeholder>
     </div>);
   }
 }

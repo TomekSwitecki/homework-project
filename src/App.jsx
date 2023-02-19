@@ -204,7 +204,7 @@ const App = (props) => {
 
 
           </div>
-          : <Placeholder size="big" img={subject_placeholder} Heading={"No class selected"} Subheading={"Select class or create new one in the navbar menu."}></Placeholder>}
+          : <Placeholder size="big" img={subject_placeholder} Heading={"No class selected"}  Subheading={props.role === "TEACHER" ? "Select class or create new one in the navbar menu." : "Select class from the navbar menu."}></Placeholder>}
       </div>
     </div>
   );

@@ -30,7 +30,7 @@ const Navbar = (props) => {
         <div className={navbar.lower_container}>
           <div className="expander__full">
             <hr className={navbar.navbar_divider}></hr>
-            <Button size="full" type="submit" color={props.role == "TEACHER" ? "purple" : "orange"} text={props.role == "TEACHER" ? "Create Class" : "Add Class"} onClick={props.onClick} />
+            <Button size="full" type="submit" color={props.role == "TEACHER" ? "purple" : "orange"} text={props.role == "TEACHER" ? "Create Class" : "Join Class"} onClick={props.onClick} />
           </div>
           <div className="expander__medium">
             <hr className={navbar.navbar_divider}></hr>

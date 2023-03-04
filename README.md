@@ -5,18 +5,26 @@
 [Homework.com](https://tomekswitecki.github.io/homework-project/#/landing) is an application designed to simplify online education for both students and teachers. The platform allows faculty members to easily create courses and assignments, while students can view and submit assignments within a user-friendly interface, eliminating the burdensome process of submitting/gathering assignments through email.
 
 ## Features
-* Classes creation
-* Task Creation
-* Task Submition
-* Task Download
+Homework.com provides the following features:
+
+* ✅ Account registration
+* ✅ Classes creation
+* ✅ Classes attendance
+* ✅ Task creation
+* ✅ Task file attachements
+* ✅ Task deadline status monitoring
+* ✅ Task answer file submition
+* ✅ Task submition download
+* ✅ Task submition status monitoring
+
+
+## 💻 Project
+If you want to check Homework.com application directly please feel free to do so [here](https://tomekswitecki.github.io/homework-project/#/landing),
+but I highly suggest taking full tour in [Homework.com Showcase Mode](https://tomekswitecki.github.io/homework-project/#/landing).
 
 ## 📝 Case Study
 If you want to know more about this project make sure you check out [Homework.com UI/UX Redesign Case Study](https://tomekswitecki.github.io/homework-case-study/)
 
-
-## 💻 Live Demo
-
-[Try it out!](https://tomekswitecki.github.io/homework-project/#/landing)
 
 ## ✋ Show your support
 

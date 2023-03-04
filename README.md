@@ -18,9 +18,9 @@ Homework.com provides the following features:
 * ✅ Task submition status monitoring
 
 
-## 💻 Project 
-I highly suggest taking full project tour in [Homework.com Showcase Mode](https://tomekswitecki.github.io/homework-project/#/landing),
-but if you want to check Homework.com application directly please feel free to do so [here](https://tomekswitecki.github.io/homework-project/#/landing),
+## 💻 Project Demonstration
+I highly suggest taking full project "tour" in [Homework.com Showcase Mode](https://tomekswitecki.github.io/homework-project/#/landing),
+but if you want to check Homework.com application directly please feel free to do so [here](https://tomekswitecki.github.io/homework-project/#/landing).
 
 
 ## 📝 Case Study

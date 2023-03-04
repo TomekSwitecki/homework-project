@@ -1,4 +1,7 @@
 ![Implementation Github Banner](https://user-images.githubusercontent.com/99132195/222918981-284b01e8-7a33-4de7-83b2-d0d3fe15c3c0.png)
+
+---
+
 [Homework.com](https://tomekswitecki.github.io/homework-project/#/landing) is an application designed to simplify online education for both students and teachers. The platform allows faculty members to easily create courses and assignments, while students can view and submit assignments within a user-friendly interface, eliminating the burdensome process of submitting/gathering assignments through email.
 
 ## Features
@@ -6,6 +9,10 @@
 * Task Creation
 * Task Submition
 * Task Download
+
+## 📝 Case Study
+If you want to know more about this project make sure you check out [Homework.com UI/UX Redesign Case Study](https://tomekswitecki.github.io/homework-case-study/)
+
 
 ## 💻 Live Demo
 

@@ -29,8 +29,8 @@ export default function Notification(props) {
   return (
     <div
       className={`${notification.notification_container} ${notification[`${props.messageType}_type`]}`}
-      onMouseEnter={() => clearTimeout(closeTimeout)}
-      onMouseLeave={() => beginCloseTimeout()}
+      // onMouseEnter={() => clearTimeout(closeTimeout)}
+      // onMouseLeave={() => beginCloseTimeout()}
     >
       <div className={notification.content_wrapper}>
         <FlexContainer

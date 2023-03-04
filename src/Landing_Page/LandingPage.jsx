@@ -3,8 +3,13 @@ import Button from "../Button/Button";
 import logo from "../Ilustrations/logo.svg";
 import hero_ilustration from './img/Landing_Ilustration.svg';
 import styles from "./LandingPage.module.css";
-
+import { showSuccessMessage, showErrorMessage, showInfoMessage } from '../utilities/Notifications';
 function LandingPage() {
+
+  function showMessage()
+  {
+    showInfoMessage("Work in progress :)", "This feature is not currently available.")
+  }
   return (
     <div className={styles.LandingPage_container}>
 
@@ -12,10 +17,10 @@ function LandingPage() {
         <img src={logo} alt="logo"></img>
       </div>
       <div className={styles.buttons_navbar}>
-        <Button size="full" active color="ghost" linkTo="/#" text="Product" />
-        <Button size="full" color="ghost" linkTo="/#" text="Pricing" />
-        <Button size="full" color="ghost" linkTo="/#" text="Contact" />
-        <Button size="full" linkTo="/login" color="black" text="Login" />
+        <Button onClick={ showMessage } size="full"  color="ghost" text="Product" />
+        <Button onClick={ showMessage } size="full" color="ghost" text="Pricing" />
+        <Button onClick={ showMessage }  size="full" color="ghost" text="Contact" />
+        <Button  size="full" linkTo="/login" color="black" text="Login" />
       </div>
 
       <div className={styles.hero_container}>

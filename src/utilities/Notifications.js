@@ -15,7 +15,7 @@ const triggerNotification = (title, message, messageType) => {
     <Notification
       key={key} // pass key prop
       messageType={messageType}
-      timer={5000}
+      timer={3000}
       title={title}
       message={message}
     />,

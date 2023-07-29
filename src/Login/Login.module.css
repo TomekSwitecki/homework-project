@@ -19,7 +19,7 @@
     grid-column-gap: 32px;
     grid-row-gap: 8px;
     margin: 64px auto;
-    height: 86vh;
+    margin-bottom: 0;
 
     vertical-align: middle;
     max-height: 100%;
@@ -87,9 +87,9 @@
     .pattern_left {
         display: none;
     }
-    
+
     .pattern_right {
         display: none;
-  }
+    }
 
 }

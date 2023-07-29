@@ -17,7 +17,7 @@
     grid-column-gap: 32px;
     grid-row-gap: 8px;
     margin: 64px auto;
-    height: 86vh;
+    margin-bottom: 0;
 
     vertical-align: middle;
     max-height: 100%;
@@ -114,18 +114,19 @@
     }
 
 
-    
-.register_form_container {
-    display: grid;
-    height: fit-content;
-    gap: 16px;
-}
+
+    .register_form_container {
+        display: grid;
+        height: fit-content;
+        gap: 16px;
+    }
+
     .pattern_container__orange {
         display: none;
     }
-    
+
     .pattern_container__purple {
         display: none;
-  }
+    }
 
 }

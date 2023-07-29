@@ -14,7 +14,7 @@
     grid-column-gap: 32px;
     grid-row-gap: 8px;
     margin: 64px auto;
-
+    height: 90vh;
 
     vertical-align: middle;
 
@@ -157,47 +157,54 @@
 
 @media screen and (max-width: 1120px) {
     .LandingPage_container {
-    max-width: 1120px;
-    display: flex;
-    flex-direction: column;
-    margin: 16px 16px;
-    vertical-align: middle;
-    overflow-y: scroll;
-    height: 100%;
+        max-width: 1120px;
+        display: flex;
+        flex-direction: column;
+        margin: 16px 32px;
+        vertical-align: middle;
+
+        height: 100%;
     }
 
     .hero_ilustration {
         display: none;
     }
 
+    .hero_headline {
+        font-size: 56px;
+    }
+
 
     .buttons_navbar {
         margin-top: 16px;
         margin-bottom: 8px;
-    display: flex;
-    width: 100%;
+        display: flex;
+        width: 100%;
 
-    flex-direction: row;
+        flex-direction: row;
     }
 
     .hero_container {
         padding-top: 16px;
-    
+
     }
 
-    
-    .testimony_container
-    {
-    width: 100%;
-    margin-bottom: 32px;
+
+    .testimony_container {
+        width: 100%;
+        margin-bottom: 32px;
     }
 
 }
 
 @media screen and (max-width: 510px) {
 
+    .LandingPage_container {
+        padding: 16px 20px;
+    }
+
     .buttons_navbar {
-    flex-direction: column;
+        flex-direction: column;
     }
 
     .hero_buttons_grid_container {
@@ -205,12 +212,18 @@
         gap: 16px;
         display: flex;
     }
-    .testimony_container
-    {
+
+    .testimony_container {
         display: inline;
-    margin-top: 16px;
-    padding-bottom: 64px;
-    
+        margin-top: 16px;
+        padding-bottom: 64px;
+
+    }
+
+    .testimony_container__wrapper {
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
     }
 
 }
